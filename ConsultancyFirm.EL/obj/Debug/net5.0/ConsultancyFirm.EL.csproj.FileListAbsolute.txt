@@ -1,0 +1,12 @@
+C:\Users\recep\source\repos\ConsultancyFirm\ConsultancyFirm.EL\bin\Debug\net5.0\ConsultancyFirm.EL.deps.json
+C:\Users\recep\source\repos\ConsultancyFirm\ConsultancyFirm.EL\bin\Debug\net5.0\ConsultancyFirm.EL.dll
+C:\Users\recep\source\repos\ConsultancyFirm\ConsultancyFirm.EL\bin\Debug\net5.0\ref\ConsultancyFirm.EL.dll
+C:\Users\recep\source\repos\ConsultancyFirm\ConsultancyFirm.EL\bin\Debug\net5.0\ConsultancyFirm.EL.pdb
+C:\Users\recep\source\repos\ConsultancyFirm\ConsultancyFirm.EL\obj\Debug\net5.0\ConsultancyFirm.EL.csproj.AssemblyReference.cache
+C:\Users\recep\source\repos\ConsultancyFirm\ConsultancyFirm.EL\obj\Debug\net5.0\ConsultancyFirm.EL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\recep\source\repos\ConsultancyFirm\ConsultancyFirm.EL\obj\Debug\net5.0\ConsultancyFirm.EL.AssemblyInfoInputs.cache
+C:\Users\recep\source\repos\ConsultancyFirm\ConsultancyFirm.EL\obj\Debug\net5.0\ConsultancyFirm.EL.AssemblyInfo.cs
+C:\Users\recep\source\repos\ConsultancyFirm\ConsultancyFirm.EL\obj\Debug\net5.0\ConsultancyFirm.EL.csproj.CoreCompileInputs.cache
+C:\Users\recep\source\repos\ConsultancyFirm\ConsultancyFirm.EL\obj\Debug\net5.0\ConsultancyFirm.EL.dll
+C:\Users\recep\source\repos\ConsultancyFirm\ConsultancyFirm.EL\obj\Debug\net5.0\ref\ConsultancyFirm.EL.dll
+C:\Users\recep\source\repos\ConsultancyFirm\ConsultancyFirm.EL\obj\Debug\net5.0\ConsultancyFirm.EL.pdb
