@@ -1,0 +1,19 @@
+﻿@model List<Heading>
+@{
+    ViewData["Title"] = "Healty Life Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-9">
+        @foreach (var head in Model)
+        {
+            <partial name="_Heading" model="head" />
+        }
+
+    </div>
+
+</div>

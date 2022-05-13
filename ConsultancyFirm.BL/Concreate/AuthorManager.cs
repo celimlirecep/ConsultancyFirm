@@ -12,6 +12,11 @@ namespace ConsultancyFirm.BL.Concreate
 {
     public class AuthorManager : IAuthorService
     {
+        private IAuthorRepository _authorRepository;
+        public AuthorManager(IAuthorRepository authorRepository)
+        {
+            _authorRepository = authorRepository;
+        }
         public void Add(Author entity)
         {
             throw new NotImplementedException();
@@ -29,7 +34,7 @@ namespace ConsultancyFirm.BL.Concreate
 
         public List<Author> GetAll()
         {
-            throw new NotImplementedException();
+            return _authorRepository.GetAll();
         }
 
         public Author GetById(int id)

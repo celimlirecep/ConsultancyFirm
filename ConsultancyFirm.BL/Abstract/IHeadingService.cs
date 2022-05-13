@@ -17,5 +17,7 @@ namespace ConsultancyFirm.BL.Abstract
         void Add(Heading entity);
         List<Heading> Get(Expression<Func<Heading, bool>> filter);
         List<Heading> GetHomePageHeadings();
+        public List<Heading> GetHeadingByCategories(string category);
+        List<Heading> GetHeadingByAuthors(string authorNameUrl);
     }
 }

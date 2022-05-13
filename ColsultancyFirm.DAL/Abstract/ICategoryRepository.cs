@@ -9,5 +9,6 @@ namespace ColsultancyFirm.DAL.Abstract
 {
     public interface ICategoryRepository:IBaseRepository<Category>
     {
+        
     }
 }

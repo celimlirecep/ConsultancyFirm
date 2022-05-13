@@ -153,13 +153,13 @@ namespace ColsultancyFirm.DAL.Migrations
             modelBuilder.Entity("ConsultancyFirm.EL.AuthorHeading", b =>
                 {
                     b.HasOne("ConsultancyFirm.EL.Author", "Author")
-                        .WithMany()
+                        .WithMany("AuthorHeading")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ConsultancyFirm.EL.Heading", "Heading")
-                        .WithMany()
+                        .WithMany("AuthorHeading")
                         .HasForeignKey("HeadingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -178,9 +178,19 @@ namespace ColsultancyFirm.DAL.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("ConsultancyFirm.EL.Author", b =>
+                {
+                    b.Navigation("AuthorHeading");
+                });
+
             modelBuilder.Entity("ConsultancyFirm.EL.Category", b =>
                 {
                     b.Navigation("Headings");
+                });
+
+            modelBuilder.Entity("ConsultancyFirm.EL.Heading", b =>
+                {
+                    b.Navigation("AuthorHeading");
                 });
 #pragma warning restore 612, 618
         }

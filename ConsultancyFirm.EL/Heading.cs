@@ -18,6 +18,7 @@ namespace ConsultancyFirm.EL
         public bool IsApproved { get; set; }
         public List<Author> Authors { get; set; }
         public Category Category { get; set; }
+        public List<AuthorHeading> AuthorHeadings { get; set; }
 
 
     }

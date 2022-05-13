@@ -1,0 +1,419 @@
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDMincho&family=Macondo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+.App {
+  text-align: center;
+}
+.pisikoBar{
+  font-family: 'BIZ UDMincho', serif;
+font-family: 'Macondo', cursive;
+font-size: 50px !important;
+color: white !important;
+}
+.headerStyle{
+  background-color: #222f3e;
+}
+.searchBtn:hover{
+  background-color: #154377;
+}
+.baslikyazi{
+  color:white !important;
+  font-size: 20px;
+  font-family: 'Roboto Slab', serif;
+}
+.araicon{
+  background-color: #222f3e;
+  color:white;
+  font-size: x-large;
+  display: flex !important;
+  align-items: center !important;
+}
+.araicon:hover{
+  font-size: xx-large;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+footer {
+  color: #fff;
+}
+ul {
+  padding: 0px;
+}
+ol, ul {
+  margin-bottom: 0px;
+}
+
+.social-icon {
+  padding: 0;
+  margin-bottom: 0px;
+      float: right;
+}
+
+.social-icon li {
+  list-style: none;
+  display: inline-block;
+}
+.social-icon li i {
+  font-size: 14px;
+  color: #262725;
+  border: solid 2px #ffffff;
+  height: 31px;
+  width: 31px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 100px;
+  line-height: 27px;
+  margin-right: 15px;
+  transition: 1s;
+  background: #fff;
+}
+.social-icon li i:hover {
+  border: solid 2px #262725;
+  color: #ffffff;
+  background: #262725;
+}
+
+.phone-no i {
+  position: relative;
+  margin-right: 14px;
+  font-size: 43px;
+  top: 5px;
+}
+.phone-no {
+  margin-top: -22px;
+  text-align: right;
+}
+.footer-day-time {
+  padding-bottom: 30px;
+  border-bottom: 2px solid #7a6f6f;
+  padding-top: 14px;
+  margin-bottom: 55px;
+}
+.footer-day-time ul li {
+  display: inline;
+  margin-right: 20px;
+}
+.footer-day-time ul li:last-child {
+  margin-right: 0px;
+}
+.phone-no a {
+  color: #fff;
+  font-family: PlayfairDisplay-Black;
+  font-size: 34px;
+  font-weight: bold;
+}
+.footer-top {
+  background: #222f3e;
+  padding:50px 0 50px;
+}
+.footer-top h4 {
+  font-size: 19px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+.footer-top p {
+  font-size: 13px;
+  line-height: 2;
+}
+
+footer p {
+margin-bottom:0;
+}
+.footer-logo {
+  display: block;
+  margin-bottom: 32px;
+}
+.address1 li {
+  list-style: none;
+  position: relative;
+  padding: 0px 0 14px 34px;
+  line-height: 26px;
+}
+ul.address1 span {
+  position: absolute;
+  width: 40px;
+  max-width: 40px;
+  left: 0;
+}
+.address1 li a {
+  color: #fff;
+  text-decoration: none;
+}
+ul.address1 i {
+  width: 20px;
+  position: absolute;
+  left: 0px;
+  text-align: center;
+  font-size: 28px;
+  top: 0;
+}
+
+ul.address1 i.fa-envelope {
+  font-size: 18px;
+  top: 4px;
+}
+footer ul.social-icon {
+  float: left;
+}
+footer .social-icon li i:hover {
+  background: #1dd1a1;
+  border-color: #1dd1a1;
+}
+
+.footer-bottom {
+  background: #4b8800;
+  padding: 10px 0px;
+}
+.footer-bottom ul li {
+  display: inline;
+  margin-right: 20px;
+  font-size: 18px;
+}
+.footer-bottom ul li a{
+  color:#fff;
+}
+
+.footer-bottom ul {
+  float: right;
+}
+
+.footer-bottom ul li:last-child {
+  margin-right: 0;
+}
+.copyright {
+  font-size: 18px;
+}
+
+/*ana sayfa css kodlarý slider bölümü*/
+*, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.sliderkonum {
+    overflow: hidden;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.slider {
+    position: relative;
+    height: 100vh;
+}
+
+.slider__slides {
+    z-index: 1;
+    position: relative;
+    height: 100%;
+}
+
+.slider__control {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    border-radius: 50%;
+    background: #fff;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.slider__control--right {
+    left: 95%;
+}
+
+.slider__control:hover {
+    background-color: #2da6ff;
+}
+
+.slider__control-line {
+    position: absolute;
+    left: 23px;
+    top: 50%;
+    width: 3px;
+    height: 14px;
+    transform-origin: 50% 0;
+    transform: rotate(-45deg);
+}
+
+    .slider__control-line:nth-child(2) {
+        transform: translateY(1px) rotate(-135deg);
+    }
+
+.slider__control--right .slider__control-line {
+    left: 37px;
+    transform-origin: 1px 0;
+    transform: rotate(45deg);
+}
+
+    .slider__control--right .slider__control-line:nth-child(2) {
+        transform: translateY(1px) rotate(135deg);
+    }
+
+.slider__control-line:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e2e2e2;
+    transition: background-color 0.3s;
+}
+
+.slider__control:hover .slider__control-line:after {
+    background-color: #fff;
+}
+
+.slider__control.a--rotation .slider__control-line:after {
+    -webkit-animation: arrowLineRotation 0.49s;
+    animation: arrowLineRotation 0.49s;
+}
+
+.slider__control.a--rotation .slider__control-line:nth-child(1):after {
+    -webkit-animation: arrowLineRotationRev 0.49s;
+    animation: arrowLineRotationRev 0.49s;
+}
+
+@-webkit-keyframes arrowLineRotation {
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes arrowLineRotation {
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+@-webkit-keyframes arrowLineRotationRev {
+    to {
+        transform: rotate(-180deg);
+    }
+}
+
+@keyframes arrowLineRotationRev {
+    to {
+        transform: rotate(-180deg);
+    }
+}
+
+.slide {
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 150vmax;
+    height: 150vmax;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    transition: -webkit-clip-path 0s 0.91s;
+    transition: clip-path 0s 0.91s;
+    transition: clip-path 0s 0.91s, -webkit-clip-path 0s 0.91s;
+    -webkit-clip-path: circle(30px at 120vw 50%);
+    clip-path: circle(30px at 120vw 50%);
+}
+
+    .slide.s--prev {
+        -webkit-clip-path: circle(30px at 30vw 50%);
+        clip-path: circle(30px at 30vw 50%);
+    }
+
+    .slide.s--active {
+        z-index: 1;
+        transition: -webkit-clip-path 1.3s;
+        transition: clip-path 1.3s;
+        transition: clip-path 1.3s, -webkit-clip-path 1.3s;
+        -webkit-clip-path: circle(120vmax at 120vw 50%);
+        clip-path: circle(120vmax at 120vw 50%);
+    }
+
+        .slide.s--active.s--active-prev {
+            -webkit-clip-path: circle(120vmax at 30vw 50%);
+            clip-path: circle(120vmax at 30vw 50%);
+        }
+
+    .slide:nth-child(1) .slide__inner {
+        background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-2.jpg");
+    }
+
+    .slide:nth-child(2) .slide__inner {
+        background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-3.jpg");
+    }
+
+    .slide:nth-child(3) .slide__inner {
+        background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-4.jpg");
+    }
+
+    .slide:nth-child(4) .slide__inner {
+        background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-5.jpg");
+    }
+
+    .slide:nth-child(5) .slide__inner {
+        background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/onepgscr-6.jpg");
+    }
+    .slide:nth-child(6) .slide__inner {
+        background-image: url("../images/AnaSayfaSlider/deneme.jpg");
+    }
+
+.slide__inner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100vw;
+    height: 100vh;
+    margin-left: -50vw;
+    margin-top: -50vh;
+    background-size: cover;
+    background-position: center center;
+}
+
+    .slide__inner:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+.slide__content {
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    margin-left: -30px;
+    margin-top: 48px;
+    max-width: 480px;
+    color: #fff;
+}
+
+.slide__heading {
+    margin-bottom: 20px;
+    font-size: 60px;
+}
+
+.slide__text {
+    font-size: 25px;
+}
+
+    .slide__text a {
+        color: inherit;
+    }

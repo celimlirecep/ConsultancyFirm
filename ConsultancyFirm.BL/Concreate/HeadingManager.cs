@@ -42,6 +42,16 @@ namespace ConsultancyFirm.BL.Concreate
             throw new NotImplementedException();
         }
 
+        public List<Heading> GetHeadingByAuthors(string authorNameUrl)
+        {
+          return  _headingrepository.GetHeadingByAuthors(authorNameUrl);
+        }
+
+        public List<Heading> GetHeadingByCategories(string category)
+        {
+          return  _headingrepository.GetHeadingByCategories(category);
+        }
+
         public List<Heading> GetHomePageHeadings()
         {
             return _headingrepository.GetHomePageHeadings();

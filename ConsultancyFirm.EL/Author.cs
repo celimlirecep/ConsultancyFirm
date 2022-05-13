@@ -21,6 +21,7 @@ namespace ConsultancyFirm.EL
         public bool IsDeleted { get; set; }
 
         public List<Heading> Headings { get; set; }
+        public List<AuthorHeading> AuthorHeadings { get; set; }
 
 
     }

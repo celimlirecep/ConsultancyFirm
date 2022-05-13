@@ -11,15 +11,7 @@
     <div class="col-md-9">
         @foreach (var head in Model)
         {
-            <div class="card">
-                <div class="card-header">
-                    <h1>@head.HeadingName</h1>
-                </div>
-                <div class="card-body">
-                    <p>@head.HeadingContent</p>
-                </div>
-
-            </div>
+         <partial name="_Heading" model="head" />
         }
 
     </div>
