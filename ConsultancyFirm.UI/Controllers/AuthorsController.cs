@@ -16,7 +16,7 @@ namespace ConsultancyFirm.UI.Controllers
         }
         public IActionResult List(string authorNameUrl)
         {
-            return View(_headingService.GetHeadingByAuthors(authorNameUrl));
+            return View();
         }
     }
 }

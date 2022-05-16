@@ -1,11 +1,15 @@
-﻿@model Heading
+﻿@model HeadingCardModel
 
 
     <div class="blog-card" style="box-sizing: border-box;">
         <div class="meta">
             <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)"></div>
             <ul class="details ">
-                <li class="author"><a href="#">John Doe</a></li>
+                @foreach (var item in Model.AuthorsModel)
+                {
+                    <li class="author"><a href="#">@item.AuthorFullName</a></li>
+                }
+
                 <li class="date">Aug. 24, 2015</li>
                 <li class="tags">
                     <ul>
@@ -18,9 +22,9 @@
             </ul>
         </div>
         <div class="description">
-            <h1>@Model.HeadingName</h1>
+            <h1>@Model.HeadingModel.HeadingName</h1>
             <h2>Opening a door to the future</h2>
-            <p> @Model.HeadingContent</p>
+            <p> @Model.HeadingModel.HeadingContent</p>
             <p class="read-more">
                 <a class="a-tagi" href="#">Read More</a>
             </p>

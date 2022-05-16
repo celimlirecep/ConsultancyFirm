@@ -4521,11 +4521,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\recep\\source\\repos\\ConsultancyFirm\\ConsultancyFirm.UI\\ConsultancyFirm.UI.csproj",
+      "projectUniqueName": "C:\\Users\\recep\\OneDrive\\Masaüstü\\ConsultancyFirm\\ConsultancyFirm.UI\\ConsultancyFirm.UI.csproj",
       "projectName": "ConsultancyFirm.UI",
-      "projectPath": "C:\\Users\\recep\\source\\repos\\ConsultancyFirm\\ConsultancyFirm.UI\\ConsultancyFirm.UI.csproj",
+      "projectPath": "C:\\Users\\recep\\OneDrive\\Masaüstü\\ConsultancyFirm\\ConsultancyFirm.UI\\ConsultancyFirm.UI.csproj",
       "packagesPath": "C:\\Users\\recep\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\recep\\source\\repos\\ConsultancyFirm\\ConsultancyFirm.UI\\obj\\",
+      "outputPath": "C:\\Users\\recep\\OneDrive\\Masaüstü\\ConsultancyFirm\\ConsultancyFirm.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\recep\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4542,14 +4542,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\recep\\source\\repos\\ConsultancyFirm\\ColsultancyFirm.DAL\\ColsultancyFirm.DAL.csproj": {
-              "projectPath": "C:\\Users\\recep\\source\\repos\\ConsultancyFirm\\ColsultancyFirm.DAL\\ColsultancyFirm.DAL.csproj"
+            "C:\\Users\\recep\\OneDrive\\Masaüstü\\ConsultancyFirm\\ColsultancyFirm.DAL\\ColsultancyFirm.DAL.csproj": {
+              "projectPath": "C:\\Users\\recep\\OneDrive\\Masaüstü\\ConsultancyFirm\\ColsultancyFirm.DAL\\ColsultancyFirm.DAL.csproj"
             },
-            "C:\\Users\\recep\\source\\repos\\ConsultancyFirm\\ConsultancyFirm.BL\\ConsultancyFirm.BL.csproj": {
-              "projectPath": "C:\\Users\\recep\\source\\repos\\ConsultancyFirm\\ConsultancyFirm.BL\\ConsultancyFirm.BL.csproj"
+            "C:\\Users\\recep\\OneDrive\\Masaüstü\\ConsultancyFirm\\ConsultancyFirm.BL\\ConsultancyFirm.BL.csproj": {
+              "projectPath": "C:\\Users\\recep\\OneDrive\\Masaüstü\\ConsultancyFirm\\ConsultancyFirm.BL\\ConsultancyFirm.BL.csproj"
             },
-            "C:\\Users\\recep\\source\\repos\\ConsultancyFirm\\ConsultancyFirm.EL\\ConsultancyFirm.EL.csproj": {
-              "projectPath": "C:\\Users\\recep\\source\\repos\\ConsultancyFirm\\ConsultancyFirm.EL\\ConsultancyFirm.EL.csproj"
+            "C:\\Users\\recep\\OneDrive\\Masaüstü\\ConsultancyFirm\\ConsultancyFirm.EL\\ConsultancyFirm.EL.csproj": {
+              "projectPath": "C:\\Users\\recep\\OneDrive\\Masaüstü\\ConsultancyFirm\\ConsultancyFirm.EL\\ConsultancyFirm.EL.csproj"
             }
           }
         }

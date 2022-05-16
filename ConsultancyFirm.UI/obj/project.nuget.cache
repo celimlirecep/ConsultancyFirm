@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vklOSvyOF26dPQJ5W7d4gDzG+XzM+dTueZcw+wK9RNcOjr2Rr3XHkpI33eCuW/24fmEHdu9eHCS00fwpXoj/oA==",
+  "dgSpecHash": "YhquZP67S19CDqWpG7Rwe6zJfKtlgn3JBUrvqJD3WUNFjBU0fN68SBCG1gAKtBvGynK23Nd0k4GdfS/ynb7WGA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\recep\\source\\repos\\ConsultancyFirm\\ConsultancyFirm.UI\\ConsultancyFirm.UI.csproj",
+  "projectFilePath": "C:\\Users\\recep\\OneDrive\\Masaüstü\\ConsultancyFirm\\ConsultancyFirm.UI\\ConsultancyFirm.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\recep\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\recep\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

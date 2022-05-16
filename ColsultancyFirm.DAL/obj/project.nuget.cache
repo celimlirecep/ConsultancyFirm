@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ONwMmajB/AncpvY6HATnDNGNCFNuQrXxVF6vzpryU0BbJKQpvecaR8xkYiouepujlBp3lt36h+asPRDTRGhJCQ==",
+  "dgSpecHash": "qmGL9ZkNZVQ4UYkNR6lzLVhRoy/1JrbM5Ey0KCI9et5f8xE398cUAntN7vsX+lfFU5EoGXEunCfKCnAMA72bEA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\recep\\source\\repos\\ConsultancyFirm\\ColsultancyFirm.DAL\\ColsultancyFirm.DAL.csproj",
+  "projectFilePath": "C:\\Users\\recep\\OneDrive\\Masaüstü\\ConsultancyFirm\\ColsultancyFirm.DAL\\ColsultancyFirm.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\recep\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\recep\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

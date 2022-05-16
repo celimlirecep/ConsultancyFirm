@@ -20,7 +20,22 @@ namespace ConsultancyFirm.UI.Controllers
 
         public IActionResult HomePage()
         {
-            return View(_headingService.GetHomePageHeadings());
+            var headingCards = _headingService.GetHomePageHeadings();
+            List<HeadingCardModel> headingCardModels = new List<HeadingCardModel>();
+
+            foreach (var heading in headingCards) {
+               HeadingCardModel headingCardModel= new HeadingCardModel()
+                {
+                    HeadingModel = heading,
+                    AuthorsModel = heading.AuthorHeadings.Select(i => i.Author).ToList()
+
+                };
+                headingCardModels.Add(headingCardModel);
+            }
+
+               
+
+            return View(headingCardModels);
         }
 
 

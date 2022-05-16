@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kdz9DePODIYEvC9Lg7S1X26jyw6assQnskRC37doGRcEiEusBTiKyRwQo9Og13F0UOIczi6aeSJpb30WfNQZRg==",
+  "dgSpecHash": "Yq/U3N+wp7n8nT+l3B5PKOkl9LjH+3n0ASXI3/8vtMxzDbIkxFlhHxfE33MZrsvmyIv/5YCebbyuqADdB7kKyA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\recep\\source\\repos\\ConsultancyFirm\\ConsultancyFirm.BL\\ConsultancyFirm.BL.csproj",
+  "projectFilePath": "C:\\Users\\recep\\OneDrive\\Masaüstü\\ConsultancyFirm\\ConsultancyFirm.BL\\ConsultancyFirm.BL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\recep\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.16\\microsoft.data.sqlite.core.5.0.16.nupkg.sha512",
     "C:\\Users\\recep\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
