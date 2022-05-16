@@ -1,4 +1,4 @@
-﻿
+﻿@model AuthorListViewModel
 @{
     ViewData["Title"] = "Authors Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,19 +7,53 @@
 <div class="row">
     <div class="col-md-6">
         <div class="row">
-            @await Component.InvokeAsync("Authors")
+            @*  @await Component.InvokeAsync("Authors")*@
+            @foreach (var author in Model.Authors)
+            {
+                <div class="col-md-6">
+                    <a href="/authors?name=@author.AuthorName-@author.AuthorId">
+                        <div class="cards-list">
+
+                            <div class="carda ">
+                                <div class="card_image"> <img src="~/images/defaultAuthor/@author.AuthorImages" /> </div>
+                                <div class="card_title title-white">
+                                    <p style="background-color:black !important;">@author.AuthorFullName</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </a>
+
+
+                </div>
+
+
+            }
 
         </div>
-      
+        <nav>
+            <ul class="pagination">
+                @for (int i = 0; i < Model.PageInfo.TotalPages(); i++)
+                {
+                    <li class="page-item" @(Model.PageInfo.CurrentPage == i + 1 ? "active" : "")>
+                        <a href="/authors?page=@(i+1)" class="page-link">@(i+1)</a>
+                    </li>
+
+                }
+
+            </ul>
+        </nav>
+
     </div>
-    <div class="col-md-6 " >
-        <div style=" position:fixed;padding-right:inherit; top:20%; right:0%;height:500px;">
-          
-                <h1>Pisikolog bilgileri</h1>
-           
-            
+    <div class="col-md-6 ">
+        <div class="text-center">
+            <h1>Pisikolog bilgileri</h1>
         </div>
-       
+     
+
+
+     
+
     </div>
 </div>
 

@@ -1,4 +1,5 @@
 ﻿using ConsultancyFirm.BL.Abstract;
+using ConsultancyFirm.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace ConsultancyFirm.UI.ViewComponents
 
         public IViewComponentResult Invoke()
         {
+           
          
             return View(_authorService.GetAll());
         }

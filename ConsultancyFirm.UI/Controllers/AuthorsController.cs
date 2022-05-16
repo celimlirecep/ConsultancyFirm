@@ -1,4 +1,5 @@
 ﻿using ConsultancyFirm.BL.Abstract;
+using ConsultancyFirm.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,14 +10,27 @@ namespace ConsultancyFirm.UI.Controllers
 {
     public class AuthorsController : Controller
     {
-        private IHeadingService _headingService;
-        public AuthorsController(IHeadingService headingService)
+        private IAuthorService _authorService;
+        public AuthorsController(IAuthorService authorService)
         {
-            _headingService = headingService;
+            _authorService = authorService;
         }
-        public IActionResult List(string authorNameUrl)
+        public IActionResult List(int page=1,string authorName="")
         {
-            return View();
+            const int pageSize = 2;
+            int totalItems = _authorService.GetAll().Count();
+            var authorListViewModel = new AuthorListViewModel()
+            {
+                PageInfo = new PageInfo
+                {
+                    TotalItems = totalItems,
+                    CurrentPage = page,
+                    ItemsPerPage = pageSize,
+                },
+                Authors = _authorService.GetProductWithPages(page, pageSize)
+
+            };
+            return View(authorListViewModel);
         }
     }
 }

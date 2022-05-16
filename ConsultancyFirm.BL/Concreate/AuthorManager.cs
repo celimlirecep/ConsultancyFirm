@@ -42,6 +42,11 @@ namespace ConsultancyFirm.BL.Concreate
             throw new NotImplementedException();
         }
 
+        public List<Author> GetProductWithPages(int page, int pageSize)
+        {
+            return _authorRepository.GetProductWithPages(page, pageSize);
+        }
+
         public void Update(Author entity)
         {
             throw new NotImplementedException();

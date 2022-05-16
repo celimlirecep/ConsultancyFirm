@@ -16,5 +16,6 @@ namespace ConsultancyFirm.BL.Abstract
         void Delete(Author entity);
         void Add(Author entity);
         List<Author> Get(Expression<Func<Author, bool>> filter);
+        List<Author> GetProductWithPages(int page, int pageSize);
     }
 }

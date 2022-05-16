@@ -60,13 +60,13 @@ namespace ConsultancyFirm.UI
 
             app.UseEndpoints(endpoints =>
             {
-               // endpoints.MapControllerRoute(
-                    
-                    //name:"authors",
-                    //pattern:"authors/{heading?}",
-                    //defaults:new {controller="Authors",action="List"}
+                endpoints.MapControllerRoute(
 
-                    //);
+                    name: "authors",
+                    pattern: "authors/{heading?}",
+                    defaults: new { controller = "Authors", action = "List" }
+
+                    );
 
                 endpoints.MapControllerRoute(
                     name: "default",
