@@ -15,7 +15,7 @@ namespace ConsultancyFirm.UI.Controllers
         {
             _authorService = authorService;
         }
-        public IActionResult List(int page=1,string authorName="")
+        public IActionResult List(int page=1,int id=0)
         {
             const int pageSize = 2;
             int totalItems = _authorService.GetAll().Count();
@@ -27,8 +27,9 @@ namespace ConsultancyFirm.UI.Controllers
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
                 },
-                Authors = _authorService.GetProductWithPages(page, pageSize)
-
+                Authors = _authorService.GetProductWithPages(page, pageSize),
+                
+                SelectedAuthor = id!=0? _authorService.GetById(id):null
             };
             return View(authorListViewModel);
         }

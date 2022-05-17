@@ -47,11 +47,22 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
         {
             using (var context = new ConsultantFirmContext())
             {
-                return context.Headings
+                var headings = context.Headings
                     .Where(i => i.IsApproved)
+                    .AsQueryable();
+                if (!string.IsNullOrEmpty(category))
+                {
+                    headings = headings
                     .Include(i => i.Category)
                     .Where(i => i.Category.CategoryUrl == category)
-                    .ToList();
+                    .Include(i => i.AuthorHeadings)
+                    .ThenInclude(i => i.Author);
+                    
+                }
+                    
+
+
+                return headings.ToList();
             }
         }
 

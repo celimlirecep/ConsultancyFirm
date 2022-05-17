@@ -39,13 +39,15 @@ namespace ConsultancyFirm.BL.Concreate
 
         public Author GetById(int id)
         {
-            throw new NotImplementedException();
+            return _authorRepository.GetSingle(x=>x.AuthorId==id);
         }
 
         public List<Author> GetProductWithPages(int page, int pageSize)
         {
             return _authorRepository.GetProductWithPages(page, pageSize);
         }
+
+        
 
         public void Update(Author entity)
         {

@@ -286,7 +286,6 @@ C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Authors\List.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\HealtyLife\List.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Home\HomePage.cshtml.g.cs
-C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Shared\Components\Authors\Default.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Shared\_Heading.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs

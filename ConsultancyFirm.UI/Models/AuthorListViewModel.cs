@@ -10,6 +10,8 @@ namespace ConsultancyFirm.UI.Models
     {
         public List<Author> Authors { get; set; }
         public PageInfo PageInfo { get; set; }
+        public Author SelectedAuthor { get; set; }
+
 
     }
 

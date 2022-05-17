@@ -1,4 +1,5 @@
 ﻿using ConsultancyFirm.BL.Abstract;
+using ConsultancyFirm.UI.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,20 @@ namespace ConsultancyFirm.UI.Controllers
 
         public IActionResult List(string category)
         {
-            return View(_headingService.GetHeadingByCategories(category));
+            var headingCards = _headingService.GetHeadingByCategories(category);
+            List<HeadingCardModel> headingCardModels = new List<HeadingCardModel>();
+
+            foreach (var heading in headingCards)
+            {
+                HeadingCardModel headingCardModel = new HeadingCardModel()
+                {
+                    HeadingModel = heading,
+                    AuthorsModel = heading.AuthorHeadings.Select(i => i.Author).ToList()
+
+                };
+                headingCardModels.Add(headingCardModel);
+            }
+            return View(headingCardModels);
          
         }
 

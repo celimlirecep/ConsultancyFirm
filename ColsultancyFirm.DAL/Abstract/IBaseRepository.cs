@@ -15,6 +15,8 @@ namespace ColsultancyFirm.DAL.Abstract
         void Delete(TEntity entity);
         void Add(TEntity entity);
         List<TEntity> Get(Expression<Func<TEntity, bool>> filter);
-        
+         TEntity GetSingle(Expression<Func<TEntity, bool>> filter);
+
+
     }
 }
