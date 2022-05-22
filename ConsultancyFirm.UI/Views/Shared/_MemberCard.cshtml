@@ -1,0 +1,38 @@
+﻿@model  Member
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+   
+
+    <link href="~/css/memberCard.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="card">
+        <div class="front">
+            <div class="title"><h2>My Page</h2></div>
+            <div class="top">
+                <div class="img-container">
+                    <img src="~/images/members/@Model.MemberImageURL" alt="image">
+                </div>
+            </div>
+            <div class="description">
+                <h1>@Model.MemberUsername</h1>
+                <p>@Model.MemberMail</p>
+            </div>
+            <div class="list">
+                <ul>
+                    <li><a href="/Member/MemberDetail/@Model.MemberUsername"><i class="fa fa-user"></i>Profile</a></li>
+                    <li><a><i class="fa-solid fa-book-open"></i>Alınan Hizmetler</a></li>
+                    <li><a><i class="fa-solid fa-message"></i>Danışmanınla Sohbet Et</a></li>
+                    <li><a><i class="fa fa-certificate"></i>İlerlemeler</a></li>
+                    <li><a href="/Member/MemberService"><i class="fa fa-users"></i>Yeni Randevu Al</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+     
+        <script src="~/js/site.js"></script>
+</body>
+</html>

@@ -15,7 +15,11 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
 
         public void Add(TEntity entity)
         {
-            throw new NotImplementedException();
+            using (var context=new ConsultantFirmContext())
+            {
+                context.Entry(entity).State = EntityState.Added;
+                context.SaveChanges();
+            }
         }
 
         public void Delete(TEntity entity)

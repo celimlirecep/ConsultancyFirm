@@ -44,11 +44,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link baslikyazi" 
-                            asp-controller="Authors"
-                                   asp-action="List"
-                           
-                           >
+                        <a class="nav-link baslikyazi"
+                           asp-controller="Authors"
+                           asp-action="List">
                             Pisikologlar
                         </a>
                     </li>
@@ -109,11 +107,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" 
-                                  href="#"
-                                   
-                                   >
-                                   Pisikoloji
+                                <a class="dropdown-item"
+                                   href="#">
+                                    Pisikoloji
                                 </a>
                             </li>
                             <li>
@@ -123,16 +119,21 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        @if (@ViewData["User"] != null)
+                        {
+                            @*<a class="nav-link baslikyazi bg-warning btn btn warning" href="/Member/MemberPage/?@ViewData["Username"]">Benim Sayfam<i class="fa-solid fa-person " style="font-size:25px;"></i></a>*@
+                        }
+                        else
+                        {
+                            <a class="nav-link baslikyazi bg-warning btn btn warning" href="/Member/Index">Üye Ol<i class="fa-solid fa-person " style="font-size:25px;"></i></a>
+                        }
+
+                    </li>
+
                 </ul>
             </div>
-            <form class="d-flex align-item-center">
-                <input type="search"
-                       class="form-control me-2"
-                       placeholder="Ara..."
-                       aria-label="Search" />
-                <i class="fa-solid fa-magnifying-glass araicon"></i>
-
-            </form>
+        
         </div>
     </nav>
 

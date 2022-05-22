@@ -23,4 +23,8 @@
     <ProjectReference Include="..\ConsultancyFirm.EL\ConsultancyFirm.EL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\members\" />
+  </ItemGroup>
+
 </Project>

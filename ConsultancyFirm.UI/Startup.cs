@@ -33,6 +33,8 @@ namespace ConsultancyFirm.UI
             services.AddScoped<IHeadingRepository, EFCoreHeadingRepository>();
             services.AddScoped<IAuthorRepository, EFCoreAuthorRepository>();
             services.AddScoped<ICategoryRepository, EFCoreCategoryRepository>();
+            services.AddScoped<IMemberService, MemberManager>();
+            services.AddScoped<IMemberRepository, EFCoreMemberRepository>();
 
             services.AddControllersWithViews();
         }
@@ -60,6 +62,13 @@ namespace ConsultancyFirm.UI
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllerRoute(
+
+                //  name: "authors",
+                //  pattern: "members/{username?}",
+                //  defaults: new { controller = "Member", action = "MemberPage" }
+
+                //  );
                 endpoints.MapControllerRoute(
 
                     name: "authors",

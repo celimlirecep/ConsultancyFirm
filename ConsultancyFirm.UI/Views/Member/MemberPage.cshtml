@@ -1,0 +1,15 @@
+﻿@model Member
+@{
+    ViewData["Title"] = "Authors Page";
+    ViewData["Username"] = Model.MemberUsername;
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-5">
+        <partial name="_MemberCard" data="@Model" />
+    </div>
+    <div col-md-7>
+
+    </div>
+</div>

@@ -135,6 +135,35 @@ namespace ColsultancyFirm.DAL.Migrations
                     b.ToTable("Headings");
                 });
 
+            modelBuilder.Entity("ConsultancyFirm.EL.Member", b =>
+                {
+                    b.Property<int>("MemberId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("MemberImageURL")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MemberMail")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MemberName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MemberPasword")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MemberSurname")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MemberUsername")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MemberId");
+
+                    b.ToTable("Members");
+                });
+
             modelBuilder.Entity("AuthorHeading", b =>
                 {
                     b.HasOne("ConsultancyFirm.EL.Author", null)
@@ -153,13 +182,13 @@ namespace ColsultancyFirm.DAL.Migrations
             modelBuilder.Entity("ConsultancyFirm.EL.AuthorHeading", b =>
                 {
                     b.HasOne("ConsultancyFirm.EL.Author", "Author")
-                        .WithMany("AuthorHeading")
+                        .WithMany("AuthorHeadings")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ConsultancyFirm.EL.Heading", "Heading")
-                        .WithMany("AuthorHeading")
+                        .WithMany("AuthorHeadings")
                         .HasForeignKey("HeadingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -180,7 +209,7 @@ namespace ColsultancyFirm.DAL.Migrations
 
             modelBuilder.Entity("ConsultancyFirm.EL.Author", b =>
                 {
-                    b.Navigation("AuthorHeading");
+                    b.Navigation("AuthorHeadings");
                 });
 
             modelBuilder.Entity("ConsultancyFirm.EL.Category", b =>
@@ -190,7 +219,7 @@ namespace ColsultancyFirm.DAL.Migrations
 
             modelBuilder.Entity("ConsultancyFirm.EL.Heading", b =>
                 {
-                    b.Navigation("AuthorHeading");
+                    b.Navigation("AuthorHeadings");
                 });
 #pragma warning restore 612, 618
         }

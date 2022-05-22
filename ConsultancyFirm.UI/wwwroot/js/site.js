@@ -1,4 +1,14 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
+//membercreate ımageupload
+let input = document.getElementById("inputTag");
+let imageName = document.getElementById("imageName")
 
-// Write your JavaScript code.
+input.addEventListener("change", () => {
+    let inputImage = document.querySelector("input[type=file]").files[0];
+
+    imageName.innerText = inputImage.name;
+})
+
+
+//member card 
+
