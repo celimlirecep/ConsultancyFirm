@@ -27,7 +27,7 @@ namespace ConsultancyFirm.UI.Controllers
         {
             p.MemberImageURL = _memberService.UploadImage(file,"members");
             _memberService.Add(p);
-            return RedirectToAction("MemberPage",p.MemberUsername);
+            return RedirectToAction("MemberPage", new { memberusername = p.MemberUsername });
         }
         [HttpPost]
         public IActionResult RegisteredUser(string username,string password)
@@ -35,10 +35,11 @@ namespace ConsultancyFirm.UI.Controllers
           Member member=  _memberService.GetSingle(i => i.MemberUsername == username && i.MemberPasword == password);
             if (member!=null)
             {//member yazınc ageliyo ama username gönderince username i araya ayzıyo analamadım
-                return RedirectToAction("MemberPage", member.MemberUsername);
+                return RedirectToAction("MemberPage",new { memberusername = member.MemberUsername });
             }
             else
             {
+
                 return RedirectToAction("Index");
             }
         }

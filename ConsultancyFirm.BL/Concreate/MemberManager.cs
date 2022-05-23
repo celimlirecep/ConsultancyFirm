@@ -12,9 +12,9 @@ namespace ConsultancyFirm.BL.Concreate
 {
     public class MemberManager:JobManager,IMemberService
     {
-        IMemberRepository _memberRepository;
+        IHomeSliderRepository _memberRepository;
 
-        public MemberManager(IMemberRepository memberRepository)
+        public MemberManager(IHomeSliderRepository memberRepository)
         {
             _memberRepository = memberRepository;
         }

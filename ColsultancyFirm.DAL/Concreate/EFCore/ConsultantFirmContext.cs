@@ -15,6 +15,7 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
         public DbSet<Category> Categories { get; set; }
         public DbSet<AuthorHeading> AuthorHeadings { get; set; }
         public DbSet<Member> Members { get; set; }
+        public DbSet<HomeSlider> HomeSliders { get; set; }
 
 
 

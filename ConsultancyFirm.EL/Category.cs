@@ -12,7 +12,6 @@ namespace ConsultancyFirm.EL
         public string CategoryName { get; set; }
         public string CategoryDesription { get; set; }
         public string CategoryUrl { get; set; }
-
         public bool IsDeleted { get; set; }
         public List<Heading> Headings { get; set; }
 

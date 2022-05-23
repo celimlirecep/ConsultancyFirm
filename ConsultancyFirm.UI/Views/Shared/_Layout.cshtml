@@ -17,10 +17,9 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light headerStyle mb-5 ">
         <div class="container-fluid">
-            <a class="navbar-brand pisikoBar" 
+            <a class="navbar-brand pisikoBar"
                asp-controller="Home"
-               asp-action="HomePage"
-               >PisikoBar</a>
+               asp-action="HomePage">PisikoBar</a>
             <button class="navbar-toggler"
                     type="button"
                     data-bs-toggle="collapse"
@@ -120,9 +119,9 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        @if (@ViewData["User"] != null)
+                        @if (@ViewData["Username"] != null)
                         {
-                            @*<a class="nav-link baslikyazi bg-warning btn btn warning" href="/Member/MemberPage/?@ViewData["Username"]">Benim Sayfam<i class="fa-solid fa-person " style="font-size:25px;"></i></a>*@
+                            <a class="nav-link baslikyazi bg-warning btn btn warning" href="/Member/MemberPage/?memberusername=@ViewData["Username"]">Benim Sayfam<i class="fa-solid fa-person " style="font-size:25px;"></i></a>
                         }
                         else
                         {
@@ -133,7 +132,7 @@
 
                 </ul>
             </div>
-        
+
         </div>
     </nav>
 
@@ -242,7 +241,9 @@
     </footer>
 
     <!--Scripts-->
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/jquery.flexslider.js"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

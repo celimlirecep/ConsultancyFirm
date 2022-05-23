@@ -10,5 +10,5 @@ input.addEventListener("change", () => {
 })
 
 
-//member card 
+
 

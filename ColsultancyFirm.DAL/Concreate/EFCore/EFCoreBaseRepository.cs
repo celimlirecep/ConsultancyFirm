@@ -24,12 +24,20 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            using (var context = new ConsultantFirmContext())
+            {
+                context.Entry(entity).State = EntityState.Deleted;
+                context.SaveChanges();
+            }
+
         }
 
         public List<TEntity> Get(Expression<Func<TEntity, bool>> filter)
         {
-            throw new NotImplementedException();
+            using (var context=new ConsultantFirmContext())
+            {
+                return context.Set<TEntity>().Where(filter).ToList();
+            }
         }
 
         public List<TEntity> GetAll()
@@ -56,7 +64,11 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
 
         public void Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            using (var context = new ConsultantFirmContext())
+            {
+                context.Entry(entity).State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -111,6 +111,10 @@ namespace ColsultancyFirm.DAL.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("HeadingContent")
+                        .HasMaxLength(1000)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HeadingImageUrl")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("HeadingName")
@@ -133,6 +137,32 @@ namespace ColsultancyFirm.DAL.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Headings");
+                });
+
+            modelBuilder.Entity("ConsultancyFirm.EL.HomeSlider", b =>
+                {
+                    b.Property<int>("HomeSliderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("HomeSliderHead")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HomeSliderImageUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HomeSliderRoute")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("HomeSliderUrl")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsVisible")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("HomeSliderId");
+
+                    b.ToTable("HomeSliders");
                 });
 
             modelBuilder.Entity("ConsultancyFirm.EL.Member", b =>

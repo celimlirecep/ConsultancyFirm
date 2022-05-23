@@ -1,34 +1,50 @@
 ﻿@model HeadingCardModel
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <style>
+            .photo {
+                background-image: url(~/wwwroot/images/HeadingImage/1.jpg);
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="blog-card" style="box-sizing: border-box;">
+            <div class="meta">
+             
+                    <img src="~/images/HeadingImage/@Model.HeadingModel.HeadingImageUrl" alt="Alternate Text"  width="300"/>
+          
+                <ul class="details ">
+                    @foreach (var item in Model.AuthorsModel)
+                    {
+                        <li class="author"><a href="#">@item.AuthorFullName</a></li>
+                    }
+
+                    <li class="date">Aug. 24, 2015</li>
+                    <li class="tags">
+                        <ul>
+
+                            <li>@Model.HeadingModel.Category.CategoryName</li>
 
 
-    <div class="blog-card" style="box-sizing: border-box;">
-        <div class="meta">
-            <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)"></div>
-            <ul class="details ">
-                @foreach (var item in Model.AuthorsModel)
-                {
-                    <li class="author"><a href="#">@item.AuthorFullName</a></li>
-                }
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="description">
+                <h1>@Model.HeadingModel.HeadingName</h1>
 
-                <li class="date">Aug. 24, 2015</li>
-                <li class="tags">
-                    <ul>
-                        <li><a href="#">Learn</a></li>
-                        <li><a href="#">Code</a></li>
-                        <li><a href="#">HTML</a></li>
-                        <li><a href="#">CSS</a></li>
-                    </ul>
-                </li>
-            </ul>
+                <p> @(Model.HeadingModel.HeadingContent.Substring(0,100))...</p>
+                <p class="read-more">
+                    <a class="a-tagi" href="/Heading/HeadingDetails/@Model.HeadingModel.HeadingUrl">Devamını Oku</a>
+                </p>
+            </div>
         </div>
-        <div class="description">
-            <h1>@Model.HeadingModel.HeadingName</h1>
-            <h2>Opening a door to the future</h2>
-            <p> @Model.HeadingModel.HeadingContent</p>
-            <p class="read-more">
-                <a class="a-tagi" href="#">Read More</a>
-            </p>
-        </div>
-    </div>
+
+
+
+    </body>
+    </html>
+
 
 
