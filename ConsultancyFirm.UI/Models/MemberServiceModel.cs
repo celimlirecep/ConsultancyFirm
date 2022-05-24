@@ -8,6 +8,7 @@ namespace ConsultancyFirm.UI.Models
 {
     public class MemberServiceModel
     {
+        public Member Member { get; set; }
         public List<Category> Categories { get; set; }
         public List<Author> Authors { get; set; }
 

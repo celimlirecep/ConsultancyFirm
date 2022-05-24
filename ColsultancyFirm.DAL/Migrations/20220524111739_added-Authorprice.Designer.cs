@@ -3,18 +3,35 @@ using System;
 using ColsultancyFirm.DAL.Concreate.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ColsultancyFirm.DAL.Migrations
 {
     [DbContext(typeof(ConsultantFirmContext))]
-    partial class ConsultantFirmContextModelSnapshot : ModelSnapshot
+    [Migration("20220524111739_added-Authorprice")]
+    partial class addedAuthorprice
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.16");
+
+            modelBuilder.Entity("AuthorHeading", b =>
+                {
+                    b.Property<int>("AuthorsAuthorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("HeadingsHeadingId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("AuthorsAuthorId", "HeadingsHeadingId");
+
+                    b.HasIndex("HeadingsHeadingId");
+
+                    b.ToTable("AuthorHeading");
+                });
 
             modelBuilder.Entity("ConsultancyFirm.EL.Author", b =>
                 {
@@ -95,7 +112,7 @@ namespace ColsultancyFirm.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("HeadingContent")
@@ -185,6 +202,21 @@ namespace ColsultancyFirm.DAL.Migrations
                     b.ToTable("Members");
                 });
 
+            modelBuilder.Entity("AuthorHeading", b =>
+                {
+                    b.HasOne("ConsultancyFirm.EL.Author", null)
+                        .WithMany()
+                        .HasForeignKey("AuthorsAuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ConsultancyFirm.EL.Heading", null)
+                        .WithMany()
+                        .HasForeignKey("HeadingsHeadingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ConsultancyFirm.EL.AuthorHeading", b =>
                 {
                     b.HasOne("ConsultancyFirm.EL.Author", "Author")
@@ -208,9 +240,7 @@ namespace ColsultancyFirm.DAL.Migrations
                 {
                     b.HasOne("ConsultancyFirm.EL.Category", "Category")
                         .WithMany("Headings")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
                 });

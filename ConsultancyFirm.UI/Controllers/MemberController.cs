@@ -1,5 +1,6 @@
 ﻿using ConsultancyFirm.BL.Abstract;
 using ConsultancyFirm.EL;
+using ConsultancyFirm.UI.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -59,8 +60,12 @@ namespace ConsultancyFirm.UI.Controllers
 
         public IActionResult MemberService(string username)
         {
-            Member member = _memberService.GetSingle(i => i.MemberUsername == username);
-            return View(member);
+            var memberServiceModel = new MemberServiceModel()
+            {
+                Member = _memberService.GetSingle(i => i.MemberUsername == username)
+            };
+         
+            return View(memberServiceModel);
         }
 
     }

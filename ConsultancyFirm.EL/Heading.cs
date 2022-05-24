@@ -21,7 +21,7 @@ namespace ConsultancyFirm.EL
         public bool IsHome { get; set; }
         //Yazılan makaleler onaydan geçtikten sonra yayınlansın istiyorum
         public bool IsApproved { get; set; }
-        public List<Author> Authors { get; set; }
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
         public List<AuthorHeading> AuthorHeadings { get; set; }
 

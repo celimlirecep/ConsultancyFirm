@@ -17,10 +17,12 @@ namespace ConsultancyFirm.EL
         public string AuthorImages { get; set; }
         public string AuthorMail { get; set; }
         public string AuthorPhone { get; set; }
+        public Decimal AuthorHourlyWage { get; set; }
         public string AuthorUrl { get; set; }
         public bool IsDeleted { get; set; }
-
-        public List<Heading> Headings { get; set; }
+        //public int CategoryId { get; set; }
+        //public Category Category { get; set; }
+      
         public List<AuthorHeading> AuthorHeadings { get; set; }
 
 
