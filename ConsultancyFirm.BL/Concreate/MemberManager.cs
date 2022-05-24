@@ -12,9 +12,9 @@ namespace ConsultancyFirm.BL.Concreate
 {
     public class MemberManager:JobManager,IMemberService
     {
-        IHomeSliderRepository _memberRepository;
+        IMemberRepository _memberRepository;
 
-        public MemberManager(IHomeSliderRepository memberRepository)
+        public MemberManager(IMemberRepository memberRepository)
         {
             _memberRepository = memberRepository;
         }
@@ -41,7 +41,7 @@ namespace ConsultancyFirm.BL.Concreate
 
         public Member GetSingle(Expression<Func<Member, bool>> filter)
         {
-           return _memberRepository.GetSingle(filter);
+            return _memberRepository.GetSingle(filter);
         }
 
         public void Update(Member entity)

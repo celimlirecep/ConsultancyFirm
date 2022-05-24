@@ -33,94 +33,26 @@
 </head>
 
 <body>
+ 
 
     <section class="loading">
         <div class="flexslider">
             <ul class="slides">
-                <li>
-                    <div>
-                        <a href="http://www.adobewordpress.com/photoshop-ile-gun-dogumu/" rel="bookmark" 
-                           target="_blank">Photoshop ile gun dogumu</a>
-                    </div><a href="http://www.adobewordpress.com/photoshop-ile-gun-dogumu/" rel="bookmark" target="_blank">
-                        <img width="1000" height="700" src="~/images/homeslider/deneme.png" alt="G�n Do�umu" />
-                    </a>
-                </li>
-               
-         
-                <li>
-                    <div>
-                        <a href="http://www.adobewordpress.com/fake-hayalet-fotograflari-nasil-hazirlaniyor/" rel="bookmark"
-                           target="_blank">Fake Hayalet Foto�raflar� Nas�l Haz�rlan�yor?</a>
-                    </div><a href="http://www.adobewordpress.com/fake-hayalet-fotograflari-nasil-hazirlaniyor/" rel="bookmark"
-                             target="_blank" target="_blank">
-                        <img width="690" height="270"
-                             src="http://www.adobewordpress.com/wp-content/uploads/2013/06/ghost-intro.jpg"
-                             alt="Fake Hayalet Foto�raf�" />
-                    </a>
-                </li>
-                <li>
-                    <div>
-                        <a href="http://www.adobewordpress.com/photoshop-ile-temel-yagmur-efekti/" rel="bookmark" target="_blank"
-                           target="_blank">Photoshop ile Temel Ya�mur Efekti</a>
-                    </div><a href="http://www.adobewordpress.com/photoshop-ile-temel-yagmur-efekti/" rel="bookmark" target="_blank">
-                        <img width="690" height="270"
-                             src="http://www.adobewordpress.com/wp-content/uploads/2013/05/photoshop-rain-effect.jpg"
-                             alt="Photoshop Rain Effect" />
-                    </a>
-                </li>
-                <li>
-                    <div>
-                        <a href="http://www.adobewordpress.com/photoshop-ile-instagramin-nashville-filtresini-hazirliyoruz/"
-                           rel="bookmark" target="_blank">Photoshop ile Instagram&#8217;�n Nashville Filtresini Haz�rl�yoruz</a>
-                    </div><a href="http://www.adobewordpress.com/photoshop-ile-instagramin-nashville-filtresini-hazirliyoruz/"
-                             rel="bookmark" target="_blank">
-                        <img width="690" height="270"
-                             src="http://www.adobewordpress.com/wp-content/uploads/2013/05/Instagram-Nashville-Effect.jpg"
-                             alt="Instagram Nashville Effect" />
-                    </a>
-                </li>
-                <li>
-                    <div>
-                        <a href="http://www.adobewordpress.com/photoshop-ile-fotografi-sulu-boya-resime-cevirin/" rel="bookmark"
-                           target="_blank">Photoshop ile Foto�raflar� Sulu Boya Resime �evirin</a>
-                    </div><a href="http://www.adobewordpress.com/photoshop-ile-fotografi-sulu-boya-resime-cevirin/" rel="bookmark"
-                             target="_blank">
-                        <img width="690" height="270"
-                             src="http://www.adobewordpress.com/wp-content/uploads/2013/05/watercolor-paint.jpg"
-                             alt="Sulu Boya Resim" />
-                    </a>
-                </li>
-                <li>
-                    <div>
-                        <a href="http://www.adobewordpress.com/birbirinden-kaliteli-10-ucretsiz-wordpress-temasi/" rel="bookmark"
-                           target="_blank">Birbirinden Kaliteli 10 �cretsiz WordPress Temas�</a>
-                    </div><a href="http://www.adobewordpress.com/birbirinden-kaliteli-10-ucretsiz-wordpress-temasi/" rel="bookmark"
-                             target="_blank">
-                        <img width="690" height="270"
-                             src="http://www.adobewordpress.com/wp-content/uploads/2012/11/tumblr-free-wordpress-wp-theme-tema-indir.jpg"
-                             alt="tumblr-free-wordpress-wp-theme-tema-indir" />
-                    </a>
-                </li>
-                <li>
-                    <div>
-                        <a href="http://www.adobewordpress.com/photoshop-yikilmis-sehir-bina/" rel="bookmark"
-                           target="_blank">Photoshop ile Terk Edilmi� ve Y�k�lm�� �ehir Efekti</a>
-                    </div><a href="http://www.adobewordpress.com/photoshop-yikilmis-sehir-bina/" rel="bookmark" target="_blank">
-                        <img width="690" height="270" src="http://www.adobewordpress.com/wp-content/uploads/2012/10/dc16.jpg"
-                             alt="Hayalet �ehir" />
-                    </a>
-                </li>
-                <li>
-                    <div>
-                        <a href="http://www.adobewordpress.com/photoshop-ile-boyama-ve-renklendirme-1/" rel="bookmark"
-                           target="_blank">Photoshop ile Boyama ve Renklendirme Teknikleri -1-</a>
-                    </div><a href="http://www.adobewordpress.com/photoshop-ile-boyama-ve-renklendirme-1/" rel="bookmark"
-                             target="_blank">
-                        <img width="690" height="249"
-                             src="http://www.adobewordpress.com/wp-content/uploads/2012/10/boyama1-sonuc.jpg"
-                             alt="Photoshop ile �izim Renklendirme" />
-                    </a>
-                </li>
+
+
+                @foreach (var item in (List<HomeSlider>)ViewBag.HomeSlider)
+                {
+                    <li>
+                        <div>
+                            <a href="@item.HomeSliderRoute" rel="bookmark"
+                               target="_blank">@item.HomeSliderHead</a>
+                        </div><a href="@item.HomeSliderRoute" rel="bookmark" target="_blank">
+                            <img width="1000" height="700" src="~/images/homeslider/@item.HomeSliderImageUrl"  />
+                        </a>
+                    </li>
+
+                }
+
             </ul>
         </div>
     </section>

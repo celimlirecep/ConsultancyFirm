@@ -11,9 +11,6 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
 {
     public class EFCoreHomeSliderRespository : EFCoreBaseRepository<HomeSlider, ConsultantFirmContext>, IHomeSliderRepository
     {
-        public List<HomeSlider> GetIsVisible()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

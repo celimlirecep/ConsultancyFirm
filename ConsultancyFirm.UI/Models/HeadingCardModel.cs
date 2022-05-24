@@ -10,5 +10,6 @@ namespace ConsultancyFirm.UI.Models
     {
         public Heading HeadingModel { get; set; }
         public List<Author> AuthorsModel { get; set; }
+     
     }
 }

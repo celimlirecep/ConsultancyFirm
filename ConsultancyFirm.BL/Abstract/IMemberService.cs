@@ -16,5 +16,6 @@ namespace ConsultancyFirm.BL.Abstract
         void Delete(Member entity);
         void Add(Member entity);
         Member GetSingle(Expression<Func<Member, bool>> filter);
+       
     }
 }

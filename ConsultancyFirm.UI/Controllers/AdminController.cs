@@ -8,9 +8,13 @@ namespace ConsultancyFirm.UI.Controllers
 {
     public class AdminController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(string password)
         {
-            return View();
+            if (password=="456")
+            {
+                return View();
+            }
+            return RedirectToAction("Index","Member");
         }
     }
 }

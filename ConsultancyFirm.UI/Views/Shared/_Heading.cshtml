@@ -20,7 +20,7 @@
                         <li class="author"><a href="#">@item.AuthorFullName</a></li>
                     }
 
-                    <li class="date">Aug. 24, 2015</li>
+                    <li class="date">@(((DateTime)Model.HeadingModel.HeadingPublishTime).ToString("dd MMM yyyy"))</li>
                     <li class="tags">
                         <ul>
 

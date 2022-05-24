@@ -15,6 +15,8 @@ namespace ConsultancyFirm.EL
         public string HeadingContent { get; set; }
         public string HeadingImageUrl { get; set; }
         public string HeadingUrl { get; set; }
+        public DateTime HeadingPublishTime { get; set; }
+
         public bool IsDeleted { get; set; }
         public bool IsHome { get; set; }
         //Yazılan makaleler onaydan geçtikten sonra yayınlansın istiyorum

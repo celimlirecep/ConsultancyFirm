@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ColsultancyFirm.DAL.Abstract
+namespace ConsultancyFirm.BL.Abstract
 {
-    public interface IHomeSliderRepository:IBaseRepository<HomeSlider>
+    public interface IHomeSliderService
     {
-       
+        List<HomeSlider> GetAllVisible();
     }
 }

@@ -13,9 +13,11 @@ namespace ConsultancyFirm.UI.Controllers
     public class HomeController : Controller
     {
         private readonly IHeadingService _headingService;
-        public HomeController(IHeadingService headingService)
+        private readonly IHomeSliderService _homeSliderService;
+        public HomeController(IHeadingService headingService, IHomeSliderService homeSliderService)
         {
             _headingService = headingService;
+            _homeSliderService = homeSliderService;
         }
 
         public IActionResult HomePage()
@@ -33,7 +35,7 @@ namespace ConsultancyFirm.UI.Controllers
                 headingCardModels.Add(headingCardModel);
             }
 
-               
+            ViewData["HomeSlider"] = _homeSliderService.GetAllVisible();
 
             return View(headingCardModels);
         }

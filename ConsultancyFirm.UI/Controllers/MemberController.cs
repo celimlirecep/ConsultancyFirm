@@ -35,7 +35,15 @@ namespace ConsultancyFirm.UI.Controllers
           Member member=  _memberService.GetSingle(i => i.MemberUsername == username && i.MemberPasword == password);
             if (member!=null)
             {//member yazınc ageliyo ama username gönderince username i araya ayzıyo analamadım
-                return RedirectToAction("MemberPage",new { memberusername = member.MemberUsername });
+                if (username=="admin" && password=="123")
+                {
+                    return RedirectToAction("Index", "Admin", new { password = 456 });
+                }
+                else
+                {
+                    return RedirectToAction("MemberPage", new { memberusername = member.MemberUsername });
+                }
+              
             }
             else
             {
@@ -46,6 +54,12 @@ namespace ConsultancyFirm.UI.Controllers
         public IActionResult MemberPage(string memberusername)
         {
             Member member = _memberService.GetSingle(i => i.MemberUsername == memberusername );
+            return View(member);
+        }
+
+        public IActionResult MemberService(string username)
+        {
+            Member member = _memberService.GetSingle(i => i.MemberUsername == username);
             return View(member);
         }
 
