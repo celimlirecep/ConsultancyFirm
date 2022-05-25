@@ -12,6 +12,11 @@ namespace ConsultancyFirm.BL.Concreate
 {
     public class CategoryManager : ICategoryService
     {
+        private ICategoryRepository _categoryRepository;
+        public CategoryManager(ICategoryRepository categoryRepository)
+        {
+            _categoryRepository = categoryRepository;
+        }
         public void Add(Category entity)
         {
             throw new NotImplementedException();
@@ -29,7 +34,7 @@ namespace ConsultancyFirm.BL.Concreate
 
         public List<Category> GetAll()
         {
-            throw new NotImplementedException();
+          return  _categoryRepository.GetAll();
         }
 
         public Category GetById(int id)

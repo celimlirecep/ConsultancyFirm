@@ -37,6 +37,8 @@ namespace ConsultancyFirm.UI
             services.AddScoped<IMemberRepository, EFCoreMemberRepository>();
             services.AddScoped<IHomeSliderService, HomeSliderManager>();
             services.AddScoped<IHomeSliderRepository, EFCoreHomeSliderRespository>();
+            services.AddScoped<IMemberService_Service, MemberServiceManager>();
+            services.AddScoped<IMemberServiceRepository, EFCoreMemberServiceRepository>();
 
             services.AddControllersWithViews();
         }

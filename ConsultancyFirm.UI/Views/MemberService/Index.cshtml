@@ -1,0 +1,92 @@
+﻿@model MemberServiceModel
+
+@{
+    ViewData["Title"] = "Authors Page";
+    ViewData["Username"] = Model.Member.MemberUsername;
+    var routeUrl = Url.RouteUrl(ViewContext.RouteData.Values);
+    var qsPath = ViewContext.HttpContext.Request.QueryString.Value;
+    var returnUrl = $"{routeUrl}{qsPath}";
+
+}
+
+
+
+<div class="row">
+    <div class="col-md-5">
+
+        <partial name="_MemberCard" model="@Model.Member" />
+
+
+
+    </div>
+    <div class="col-md-6">
+        <h1>Randevu alım sayfası</h1>
+
+        <form action="/" method="post">
+            <div class="form-group">
+                <label class="form-control">Lütfen hizmet almak istediğiniz birimi seçiniz</label><br />
+
+                @foreach (var item in Model.Categories)
+                {
+                    //href olarak bağlantı verilecek
+                    <a href="@returnUrl&categoryId=@item.CategoryId" class="text-decoration-none">
+                        <label>@item.CategoryName</label>
+                        <input type="checkbox" name="name" value="@item.CategoryId" style="pointer-events:none;color:black !important;" />
+                    </a>
+
+                }
+
+            </div>
+            <br />
+
+
+            <div class="form-group">
+                <label class="form-control">Lütfen hizmet almak istediğiniz danışmanı seçiniz</label><br />
+                <select class="form-control-sm" onchange="if (this.value) window.location.href=this.value">
+                    <option value="0">Danışmanı Seçmek İçin Tıklayınız</option>
+                    @foreach (var item in Model.Authors)
+                    { //href olarak bağlantı verilecek
+
+                        <option value="@returnUrl&authorId=@item.AuthorId">   @item.AuthorFullName</option>
+                    }
+
+                </select>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="date" name="name" value="" />
+            </div><br />
+            <div class="form-group">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Hizmet Birimi</th>
+                            <th>Danışman Adı</th>
+                            <th>Randevu Zamanı</th>
+                            <th>Randevu Al</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.MemberServices)
+                        {
+                            <tr>
+                                <th>@(((Category)(Model.Categories.Find(x=>x.CategoryId==item.CategoryId))).CategoryName)</th>
+                                <th>@(((Author)(Model.Authors.Find(x=>x.AuthorId==item.AuthorId))).AuthorFullName)</th>
+                                <th>@item.AppointmentTime</th>
+                                <th><input type="checkbox" name="name" value="" /></th> @*Ayarlamalar yapılacak*@
+                            </tr>
+
+                        }
+
+                    </tbody>
+
+                </table>
+            </div><br />
+
+        </form>
+    </div>
+</div>
+
+
+

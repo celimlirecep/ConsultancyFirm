@@ -38,7 +38,7 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
             {
              return   context.Headings
                     .Where(i => i.IsHome && i.IsApproved)
-                    .Include(c=>c.Category)
+                    .Include(c => c.Category)
                     .Include(x=>x.AuthorHeadings)
                     .ThenInclude(x=>x.Author)
                     .ToList();

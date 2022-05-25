@@ -58,15 +58,7 @@ namespace ConsultancyFirm.UI.Controllers
             return View(member);
         }
 
-        public IActionResult MemberService(string username)
-        {
-            var memberServiceModel = new MemberServiceModel()
-            {
-                Member = _memberService.GetSingle(i => i.MemberUsername == username)
-            };
-         
-            return View(memberServiceModel);
-        }
+     
 
     }
 
