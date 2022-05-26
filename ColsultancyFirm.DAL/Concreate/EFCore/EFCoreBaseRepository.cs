@@ -51,7 +51,10 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
         public TEntity GetById(int id)
         {
 
-            throw new NotImplementedException();
+            using (var context = new ConsultantFirmContext())
+            {
+                return context.Set<TEntity>().Find(id);
+            }
         }
 
         public TEntity GetSingle(Expression<Func<TEntity, bool>> filter)

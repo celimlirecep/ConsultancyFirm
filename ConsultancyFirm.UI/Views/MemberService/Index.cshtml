@@ -17,9 +17,9 @@
 
     </div>
     <div class="col-md-6">
-        <h1>Randevu alım sayfası</h1>
+        <h1 class="display-4">Randevu alım sayfası</h1>
 
-        <form action="MemberAppointment" method="post">
+        <form asp-controller="MemberService" asp-action="MemberAppointment" method="post">
             <div class="form-group">
                 <label class="form-control">Lütfen hizmet almak istediğiniz birimi seçiniz</label><br />
 
@@ -66,18 +66,20 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         @foreach (var item in Model.MemberServices)
                         {
-                        <tr>
-                            <th>@(((Category)(Model.Categories.Find(x=>x.CategoryId==item.CategoryId))).CategoryName)</th>
-                            <th>@(((Author)(Model.Authors.Find(x=>x.AuthorId==item.AuthorId))).AuthorFullName)</th>
-                            <th>@item.AppointmentTime</th>
-                            <input type="hidden" name="appointment" value="@item.MemberServiceId" />
-                            <input type="hidden" name="member" value="@item.MemberId" />
-                            <th><input type="submit" class="btn btn-warning" name="name" value="Randevu Al" /></th>
-                        </tr>
+                            <tr>
+                                <th>@(((Category)(Model.Categories.Find(x=>x.CategoryId==item.CategoryId))).CategoryName)</th>
+                                <th>@(((Author)(Model.Authors.Find(x=>x.AuthorId==item.AuthorId))).AuthorFullName)</th>
+                                <th>@item.AppointmentTime</th>
+                                <th> <input type="checkbox" name="memberserviceIds" value="@item.MemberServiceId" /></th>
+                            </tr>
 
                         }
+                        <input type="hidden" asp-for="Member.MemberUsername" value="@Model.Member.MemberUsername" />
+                        <input type="hidden" asp-for="MemberService.MemberId" value="@Model.Member.MemberId" />
+                        <input type="submit" class="btn btn-warning" name="name" value="Randevu Al" />
 
                     </tbody>
 

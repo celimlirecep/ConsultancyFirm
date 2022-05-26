@@ -66,19 +66,40 @@ namespace ConsultancyFirm.UI
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllerRoute(
-
-                //  name: "authors",
-                //  pattern: "members/{username?}",
-                //  defaults: new { controller = "Member", action = "MemberPage" }
-
-                //  );
                 endpoints.MapControllerRoute(
+                name: "appointment",
+                pattern: "mypage/appointment/{username?}",
+                defaults: new { controller = "MemberService", action = "MemberAppointment" }
+                );
 
+                endpoints.MapControllerRoute(
+                 name: "appointment",
+                 pattern: "mypage/{username?}",
+                 defaults: new { controller = "MemberService", action = "Index" }
+                 );
+
+                endpoints.MapControllerRoute(
+                 name: "mypage",
+                 pattern: "mypage/{memberusername?}",
+                 defaults: new { controller = "Member", action = "MemberPage" }
+                 );
+
+                endpoints.MapControllerRoute(
+                  name: "categories",
+                  pattern: "healtylife/{category?}",
+                  defaults: new { controller = "HealtyLife", action = "List" }
+                  );
+
+                endpoints.MapControllerRoute(
+                  name: "registration",
+                  pattern: "registration",
+                  defaults: new { controller = "Member", action = "Index" }
+                  );
+
+                endpoints.MapControllerRoute(
                     name: "authors",
                     pattern: "authors/{heading?}",
                     defaults: new { controller = "Authors", action = "List" }
-
                     );
 
                 endpoints.MapControllerRoute(

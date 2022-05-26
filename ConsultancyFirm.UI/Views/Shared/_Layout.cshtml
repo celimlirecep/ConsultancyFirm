@@ -73,9 +73,7 @@
                             aria-labelledby="navbarDropdownMenuLink">
                             <li>
                                 <a class="dropdown-item"
-                                   asp-controller="HealtyLife"
-                                   asp-action="List"
-                                   asp-route-category="saglikli-yasam-fitness">
+                                   href="/healtylife/saglikli-yasam-fitness">
                                     Sağlıklı Yaşam
                                 </a>
                             </li>
@@ -121,11 +119,11 @@
                     <li class="nav-item">
                         @if (@ViewData["Username"] != null)
                         {
-                            <a class="nav-link baslikyazi bg-warning btn btn warning" href="/Member/MemberPage/?memberusername=@ViewData["Username"]">Benim Sayfam<i class="fa-solid fa-person " style="font-size:25px;"></i></a>
+                            <a class="nav-link baslikyazi bg-warning btn btn warning" href="/mypage/@ViewData["Username"]">Benim Sayfam<i class="fa-solid fa-person " style="font-size:25px;"></i></a>
                         }
                         else
                         {
-                            <a class="nav-link baslikyazi bg-warning btn btn warning" href="/Member/Index">Üye Ol<i class="fa-solid fa-person " style="font-size:25px;"></i></a>
+                            <a class="nav-link baslikyazi bg-warning btn btn warning" href="/registration">Üye Ol<i class="fa-solid fa-person " style="font-size:25px;"></i></a>
                         }
 
                     </li>

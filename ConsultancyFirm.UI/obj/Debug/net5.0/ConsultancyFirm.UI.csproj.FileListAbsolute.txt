@@ -308,3 +308,4 @@ C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Shared\_MemberCard.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Admin\Index.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\MemberService\Index.cshtml.g.cs
+C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\MemberService\MemberAppointment.cshtml.g.cs

@@ -1,0 +1,48 @@
+﻿
+
+@model MemberServiceModel
+
+@{
+    ViewData["Title"] = "Authors Page";
+    ViewData["Username"] = Model.Member.MemberUsername;
+
+
+}
+
+<div class="row">
+    <div class="col-md-5">
+        <partial name="_MemberCard" Model="@Model.Member" />
+    </div>
+    <div class="col-md-6">
+        <h1 class="display-4">Randevular</h1><br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Hizmet Alınan Danışman Bilgileri</td>
+                    <td>Randevu Zamanı</td>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.MemberServices)
+                {
+                <tr>
+                    <td>  @item.MemberServiceId</td>
+
+                    <td>    @(((Author)Model.Authors.Find(i=>i.AuthorId==item.AuthorId)).AuthorFullName)</td>
+                    <td>      @item.AppointmentTime</td>
+                </tr>
+
+
+
+
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

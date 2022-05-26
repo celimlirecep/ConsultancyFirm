@@ -55,10 +55,37 @@ namespace ConsultancyFirm.UI.Controllers
 
             return View(memberServiceModel);
         }
-        [HttpPost]
-        public IActionResult MemberAppointment()
+
+        public IActionResult MemberAppointment(string username)
         {
-            return View();
+            Member member = _memberService.GetSingle(i => i.MemberUsername == username);
+            MemberServiceModel memberServiceModel = new MemberServiceModel()
+            {
+                Member=member,
+                MemberServices = _memberservice_Service.Get(i => i.MemberId == member.MemberId),
+                Authors = _authorService.GetAll(),
+
+            };
+     
+            return View(memberServiceModel);
+        }
+
+
+        [HttpPost]
+        public IActionResult MemberAppointment(MemberServiceModel memberServiceModel,List<int> memberserviceIds)
+        {
+            MemberService memberService = _memberservice_Service.GetById(memberserviceIds[0]);
+            memberService.MemberId = memberServiceModel.MemberService.MemberId;
+            memberService.CategoryId = memberService.CategoryId;
+            memberService.AuthorId = memberService.AuthorId;
+            memberService.AppointmentTime = memberService.AppointmentTime;
+            memberService.MemberServiceId = memberService.MemberServiceId;
+            _memberservice_Service.Update(memberService);
+            memberServiceModel.MemberService = memberService;
+            memberServiceModel.Authors = _authorService.GetAll();
+            memberServiceModel.MemberServices = _memberservice_Service.Get(i => i.MemberId == memberServiceModel.MemberService.MemberId);
+           memberServiceModel.Member = _memberService.GetSingle(i => i.MemberUsername == memberServiceModel.Member.MemberUsername);
+            return View(memberServiceModel);
         }
     }
     

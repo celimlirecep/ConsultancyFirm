@@ -28,5 +28,15 @@ namespace ConsultancyFirm.BL.Concreate
         {
             return _memberServiceRepository.GetAll();
         }
+
+        public MemberService GetById(int id)
+        {
+            return _memberServiceRepository.GetById(id);
+        }
+
+        public void Update(MemberService entity)
+        {
+            _memberServiceRepository.Update(entity);
+        }
     }
 }

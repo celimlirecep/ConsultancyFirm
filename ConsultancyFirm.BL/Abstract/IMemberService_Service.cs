@@ -12,5 +12,7 @@ namespace ConsultancyFirm.BL.Abstract
     {
         List<MemberService> GetAll();
         List<MemberService> Get(Expression<Func<MemberService, bool>> filter);
+        MemberService GetById(int id);
+        void Update(MemberService entity);
     }
 }
