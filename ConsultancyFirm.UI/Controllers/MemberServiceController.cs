@@ -24,8 +24,25 @@ namespace ConsultancyFirm.UI.Controllers
             _authorService = authorService;
             _memberservice_Service = memberservice_Service;
         }
-        public IActionResult Index(string username,int authorId)
+        public IActionResult Index(string username,int authorId,int CategoryId)
         {
+            List<MemberService> memberServices = null;
+            if (authorId!=0 && CategoryId==0)
+            {
+                memberServices= _memberservice_Service.Get(i => i.AuthorId == authorId);
+            }
+            else if (CategoryId != 0 && authorId == 0)
+            {
+                memberServices = _memberservice_Service.Get(i => i.CategoryId == CategoryId);
+            }
+            else if (CategoryId != 0 && authorId != 0)
+            {
+                memberServices = _memberservice_Service.Get(i => i.CategoryId == CategoryId && i.AuthorId==authorId);
+            }
+            else
+            {
+                 memberServices = _memberservice_Service.GetAll();
+            }
             
             Member member = _memberService.GetSingle(i => i.MemberUsername == username);
             MemberServiceModel memberServiceModel = new MemberServiceModel()
@@ -33,10 +50,15 @@ namespace ConsultancyFirm.UI.Controllers
                 Member = member,
                 Categories = _categoryService.GetAll(),
                 Authors = _authorService.GetAll(),
-                MemberServices = _memberservice_Service.GetAll()
+                MemberServices = memberServices
             };
 
             return View(memberServiceModel);
+        }
+        [HttpPost]
+        public IActionResult MemberAppointment()
+        {
+            return View();
         }
     }
     
