@@ -74,7 +74,7 @@ namespace ConsultancyFirm.UI
 
                 endpoints.MapControllerRoute(
                  name: "appointment",
-                 pattern: "mypage/{username?}",
+                 pattern: "mypage/{username?}/{categoryId?}/{authorId?}",
                  defaults: new { controller = "MemberService", action = "Index" }
                  );
 

@@ -20,9 +20,11 @@ namespace ConsultancyFirm.EL
         public Decimal AuthorHourlyWage { get; set; }
         public string AuthorUrl { get; set; }
         public bool IsDeleted { get; set; }
-  
+       
+
 
         public List<AuthorHeading> AuthorHeadings { get; set; }
+        public List<AuthorCategory> AuthorCategories { get; set; }
 
 
     }

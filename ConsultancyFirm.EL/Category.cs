@@ -14,6 +14,8 @@ namespace ConsultancyFirm.EL
         public string CategoryUrl { get; set; }
         public bool IsDeleted { get; set; }
         public List<Heading> Headings { get; set; }
+        public List<AuthorCategory> AuthorCategories { get; set; }
+
 
     }
 }

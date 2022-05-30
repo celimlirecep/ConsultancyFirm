@@ -28,6 +28,9 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
         {
             modelBuilder.Entity<AuthorHeading>()
                 .HasKey(ah => new { ah.AuthorId, ah.HeadingId });
+            modelBuilder.Entity<AuthorCategory>()
+               .HasKey(ah => new { ah.AuthorId, ah.CategoryId });
+
         }
     }
 }
