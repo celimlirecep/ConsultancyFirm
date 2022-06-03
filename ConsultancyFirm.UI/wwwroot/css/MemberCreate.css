@@ -1,6 +1,6 @@
 ﻿body {
     margin: 0;
-    color: #6a6f8c;
+    color: white;
     background: #c8c8c8;
     font: 600 16px/18px "Open Sans", sans-serif;
 }
@@ -42,7 +42,7 @@ a {
     height: 100%;
     position: absolute;
     padding: 90px 70px 50px 70px;
-    background: rgba(40, 57, 101, 0.9);
+    background: #5D6D7E; /* ********************************************************************/
 }
 
     .login-html .sign-in-htm,
@@ -80,7 +80,7 @@ a {
 
     .login-html .sign-in:checked + .tab,
     .login-html .sign-up:checked + .tab {
-        color: #fff;
+        color: white;
         border-color: #1161ee;
     }
 
@@ -99,7 +99,7 @@ a {
         .login-form .group .input,
         .login-form .group .button {
             width: 100%;
-            color: #fff;
+            color: white;
             display: block;
         }
 
@@ -117,7 +117,7 @@ a {
         }
 
         .login-form .group .label {
-            color: #aaa;
+            color: white;
             font-size: 12px;
         }
 
@@ -158,7 +158,7 @@ a {
             }
 
         .login-form .group .check:checked + label {
-            color: #fff;
+            color: white;
         }
 
             .login-form .group .check:checked + label .icon {

@@ -3,14 +3,13 @@
       height: 100%;
     }
 
-
-    body {
-      background: #282537;
-      background-image: -webkit-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
-      background-image: -moz-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
-      background-image: -o-radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
-      background-image: radial-gradient(top, circle cover, #3c3b52 0%, #252233 80%);
-    }
+    /************************************************************************/
+body {
+    background-image: -webkit-radial-gradient(top, circle cover, #FDFEFE 0%, #FDFEFE 80%) !important;
+    background-image: -moz-radial-gradient(top, circle cover, #FDFEFE 0%,#FDFEFE 80%) !important;
+    background-image: -o-radial-gradient(top, circle cover, #FDFEFE 0%, #FDFEFE 80%) !important;
+    background-image: radial-gradient(top, circle cover, #FDFEFE 0%, #FDFEFE 80%) !important;
+}
 
     .flexslider {
       margin: 20px auto !important;
@@ -32,10 +31,10 @@
       padding: 0;
       list-style: none;
     }
-
+/******************************************************************************/
     .flexslider .slides img {
       width: 100%;
-      height: 500px;
+      height: 800px;
       display: block;
     }
 
@@ -83,7 +82,7 @@
     }
 
     .flexslider {
-      background: #fff;
+ 
       border: 4px solid #fff;
       position: relative;
       -webkit-border-radius: 4px;
@@ -175,30 +174,30 @@
       *display: inline;
     }
 
-    .flex-control-paging li a {
-      width: 11px;
-      height: 11px;
-      display: block;
-      background: #666;
-      background: rgba(0, 0, 0, 0.5);
-      cursor: pointer;
-      text-indent: -9999px;
-      -webkit-border-radius: 20px;
-      -moz-border-radius: 20px;
-      -o-border-radius: 20px;
-      border-radius: 20px;
-      box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-    }
+.flex-control-paging li a {
+    width: 11px;
+    height: 11px;
+    display: block;
+    background: #FDFEFE;
+    background: #FDFEFE;
+    cursor: pointer;
+    text-indent: -9999px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    border-radius: 20px;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+}
 
     .flex-control-paging li a:hover {
-      background: #333;
-      background: rgba(0, 0, 0, 0.7);
+        background: #EBF42E;
+        background: rgba(0, 0, 0, 0.7);
     }
 
     .flex-control-paging li a.flex-active {
-      background: #000;
-      background: rgba(0, 0, 0, 0.9);
-      cursor: default;
+        background: #EBF42E;
+        background: rgba(0, 0, 0, 0.9);
+        cursor: default;
     }
 
     .flex-control-thumbs {

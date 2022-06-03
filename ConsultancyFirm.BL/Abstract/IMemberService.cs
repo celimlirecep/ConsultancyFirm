@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConsultancyFirm.BL.Abstract
 {
-    public interface IMemberService:IJobService
+    public interface IMemberService
     {
         Member GetById(int id);
         List<Member> GetAll();

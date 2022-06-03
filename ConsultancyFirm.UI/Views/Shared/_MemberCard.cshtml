@@ -1,4 +1,4 @@
-﻿@model  Member
+﻿@model  User
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,20 +13,21 @@
             <div class="title"><h2>My Page</h2></div>
             <div class="top">
                 <div class="img-container">
-                    <img src="~/images/members/@Model.MemberImageURL" alt="image">
+                    <img src="@Model.MemberImage" alt="image">
                 </div>
             </div>
             <div class="description">
-                <h1>@Model.MemberUsername</h1>
-                <p>@Model.MemberMail</p>
+                <h1>@Model.UserName</h1>
+                <p>@Model.Email</p>
             </div>
             <div class="list">
                 <ul>
                     <li><a ><i class="fa fa-user"></i>Profile</a></li>
-                    <li><a href="/mypage/appointment/@Model.MemberUsername"><i class="fa-solid fa-book-open"></i>Alınan Hizmetler & Güncel Randevular</a></li>
-                    <li><a><i class="fa-solid fa-message"></i>Danışmanınla Sohbet Et</a></li>
-                    <li><a><i class="fa fa-certificate"></i>İlerlemeler</a></li>
-                    <li><a href="/mypage/@Model.MemberUsername"><i class="fa fa-users"></i>Randevu Al</a></li>
+                    <li><a style="color:black !important;" href="/mypage/appointment/@Model.UserName"><i class="fa-solid fa-book-open"></i>Alınan Hizmetler & Güncel Randevular</a></li>
+                    <li><a style="color:black !important;" href="/mypage/@Model.UserName"><i class="fa fa-users"></i>Randevu Al</a></li>
+                    <li><a style="color:black !important;"><i class="fa-solid fa-message"></i>Danışmanınla Sohbet Et</a></li>
+                    <li><a style="color:black !important;" href="/Account/Logout"><i class="fa-solid fa-arrow-right-from-bracket"></i>Çıkış Yap</a></li>
+
                 </ul>
             </div>
         </div>

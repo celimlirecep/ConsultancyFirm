@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConsultancyFirm.BL.Abstract
 {
-    public interface IMemberService_Service : IJobService
+    public interface IMemberService_Service 
     {
         List<MemberService> GetAll();
         List<MemberService> Get(Expression<Func<MemberService, bool>> filter);

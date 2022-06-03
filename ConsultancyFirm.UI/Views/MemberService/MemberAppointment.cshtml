@@ -4,16 +4,17 @@
 
 @{
     ViewData["Title"] = "Authors Page";
-    ViewData["Username"] = Model.Member.MemberUsername;
+
 
 
 }
 
+
 <div class="row">
-    <div class="col-md-5">
-        <partial name="_MemberCard" Model="@Model.Member" />
+    <div class="col-md-4">
+        <partial name="_MemberCard" Model="@Model.User" />
     </div>
-    <div class="col-md-6">
+    <div class="col-md-7">
         <h1 class="display-4">Randevular</h1><br />
         <table class="table">
             <thead>

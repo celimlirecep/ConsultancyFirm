@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ConsultancyFirm.BL.Concreate
 {
-    public class MemberManager:JobManager,IMemberService
+    public class MemberManager:IMemberService
     {
         IMemberRepository _memberRepository;
 

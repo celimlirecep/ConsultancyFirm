@@ -19,6 +19,10 @@ namespace ConsultancyFirm.UI.Controllers
         {
             return View();
         }
+        //public IActionResult a()
+        //{
+        //    return View();
+        //}
 
         public IActionResult List(string category)
         {
