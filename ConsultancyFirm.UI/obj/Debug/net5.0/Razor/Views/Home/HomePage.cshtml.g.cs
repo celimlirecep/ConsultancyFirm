@@ -54,8 +54,15 @@ using Newtonsoft.Json;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 7 "C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e06a33b07d4fd112d7a98a16a68f6e097d73deb0", @"/Views/Home/HomePage.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"db4aab4caa02fe1d901515e66f8b1dab031c0e3c", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a9987e781ecd7a30ac623ce2d0441271a0413840", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_HomePage : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<HeadingCardModel>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("rel", new global::Microsoft.AspNetCore.Html.HtmlString("stylesheet"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -100,7 +107,7 @@ using Newtonsoft.Json;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<!DOCTYPE html\r\n          PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\r\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e06a33b07d4fd112d7a98a16a68f6e097d73deb06553", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e06a33b07d4fd112d7a98a16a68f6e097d73deb06765", async() => {
                 WriteLiteral(@"
     <link rel=""shortcut icon""
           href=""http://www.adobewordpress.com/wp-content/themes/adobewordpress/images/adobewordpress.ico"" />
@@ -123,7 +130,7 @@ using Newtonsoft.Json;
     <link href=""http://fonts.googleapis.com/css?family=Oswald:regular"" rel=""stylesheet"" type=""text/css"">
     <script src=""https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js""></script>
     ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "e06a33b07d4fd112d7a98a16a68f6e097d73deb08248", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "e06a33b07d4fd112d7a98a16a68f6e097d73deb08460", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -150,7 +157,7 @@ using Newtonsoft.Json;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e06a33b07d4fd112d7a98a16a68f6e097d73deb010233", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e06a33b07d4fd112d7a98a16a68f6e097d73deb010445", async() => {
                 WriteLiteral("\r\n \r\n\r\n    <section class=\"loading\">\r\n        <div class=\"flexslider\">\r\n            <ul class=\"slides\">\r\n\r\n\r\n");
 #nullable restore
 #line 43 "C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\Views\Home\HomePage.cshtml"
@@ -189,7 +196,7 @@ WriteAttributeValue("", 2302, item.HomeSliderRoute, 2302, 21, false);
 #nullable disable
                 EndWriteAttribute();
                 WriteLiteral(" rel=\"bookmark\" target=\"_blank\">\r\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "e06a33b07d4fd112d7a98a16a68f6e097d73deb012275", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "e06a33b07d4fd112d7a98a16a68f6e097d73deb012487", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -232,7 +239,7 @@ AddHtmlAttributeValue("", 2442, item.HomeSliderImageUrl, 2442, 24, false);
 #line hidden
 #nullable disable
                 WriteLiteral("<div class=\"col-md-6 d-flex justify-content-center\">\r\n                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "e06a33b07d4fd112d7a98a16a68f6e097d73deb014837", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("partial", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "e06a33b07d4fd112d7a98a16a68f6e097d73deb015049", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_PartialTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper>();

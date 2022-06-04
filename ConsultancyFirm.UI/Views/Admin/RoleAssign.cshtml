@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewData["Title"] = "Admin Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@section Css {
+    <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#userList').DataTable(
+                {
+                    lengthMenu: [
+                        [2, 5, 10, 20, 40, -1],
+                        [2, 5, 10, 20, 40, "Tümü"]
+                    ],
+                    language: {
+                        url: "//cdn.datatables.net/plug-ins/1.12.1/i18n/tr.json"
+                    }
+                }
+            );
+        });
+    </script>
+}
+@model RoleAssignModel
+<div class="row">
+    <div class="col-md-12">
+        <h6 class="display-4 text-center">Role Atama Sayfası</h6>
+        <hr />
+        
+        <table data-page-length="4" class="table table-sm table-striped table-hover" id="userList">
+            <thead>
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Email</td>
+                    <td>Şuanki Rolü</td>
+                    <td>Rol ata</td>
+                    <td>Rol Kaldır</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var user in Model.Users as IEnumerable<User>)
+                {
+                    <tr>
+
+                        <td>@user.FirstName</td>
+                        <td>@user.LastName</td>
+                        <td>@user.Email</td>
+                        <th>
+                            @foreach (var item in Model.UserRolesList)
+                            {
+                                if (item.UserId == user.Id && item.UserRoles != null)
+                                {
+                                    @foreach (var rol in item.UserRoles)
+                                    {
+                                        <p>@rol</p>
+                                    }
+                                }
+                            }
+                        </th>
+
+                        <td>
+                            @foreach (var role in Model.Rolls)
+                            {
+                                <form action="/Admin/RoleAssign" method="post">
+                                    <input type="hidden" asp-for="IsAdded" value="true" />
+                                    <input type="hidden" asp-for="RoleName" value="@role.Name" />
+                                    <input type="hidden" asp-for="UserId" value="@user.Id" />
+                                    <input type="submit" class="btn btn-sm text-cyan" value="@role.Name" />
+                                </form>
+                            }
+                        </td>
+                        <td>
+                            @foreach (var role in Model.Rolls)
+                            {
+                                <form action="/Admin/RoleAssign" method="post">
+                                    <input type="hidden" asp-for="IsAdded" value="false" />
+                                    <input type="hidden" asp-for="RoleName" value="@role.Name" />
+                                    <input type="hidden" asp-for="UserId" value="@user.Id" />
+                                    <input type="submit" class="btn btn-sm text-danger" value="@role.Name" />
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

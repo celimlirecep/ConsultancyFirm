@@ -32,7 +32,9 @@
                         <td>
                             <div class="form-group">
                                
-                                <select asp-for="Category.CategoryId" asp-items="@ViewBag.Category"></select>
+                                <select class="custom-select-sm" asp-for="Category.CategoryId" asp-items="@ViewBag.Category">
+                                    <option value="0">Hizmet Birimini Seçiniz</option>
+                                </select>
 
                             </div>
                            
@@ -41,8 +43,10 @@
                         <td>
                             <div class="form-group">
 
-                                <select asp-for="Author.AuthorId" asp-items="@ViewBag.Author"></select>
-
+                                <select asp-for="Author.AuthorId" asp-items="@ViewBag.Author">
+                                    <option value="0">Danışman Seçiniz</option>
+                                </select>
+                               
                             </div>
                         </td>
                         <td>

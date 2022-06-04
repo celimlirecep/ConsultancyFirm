@@ -25,9 +25,9 @@ namespace ConsultancyFirm.UI.Controllers
             _emailSender = emailSender;
         }
 
-        public IActionResult Login(LoginModel model=null)
+        public IActionResult Login()
         {
-            return View(model);
+            return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -95,30 +95,30 @@ namespace ConsultancyFirm.UI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                
-                return RedirectToAction("login", model);
+               TempData["Message"]=  JobManager.CreateMessage("Yazım Hatası","Lütfen Uygun bir mail adresi veya parola giriniz!","warning");
+                return RedirectToAction("login");
             }
 
             var user = await _userManager.FindByNameAsync(model.LoginUserName);
             if (user == null)
             {
-                ModelState.AddModelError("", "Böyle bir kullanıcı bulunamadı!");
-                return RedirectToAction("login",model);
+                TempData["Message"] = JobManager.CreateMessage("Kullanıcı Hatası", "Böyle bir kullanıcı bulunamadı!", "danger");
+                return RedirectToAction("login");
             }
 
             if (!await _userManager.IsEmailConfirmedAsync(user))
             {
                 ModelState.AddModelError("", "Hesabınız onaylı değil! Lütfen mail adresiniz kontrol ederek, onay işlemlerini tamamlayınız.");
-                return RedirectToAction("login", model);
+                return RedirectToAction("login");
             }
 
             var result = await _signInManager.PasswordSignInAsync(user, model.LoginPassword, true, false);
             if (result.Succeeded)
             {
-                return RedirectToAction("MemberPage","Member",new { username = user.UserName });
+                return RedirectToAction("MemberPage",new { username = user.UserName });
             }
             ModelState.AddModelError("", "Kullanıcı adı ya da parola hatalı!");
-            return RedirectToAction("login", model);
+            return RedirectToAction("login");
         }
         public async Task<IActionResult> Logout()
         {
@@ -191,6 +191,13 @@ namespace ConsultancyFirm.UI.Controllers
             }
             return Redirect("/Account/login");
 
+        }
+
+        public async Task<IActionResult> MemberPage(string username)
+        {
+            ViewBag.Username = username;
+            var user = await _userManager.FindByNameAsync(username);
+            return View(user);
         }
 
 

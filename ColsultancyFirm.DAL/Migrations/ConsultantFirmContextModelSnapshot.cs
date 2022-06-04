@@ -171,35 +171,6 @@ namespace ColsultancyFirm.DAL.Migrations
                     b.ToTable("HomeSliders");
                 });
 
-            modelBuilder.Entity("ConsultancyFirm.EL.Member", b =>
-                {
-                    b.Property<int>("MemberId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("MemberImageURL")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("MemberMail")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("MemberName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("MemberPasword")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("MemberSurname")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("MemberUsername")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("MemberId");
-
-                    b.ToTable("Members");
-                });
-
             modelBuilder.Entity("ConsultancyFirm.EL.MemberService", b =>
                 {
                     b.Property<int>("MemberServiceId")

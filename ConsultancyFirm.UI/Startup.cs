@@ -36,12 +36,13 @@ namespace ConsultancyFirm.UI
             services.AddDbContext<ApplicationContext>(options => options.UseSqlite("Data Source=ConsultancyFirmDB"));
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
             //Paralo vs için gereklilikler
-            services.Configure<IdentityOptions>(options => {
+            services.Configure<IdentityOptions>(options =>
+            {
                 //pasword
                 options.Password.RequireDigit = true;
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredLength = 6;
-                 options.Password.RequireLowercase = true;
+                options.Password.RequireLowercase = true;
                 //Lockout
                 options.Lockout.MaxFailedAccessAttempts = 3;//3 kere yanlýþ girebilsin
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);//10 dk beklesin hatalý giriþte
@@ -52,20 +53,21 @@ namespace ConsultancyFirm.UI
                 options.SignIn.RequireConfirmedEmail = true;
             });
             //Cookie  iþlemleri
-            services.ConfigureApplicationCookie(options => {
+            services.ConfigureApplicationCookie(options =>
+            {
 
                 options.LoginPath = "/login";
                 options.LogoutPath = "/logout";
                 options.AccessDeniedPath = "/accesdenied";
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30);//yarým saat cookiyi sakla
                 options.SlidingExpiration = true;//her requestte iþlemi 0 la
-           
+
                 options.Cookie = new CookieBuilder()
                 {
                     HttpOnly = true,//sadece authentice olmuþ pencerede açýk kalsýn
-                    Name="ConsultancyFirm.Security.Cookie",
-                    SameSite=SameSiteMode.Strict// açýlan pencere ile sýnýrlý
-                    
+                    Name = "ConsultancyFirm.Security.Cookie",
+                    SameSite = SameSiteMode.Strict// açýlan pencere ile sýnýrlý
+
 
                 };
             });
@@ -84,8 +86,6 @@ namespace ConsultancyFirm.UI
             services.AddScoped<IHeadingRepository, EFCoreHeadingRepository>();
             services.AddScoped<IAuthorRepository, EFCoreAuthorRepository>();
             services.AddScoped<ICategoryRepository, EFCoreCategoryRepository>();
-            services.AddScoped<IMemberService, MemberManager>();
-            services.AddScoped<IMemberRepository, EFCoreMemberRepository>();
             services.AddScoped<IHomeSliderService, HomeSliderManager>();
             services.AddScoped<IHomeSliderRepository, EFCoreHomeSliderRespository>();
             services.AddScoped<IMemberService_Service, MemberServiceManager>();
@@ -112,30 +112,35 @@ namespace ConsultancyFirm.UI
             app.UseStaticFiles();
             app.UseAuthentication();//Identity
             app.UseRouting();
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                 name: "appointment",
-                pattern: "mypage/appointment/{username?}",
+                pattern: "mypage/history/{username?}",
                 defaults: new { controller = "MemberService", action = "MemberAppointment" }
                 );
 
                 endpoints.MapControllerRoute(
                  name: "appointment",
-                 pattern: "mypage/{username?}/{categoryId?}/{authorId?}",
+                 pattern: "mypage/appointment/{username?}",
                  defaults: new { controller = "MemberService", action = "Index" }
                  );
 
-              
+
                 endpoints.MapControllerRoute(
                   name: "categories",
                   pattern: "healtylife/{category?}",
                   defaults: new { controller = "HealtyLife", action = "List" }
                   );
-              
+                endpoints.MapControllerRoute(
+                      name: "loginpage",
+                      pattern: "memberpage/{username?}",
+                      defaults: new { controller = "Account", action = "MemberPage" }
+                  );
+
 
                 endpoints.MapControllerRoute(
                   name: "loginpage",

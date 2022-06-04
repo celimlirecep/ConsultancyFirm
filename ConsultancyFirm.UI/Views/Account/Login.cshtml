@@ -16,21 +16,18 @@
             <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Üye Ol</label>
             <div class="login-form">
                 <form asp-action="SignIn" class="sign-in-htm">
-                  
+                    <br />
                     <div class="group">
                         <label for="user" class="label">Kullanıcı Adı</label>
-                        <input id="user" name="LoginUserName" type="text" class="input">
-                        <span asp-validation-for="UserName"></span>
+                        <input id="user" name="LoginUserName" type="text" required class="input"> <br />
+                 
                     </div>
                     <div class="group">
                         <label for="pass" class="label">Şifre</label>
-                        <input id="pass" type="password" name="loginpassword" class="input" data-type="password">
-                        <span asp-validation-for="Password"></span>
+                        <input id="pass" type="password" name="loginpassword" class="input" required data-type="password"><br />
+                    
                     </div>
-                    <div class="group">
-                        <input id="check" type="checkbox" class="check" checked>
-                        <label for="check"><span class="icon"></span>beni Hatırla</label>
-                    </div>
+                 
                     <div class="group">
                         <input type="submit" class="button" value="Sign In">
                     </div>

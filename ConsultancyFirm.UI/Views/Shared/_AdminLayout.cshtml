@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Admin Paneli</title>
+    @RenderSection("Css", false)
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+            <!-- Brand Logo -->
+            <a href="index3.html" class="brand-link">
+                <img src="~/AdminLTE-3.0.4/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                     style="opacity: .8">
+                <span class="brand-text font-weight-light">AdminLTE 3</span>
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="~/AdminLTE-3.0.4/reco.jpg" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">Recep Çelimli</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                        <li class="nav-item has-treeview">
+                            <a href="/admin/a" class="nav-link">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    DashBoard
+                                </p>
+                            </a>
+
+                        </li>
+
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Kategoriler
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-controller="AdminCategory" asp-action="Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Categorileri Listele</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="AdminCategory" asp-action="AddCategory" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Yeni Kayıt Ekle</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>
+                                    Başlıklar
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-controller="Heading" asp-action="Index" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Başlıkları Listele</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Heading" asp-action="AddHeading" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Başlık Ekle</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                      
+                        <li class="nav-item has-treeview">
+                            <a href="/admin/MemberList" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
+                                <p>
+                                    Kullanıcı İşlemleri
+                              
+                                </p>
+                            </a>
+                        
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="/Contact/Index" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    İletişim & Mesajlar
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="pages/calendar.html" class="nav-link">
+                                <i class="nav-icon fas fa-calendar-alt"></i>
+                                <p>
+                                    Roller
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/RoleList" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Rolleri Listele</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Admin/RoleCreate" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Yeni Rol Oluşturma</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/admin/RoleAssign" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Roll Atama</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="/About/Index" class="nav-link">
+                                <i class="nav-icon fas fa-tree"></i>
+                                <p>
+                                    Hizmet Sayfaları
+
+                                </p>
+                            </a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Galery/Index" class="nav-link">
+                                <i class="nav-icon far fa-image"></i>
+                                <p>
+                                    Ana sayfa Slider
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Siteye Git
+
+                                </p>
+                            </a>
+
+                        </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-door-closed"></i>
+                                <p>
+                                    Çıkış Yap
+
+                                </p>
+                            </a>
+
+                        </li>
+
+
+
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <div class="content-wrapper">
+            <div class="content">
+                @RenderBody() <!--**********************Render Body******************-->
+            </div>
+        </div>
+    </div>
+    @RenderSection("Scripts", false)
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard3.js"></script>
+
+</body>
+</html>
