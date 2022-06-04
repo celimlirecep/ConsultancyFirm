@@ -327,3 +327,4 @@ C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Admin\RoleAssign.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Admin\MemberList.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Admin\UserCreate.cshtml.g.cs
+C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\AdminHeading\Index.cshtml.g.cs
