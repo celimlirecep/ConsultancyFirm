@@ -27,7 +27,7 @@ namespace ConsultancyFirm.UI.Controllers
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
                 },
-                Authors = _authorService.GetProductWithPages(page, pageSize),
+                Authors = _authorService.GetAuthorsWithPages(page, pageSize),
                 
                 SelectedAuthor = id!=0? _authorService.GetById(id):null
             };

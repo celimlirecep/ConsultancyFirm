@@ -19,7 +19,7 @@ namespace ConsultancyFirm.BL.Concreate
         }
         public void Add(Author entity)
         {
-            throw new NotImplementedException();
+            _authorRepository.Add(entity);
         }
 
         public void Delete(Author entity)
@@ -42,16 +42,19 @@ namespace ConsultancyFirm.BL.Concreate
             return _authorRepository.GetSingle(x=>x.AuthorId==id);
         }
 
-        public List<Author> GetProductWithPages(int page, int pageSize)
+        public List<Author> GetAuthorsWithPages(int page, int pageSize)
         {
-            return _authorRepository.GetProductWithPages(page, pageSize);
+            return _authorRepository.GetAuthorsWithPages(page, pageSize);
         }
 
-        
+        public Author GetSingle(Expression<Func<Author, bool>> filter)
+        {
+            return _authorRepository.GetSingle(filter);
+        }
 
         public void Update(Author entity)
         {
-            throw new NotImplementedException();
+            _authorRepository.Update(entity);
         }
     }
 }

@@ -17,7 +17,7 @@
                 <ul class="details ">
                     @foreach (var item in Model.AuthorsModel)
                     {
-                        <li class="author"><a href="#">@item.AuthorFullName</a></li>
+                        @*<li class="author"><a href="#">@item.AuthorFullName</a></li>*@
                     }
 
                     <li class="date">@(((DateTime)Model.HeadingModel.HeadingPublishTime).ToString("dd MMM yyyy"))</li>

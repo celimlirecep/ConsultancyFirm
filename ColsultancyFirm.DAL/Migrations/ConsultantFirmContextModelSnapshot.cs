@@ -22,29 +22,17 @@ namespace ColsultancyFirm.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("AuthorAbout")
+                        .HasColumnType("TEXT");
+
                     b.Property<decimal>("AuthorHourlyWage")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AuthorImages")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AuthorMail")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AuthorName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AuthorPhone")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AuthorSurname")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AuthorUrl")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("AuthorId");
 

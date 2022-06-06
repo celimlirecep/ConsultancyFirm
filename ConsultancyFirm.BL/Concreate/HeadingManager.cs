@@ -34,18 +34,17 @@ namespace ConsultancyFirm.BL.Concreate
 
         public List<Heading> GetAll()
         {
-            throw new NotImplementedException();
+           return _headingrepository.GetAll();
         }
+
+        
 
         public Heading GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Heading> GetHeadingByAuthors(string authorNameUrl)
-        {
-          return  _headingrepository.GetHeadingByAuthors(authorNameUrl);
-        }
+     
 
         public List<Heading> GetHeadingByCategories(string category)
         {
@@ -55,6 +54,11 @@ namespace ConsultancyFirm.BL.Concreate
         public List<Heading> GetHomePageHeadings()
         {
             return _headingrepository.GetHomePageHeadings();
+        }
+
+        public Heading GetSingle(Expression<Func<Heading, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Heading entity)

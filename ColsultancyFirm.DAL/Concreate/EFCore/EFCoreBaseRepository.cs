@@ -65,6 +65,8 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
             }
         }
 
+     
+
         public void Update(TEntity entity)
         {
             using (var context = new ConsultantFirmContext())

@@ -85,7 +85,7 @@
                             {
                                 <tr>
                                     <th>@(((Category)(Model.Categories.Find(x=>x.CategoryId==item.CategoryId))).CategoryName)</th>
-                                    <th>@(((Author)(Model.Authors.Find(x=>x.AuthorId==item.AuthorId))).AuthorFullName)</th>
+                                    @*<th>@(((Author)(Model.Authors.Find(x=>x.AuthorId==item.AuthorId))).AuthorFullName)</th>*@
                                     <th>@item.AppointmentTime</th>
                                     <th>
                                         <form asp-action="MemberAppointment" method="post">

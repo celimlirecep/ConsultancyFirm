@@ -1,4 +1,6 @@
-﻿using ConsultancyFirm.UI.Identity;
+﻿using ConsultancyFirm.BL.Abstract;
+using ConsultancyFirm.EL;
+using ConsultancyFirm.UI.Identity;
 using ConsultancyFirm.UI.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,11 +16,13 @@ namespace ConsultancyFirm.UI.Controllers
 
         private RoleManager<IdentityRole> _roleManager;
         private UserManager<User> _userManager;
+        private IAuthorService _authorService;
 
-        public AdminController(RoleManager<IdentityRole> roleManager, UserManager<User> userManager)
+        public AdminController(RoleManager<IdentityRole> roleManager, UserManager<User> userManager, IAuthorService authorService)
         {
-            this._roleManager = roleManager;
-            this._userManager = userManager;
+            _roleManager = roleManager;
+            _userManager = userManager;
+            _authorService = authorService;
         }
 
         public async Task<IActionResult> AdminPage()
@@ -113,18 +117,45 @@ namespace ConsultancyFirm.UI.Controllers
         public async Task<IActionResult> RoleAssign(RoleAssignModel model)
         {
             User user = await _userManager.FindByIdAsync(model.UserId);
+            // ekleme işlemiyse
             if (model.IsAdded)
             {
                 if (!(await _userManager.IsInRoleAsync(user, model.RoleName)))
                 {
                     await _userManager.AddToRoleAsync(user, model.RoleName);
+                    //Advisorlara özgü yeni özellikle içeren tablo için
+                    if (model.RoleName=="Advisor")
+                    {
+                        Author IsAuthor = _authorService.GetSingle(i => i.UserId == user.Id);
+                        if (IsAuthor==null)
+                        {
+                            Author author = new Author
+                            {
+                                UserId = model.UserId,
+                                IsDeleted = false
+                            };
+                            _authorService.Add(author);
+                        }
+                      
+                    }
                     return RedirectToAction("RoleAssign");
                 }
 
             }
+            //çıkarma aişlemiyse
             if (await _userManager.IsInRoleAsync(user, model.RoleName))
             {
                 await _userManager.RemoveFromRoleAsync(user, model.RoleName);
+                //yazar tablosundan silme
+                if (model.RoleName == "Advisor")
+                {
+                   Author author= _authorService.GetSingle(i => i.UserId == user.Id);
+                    if (author!=null)
+                    {
+                        author.IsDeleted = true;
+                        _authorService.Update(author);
+                    }
+                }
                 return RedirectToAction("RoleAssign");
             }
 

@@ -23,14 +23,7 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
                 {
                     context.Categories.AddRange(Categories);
                 }
-                if (context.Authors.Count() == 0)
-                {
-                    context.Authors.AddRange(Authors);
-                }
-                if (context.AuthorHeadings.Count() == 0)
-                {
-                    context.AuthorHeadings.AddRange(AuthorHeadings);
-                }
+             
                 context.SaveChanges();
             }
         }
@@ -49,66 +42,7 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
             new Heading(){HeadingName="Pisikolojik Tedavi İçin Tek Çözüm Yolu",HeadingContent="Eğitim hayatım boyunca ve sonrasında kendimi geliştirmek, psikoloji alanındaki deneyimlerimi artırmak amaçlı birçok projede gönüllü olarak yer aldım ve hastanelerde stajyer psikolog olarak görev yapma fırsatı buldum.",HeadingUrl="pisikolojik-tedavi-icin-tek-cözüm-yolu"}
         };
 
-        private static Author[] Authors =
-        {
-            new Author(){
-            AuthorName="Recep",
-            AuthorSurname="Çelimli",
-            AuthorPhone="5315489845",
-            AuthorImages="recep.jpg",
-            AuthorMail="recep@hotmail.com",
-            AuthorUrl="recep"
-            
-            },
-             new Author(){
-            AuthorName="Mikail",
-            AuthorSurname="Ayan",
-            AuthorPhone="5315434845",
-            AuthorImages="mikail.jpg",
-            AuthorMail="mikail@hotmail.com",
-             AuthorUrl="mikail"
-            },
-              new Author(){
-            AuthorName="Asli",
-            AuthorSurname="Aytaç",
-            AuthorPhone="5315489878",
-            AuthorImages="asli.jpg",
-            AuthorMail="asli@hotmail.com",
-             AuthorUrl="asli"
-
-            },
-               new Author(){
-            AuthorName="Ebubekir",
-            AuthorSurname="Rençber",
-            AuthorPhone="5315489985",
-            AuthorImages="ebubekir.jpg",
-            AuthorMail="ebubekir@hotmail.com",
-             AuthorUrl="ebubekir"
-            },
-           
-                             new Author(){
-            AuthorName="Okan",
-            AuthorSurname="Karakoç",
-            AuthorPhone="5315489985",
-            AuthorImages="okan.jpg",
-            AuthorMail="okan@hotmail.com",
-            AuthorUrl="okan"
-            },
-        };
-
-        private static AuthorHeading[] AuthorHeadings =
-        {
-            new AuthorHeading(){Author=Authors[0],Heading=Headings[1]},
-            new AuthorHeading(){Author=Authors[0],Heading=Headings[2]},
-            new AuthorHeading(){Author=Authors[1],Heading=Headings[3]},
-            new AuthorHeading(){Author=Authors[2],Heading=Headings[4]},
-            new AuthorHeading(){Author=Authors[2],Heading=Headings[1]},
-            new AuthorHeading(){Author=Authors[3],Heading=Headings[1]},
-            new AuthorHeading(){Author=Authors[3],Heading=Headings[0]},
-            new AuthorHeading(){Author=Authors[4],Heading=Headings[3]},
-            new AuthorHeading(){Author=Authors[4],Heading=Headings[2]},
-            
-        };
+        
 
         private static Category[] Categories =
         {

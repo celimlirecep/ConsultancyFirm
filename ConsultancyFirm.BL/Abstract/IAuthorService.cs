@@ -8,15 +8,10 @@ using System.Threading.Tasks;
 
 namespace ConsultancyFirm.BL.Abstract
 {
-    public interface IAuthorService
+    public interface IAuthorService:IGenericService<Author>
     {
-        Author GetById(int id);
-        List<Author> GetAll();
-        void Update(Author entity);
-        void Delete(Author entity);
-        void Add(Author entity);
-        List<Author> Get(Expression<Func<Author, bool>> filter);
-        List<Author> GetProductWithPages(int page, int pageSize);
+       
+        List<Author> GetAuthorsWithPages(int page, int pageSize);
      
     }
 }

@@ -11,25 +11,7 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
 {
     public class EFCoreHeadingRepository : EFCoreBaseRepository<Heading, ConsultantFirmContext>, IHeadingRepository
     {
-        public List<Heading> GetHeadingByAuthors(string authorNameUrl)
-        {
-            using (var context = new ConsultantFirmContext())
-            {
-                var headings= context.Headings
-                     .Where(i => i.IsApproved)
-                     .AsQueryable();
-                     if (!string.IsNullOrEmpty(authorNameUrl))
-                {
-                    headings = headings
-                    .Include(i => i.AuthorHeadings)
-                    .ThenInclude(i => i.Author)
-                 .Where(i => i.AuthorHeadings.Any(i => i.Author.AuthorUrl == authorNameUrl));
-                     
-                }
-                return headings.ToList();
-                     
-            }
-        }
+        
 
 
         public List<Heading> GetHomePageHeadings()

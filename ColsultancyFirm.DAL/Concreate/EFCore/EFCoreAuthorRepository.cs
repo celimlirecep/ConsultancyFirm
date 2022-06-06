@@ -10,7 +10,7 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
 {
     public class EFCoreAuthorRepository : EFCoreBaseRepository<Author, ConsultantFirmContext>, IAuthorRepository
     {
-        public List<Author> GetProductWithPages(int page, int pageSize)
+        public List<Author> GetAuthorsWithPages(int page, int pageSize)
         {
             using (var context=new ConsultantFirmContext())
             {

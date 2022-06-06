@@ -48,7 +48,9 @@ namespace ConsultancyFirm.UI.Controllers
                 Email = model.Email,
                 MemberImage = image
             };
+            
             var result = await _userManager.CreateAsync(user, model.Password);//tabloya kaydet
+         
             //sorun oluşması durumunda serverda
             if (!result.Succeeded)
             {
@@ -65,6 +67,7 @@ namespace ConsultancyFirm.UI.Controllers
             });
             //mail gönderme
             await _emailSender.SenderEmailAsync(model.Email, "PisikoBar Hesap Onaylama", $"Lütfen email hesabınızı onaylamak için <a href='https://localhost:5001{url}'>tıklayınız</a>");
+          
             return RedirectToAction("login");
          
         }

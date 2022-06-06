@@ -17,12 +17,11 @@ namespace ConsultancyFirm.UI.Controllers
         }
         public IActionResult Index()
         {
-            return View();
-        }
+            _headingService.GetHeadingByCategories();
 
-        public IActionResult HeadingList()
-        {
             return View(_headingService.GetAll());
         }
+
+       
     }
 }

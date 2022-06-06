@@ -42,6 +42,11 @@ namespace ConsultancyFirm.BL.Concreate
             throw new NotImplementedException();
         }
 
+        public Category GetSingle(Expression<Func<Category, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Category entity)
         {
             throw new NotImplementedException();

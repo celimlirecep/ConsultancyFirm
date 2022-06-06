@@ -19,6 +19,16 @@ namespace ConsultancyFirm.BL.Concreate
             _memberServiceRepository = memberServiceRepository;
         }
 
+        public void Add(MemberService entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(MemberService entity)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<MemberService> Get(Expression<Func<MemberService, bool>> filter)
         {
             return _memberServiceRepository.Get(filter);
@@ -32,6 +42,11 @@ namespace ConsultancyFirm.BL.Concreate
         public MemberService GetById(int id)
         {
             return _memberServiceRepository.GetById(id);
+        }
+
+        public MemberService GetSingle(Expression<Func<MemberService, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(MemberService entity)

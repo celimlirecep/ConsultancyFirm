@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace ConsultancyFirm.BL.Abstract
 {
-    public interface IMemberService_Service 
+    public interface IMemberService_Service :IGenericService<MemberService>
     {
-        List<MemberService> GetAll();
-        List<MemberService> Get(Expression<Func<MemberService, bool>> filter);
-        MemberService GetById(int id);
-        void Update(MemberService entity);
+       
     }
 }
