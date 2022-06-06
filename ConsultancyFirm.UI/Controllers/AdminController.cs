@@ -21,9 +21,19 @@ namespace ConsultancyFirm.UI.Controllers
             this._userManager = userManager;
         }
 
-        public IActionResult AdminPage()
+        public async Task<IActionResult> AdminPage()
         {
-            return View();
+
+            var advisors = await _userManager.GetUsersInRoleAsync("Advisor");
+            var regularUsers = await _userManager.GetUsersInRoleAsync("User");
+            DashBoardModel dashBoardModel = new DashBoardModel()
+            {
+                TotalUsers = _userManager.Users.Count(),
+                TotalAdvisors = advisors.Count(),
+                TotalRegularUsers = regularUsers.Count()
+            };
+
+            return View(dashBoardModel);
         }
         public IActionResult RoleCreate()
         {
@@ -32,7 +42,7 @@ namespace ConsultancyFirm.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> RoleCreate(string RoleName)
         {
-            var result = await _roleManager.CreateAsync(new IdentityRole(RoleName)) ;
+            var result = await _roleManager.CreateAsync(new IdentityRole(RoleName));
             if (result.Succeeded)
             {
                 return RedirectToAction("RoleList");
@@ -43,10 +53,10 @@ namespace ConsultancyFirm.UI.Controllers
             }
             return View();
         }
-        public  IActionResult RoleList()
+        public IActionResult RoleList()
         {
-            
-            return View( _roleManager.Roles);
+
+            return View(_roleManager.Roles);
         }
         public async Task<IActionResult> RoleEdit(string id)
         {
@@ -64,7 +74,7 @@ namespace ConsultancyFirm.UI.Controllers
                 return RedirectToAction("RoleList");
             }
             return View(role);
-            
+
 
         }
         public async Task<IActionResult> RoleDelete(string id)
@@ -78,11 +88,11 @@ namespace ConsultancyFirm.UI.Controllers
             List<User> userList = _userManager.Users.ToList();
             List<IdentityRole> roleList = _roleManager.Roles.ToList();
             List<UserRolesModel> userRoleList = new List<UserRolesModel>();
-          
+
             foreach (var user in userList)
             {
-              
-             
+
+
                 userRoleList.Add(new UserRolesModel()
                 {
                     UserRoles = await _userManager.GetRolesAsync(user) as List<string>,
@@ -93,8 +103,8 @@ namespace ConsultancyFirm.UI.Controllers
             {
                 Rolls = roleList,
                 Users = userList,
-                UserRolesList=userRoleList
-                
+                UserRolesList = userRoleList
+
             };
 
             return View(model);
@@ -123,7 +133,7 @@ namespace ConsultancyFirm.UI.Controllers
             return RedirectToAction("RoleAssign");
         }
 
-        public  IActionResult MemberList()
+        public IActionResult MemberList()
         {
             return View(_userManager.Users.ToList());
         }
@@ -151,7 +161,7 @@ namespace ConsultancyFirm.UI.Controllers
                 {
                     selectedRoles = selectedRoles ?? new string[] { };
                     await _userManager.AddToRolesAsync(user, selectedRoles);
-                    return Redirect("~/admin/user/list");
+                    return Redirect("~/admin/MemberList");
                 }
                 foreach (var error in result.Errors)
                 {
@@ -166,7 +176,98 @@ namespace ConsultancyFirm.UI.Controllers
             return View(model);
         }
 
-      
+        public async Task<IActionResult> UserEdit(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                var selectedRoles = await _userManager.GetRolesAsync(user);
+                ViewBag.Roles = _roleManager.Roles.Select(i => i.Name);
+                return View(new UserDetailsModel()
+                {
+                    UserId = user.Id,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    EmailConfirmed = user.EmailConfirmed,
+                    SelectedRoles = selectedRoles
+                });
+            }
+            return RedirectToAction("MemberList");
+        }
+        [HttpPost]
+        public async Task<IActionResult> UserEdit(UserDetailsModel model, string[] selectedRoles)
+        {
+            var roles = _roleManager.Roles.Select(i => i.Name);
+            ViewBag.Roles = roles;
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(model.UserId);
+                if (user != null)
+                {
+                    user.FirstName = model.FirstName;
+                    user.LastName = model.LastName;
+                    user.UserName = model.UserName;
+                    user.Email = model.Email;
+                    user.EmailConfirmed = model.EmailConfirmed;
+
+                    var result = await _userManager.UpdateAsync(user);
+                    if (result.Succeeded && selectedRoles != null)
+                    {
+                        var userRoles = await _userManager.GetRolesAsync(user);
+                        await _userManager.AddToRolesAsync(user, selectedRoles.Except(userRoles).ToArray<string>());
+                        await _userManager.RemoveFromRolesAsync(user, userRoles.Except(selectedRoles).ToArray<string>());
+                        return RedirectToAction("MemberList");
+                    }
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View(model);
+                }
+                ModelState.AddModelError("", "Böyle bir kullanıcı yok!");
+                return View(model);
+            }
+            return View(model);
+        }
+
+        public async Task<IActionResult> UserDelete(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Böyle bir kullanıcı bulunamamıştır");
+                return RedirectToAction("MemberList");
+            }
+            var rollers = await _userManager.GetRolesAsync(user);
+
+            if (rollers != null)
+            {
+                var result = await _userManager.RemoveFromRolesAsync(user, rollers.ToArray<string>());
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("", "Sistemde bir hata oluştu daha sonra tekrar deneyiniz!");
+                    return RedirectToAction("MemberList");
+                }
+            }
+
+            user.EmailConfirmed = false;
+            user.Id = user.Id;
+            user.FirstName = user.FirstName;
+            user.LastName = user.LastName;
+            user.UserName = user.UserName;
+            user.Email = user.Email;
+            var userUpdateResult = await _userManager.UpdateAsync(user);
+            if (!userUpdateResult.Succeeded)
+            {
+                ModelState.AddModelError("", "Sistemde bir hata oluştu daha sonra tekrar deneyiniz!");
+                return RedirectToAction("MemberList");
+            }
+
+            return RedirectToAction("MemberList");
+
+        }
 
 
     }

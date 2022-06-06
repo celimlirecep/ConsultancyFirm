@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ConsultancyFirm.BL.Abstract;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,20 @@ namespace ConsultancyFirm.UI.Controllers
 {
     public class AdminHeadingController : Controller
     {
+        private IHeadingService _headingService;
+
+        public AdminHeadingController(IHeadingService headingService)
+        {
+            _headingService = headingService;
+        }
         public IActionResult Index()
         {
             return View();
+        }
+
+        public IActionResult HeadingList()
+        {
+            return View(_headingService.GetAll());
         }
     }
 }

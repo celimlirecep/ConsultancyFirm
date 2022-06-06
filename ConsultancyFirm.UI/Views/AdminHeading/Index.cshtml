@@ -1,4 +1,32 @@
-﻿
+﻿@model IEnumerable<User>
+@{
+    ViewData["Title"] = "Admin Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@section Css {
+    <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#userList').DataTable(
+                {
+                    lengthMenu: [
+                        [2, 5, 10, 20, 40, -1],
+                        [2, 5, 10, 20, 40, "Tümü"]
+                    ],
+                    language: {
+                        url: "//cdn.datatables.net/plug-ins/1.12.1/i18n/tr.json"
+                    }
+                }
+            );
+        });
+    </script>
+}
 @{
     ViewData["Title"] = "Admin Page";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -20,16 +48,20 @@
                             #
                         </th>
                         <th style="width: 20%">
-                            Project Name
+                            Başlık Adı
                         </th>
                         <th style="width: 30%">
-                            Team Members
+                            Yazarları
                         </th>
                         <th>
-                            Project Progress
+                           Is Status
                         </th>
                         <th style="width: 8%" class="text-center">
-                            Status
+                            Is Anasayfa
+                        </th>
+                     
+                        <th style="width: 8%" class="text-center">
+                            İşlemler
                         </th>
                         <th style="width: 20%">
                         </th>
