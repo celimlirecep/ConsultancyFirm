@@ -10,9 +10,11 @@ namespace ConsultancyFirm.UI.Models
     {
         public Heading HeadingModel { get; set; }
         public List<Author> AuthorsModel { get; set; }
-        public List<Category> Categories { get; set; }
-        public string AuthorFullName { get; set; }
-        public string AuthorImage { get; set; }
+        public string CategoryName { get; set; }
+        public List<string> AuthorImage { get; set; }
+        public List<string> AuthorsFullName { get; set; }
+      
+
 
 
     }

@@ -1,4 +1,4 @@
-﻿@model List<Heading>
+﻿@model List<HeadingCardModel>
 @{
     ViewData["Title"] = "Admin Page";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -78,37 +78,41 @@
                         </td>
                         <td>
                             <a>
-                                @head.HeadingName
+                                @head.HeadingModel.HeadingName
                             </a>
                             <br />
                             <small>
-                                @(((DateTime)head.HeadingPublishTime).ToString("dd MMM yyyy"))
+                                @(((DateTime)head.HeadingModel.HeadingPublishTime).ToString("dd MMM yyyy"))
                             </small>
                         </td>
-                        <td>
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar.png">
-                                </li>
+                        @foreach (var image in head.AuthorImage)
+                        {
+                            <td>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <img alt="Avatar" class="table-avatar" src="~/@image">
+                                    </li>
 
-                            </ul>
+                                </ul>
+                            </td>
+                        }
+
+                    <td class="list-inline">
+
+                        @head.CategoryName
+
+
+                    </td>
+                        <td class="list-inline">
+
+                            @head.HeadingModel.IsHome
+
+
                         </td>
                         <td class="list-inline">
-                            
-                                kategori
-                           
 
-                        </td>
-                        <td class="list-inline">
-                            
-                                @head.IsHome
-                           
+                            @head.HeadingModel.IsApproved
 
-                        </td>
-                        <td class="list-inline">
-                          
-                                @head.IsApproved
-                         
 
                         </td>
 

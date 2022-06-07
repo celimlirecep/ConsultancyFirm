@@ -10,8 +10,8 @@ namespace ColsultancyFirm.DAL.Abstract
     public interface IHeadingRepository:IBaseRepository<Heading>
     {
         List<Heading> GetHomePageHeadings();
-       
-      
+
+         List<Heading> GetHeadingWithAuthorWithCategory();
         List<Heading> GetHeadingByCategories(string categoryUrl);
     }
 }

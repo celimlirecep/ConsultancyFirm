@@ -12,7 +12,9 @@ namespace ConsultancyFirm.BL.Abstract
     {
     
         List<Heading> GetHomePageHeadings();
-        public List<Heading> GetHeadingByCategories(string category);
-     
+        List<Heading> GetHeadingByCategories(string category);
+        List<Heading> GetHeadingWithAuthorWithCategory();
+
+
     }
 }

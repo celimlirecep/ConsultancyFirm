@@ -49,6 +49,18 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
             }
         }
 
-      
+        public List<Heading> GetHeadingWithAuthorWithCategory()
+        {
+            using (var context =new ConsultantFirmContext())
+            {
+                return context.Headings
+                    .Include(i => i.AuthorHeadings)
+                    .ThenInclude(i => i.Author)
+                    .Include(i=>i.Category)
+                    .ToList();
+            }
+        }
+
+       
     }
 }

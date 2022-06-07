@@ -51,6 +51,11 @@ namespace ConsultancyFirm.BL.Concreate
           return  _headingrepository.GetHeadingByCategories(category);
         }
 
+        public List<Heading> GetHeadingWithAuthorWithCategory()
+        {
+            return _headingrepository.GetHeadingWithAuthorWithCategory();
+        }
+
         public List<Heading> GetHomePageHeadings()
         {
             return _headingrepository.GetHomePageHeadings();

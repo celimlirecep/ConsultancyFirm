@@ -59,16 +59,13 @@ namespace ConsultancyFirm.UI
                 options.LoginPath = "/login";
                 options.LogoutPath = "/logout";
                 options.AccessDeniedPath = "/accesdenied";
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);//yarým saat cookiyi sakla
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);//yarým saat cookiyi sakla
                 options.SlidingExpiration = true;//her requestte iþlemi 0 la
-
                 options.Cookie = new CookieBuilder()
                 {
                     HttpOnly = true,//sadece authentice olmuþ pencerede açýk kalsýn
                     Name = "ConsultancyFirm.Security.Cookie",
                     SameSite = SameSiteMode.Strict// açýlan pencere ile sýnýrlý
-
-
                 };
             });
             //mail iþlemleri
