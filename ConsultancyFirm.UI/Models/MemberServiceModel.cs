@@ -10,6 +10,7 @@ namespace ConsultancyFirm.UI.Models
     public class MemberServiceModel
     {
         public User User { get; set; }
+        public List<User> Users { get; set; }
         public List<Category> Categories { get; set; }
         public List<Author> Authors { get; set; }
         public Author Author { get; set; }

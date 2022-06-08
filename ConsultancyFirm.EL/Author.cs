@@ -10,6 +10,7 @@ namespace ConsultancyFirm.EL
     public  class Author
     {
         public int AuthorId { get; set; }
+        public string AuthorFullName { get; set; }
         public string UserId { get; set; }
         public Decimal AuthorHourlyWage { get; set; }
         public string AuthorAbout { get; set; }

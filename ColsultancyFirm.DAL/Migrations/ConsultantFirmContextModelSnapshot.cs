@@ -25,6 +25,9 @@ namespace ColsultancyFirm.DAL.Migrations
                     b.Property<string>("AuthorAbout")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("AuthorFullName")
+                        .HasColumnType("TEXT");
+
                     b.Property<decimal>("AuthorHourlyWage")
                         .HasColumnType("TEXT");
 
@@ -180,6 +183,32 @@ namespace ColsultancyFirm.DAL.Migrations
                     b.HasKey("MemberServiceId");
 
                     b.ToTable("MemberServices");
+                });
+
+            modelBuilder.Entity("ConsultancyFirm.EL.Message", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("MessageContent")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MessageFrom")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("MessageSendDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MessageTitle")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MessageTo")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MessageId");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("ConsultancyFirm.EL.AuthorCategory", b =>

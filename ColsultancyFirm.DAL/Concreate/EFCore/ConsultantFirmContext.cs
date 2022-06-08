@@ -17,6 +17,8 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
       
         public DbSet<HomeSlider> HomeSliders { get; set; }
         public DbSet<MemberService> MemberServices { get; set; }
+        public DbSet<Message> Messages { get; set; }
+
 
 
 

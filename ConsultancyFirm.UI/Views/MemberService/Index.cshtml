@@ -32,7 +32,7 @@
                         <td>
                             <div class="form-group">
                                
-                                <select class="custom-select-sm" asp-for="Category.CategoryId" asp-items="@ViewBag.Category">
+                                <select  class="form-control" asp-for="Category.CategoryId" asp-items="@ViewBag.Category">
                                     <option value="0">Hizmet Birimini Seçiniz</option>
                                 </select>
 
@@ -43,7 +43,7 @@
                         <td>
                             <div class="form-group">
 
-                                <select asp-for="Author.AuthorId" asp-items="@ViewBag.Author">
+                                <select class="form-control" asp-for="Author.AuthorId" asp-items="@ViewBag.Author">
                                     <option value="0">Danışman Seçiniz</option>
                                 </select>
                                
@@ -52,7 +52,7 @@
                         <td>
                             <div class="form-group">
 
-                                <input type="datetime-local" asp-for="MemberService.AppointmentTime" />
+                                <input type="datetime-local" class="form-control" asp-for="MemberService.AppointmentTime" />
                             </div>
                         </td>
                     </tr>
@@ -85,14 +85,14 @@
                             {
                                 <tr>
                                     <th>@(((Category)(Model.Categories.Find(x=>x.CategoryId==item.CategoryId))).CategoryName)</th>
-                                    @*<th>@(((Author)(Model.Authors.Find(x=>x.AuthorId==item.AuthorId))).AuthorFullName)</th>*@
-                                    <th>@item.AppointmentTime</th>
+                                    <th>@(((Author)(Model.Authors.Find(x=>x.AuthorId==item.AuthorId))).AuthorFullName)</th>
+                                    <th>@item.AppointmentTime.ToString("dd MMM yyyy")</th>
                                     <th>
                                         <form asp-action="MemberAppointment" method="post">
                                             <input type="hidden" name="memberServiceId" value="@item.MemberServiceId" />
                                             <input type="hidden" name="userId" value="@Model.User.Id" />
                                             <input type="hidden" name="userName" value="@Model.User.UserName" />
-                                            <input type="submit" class="btn btn-info" value="Randevu Al" />
+                                            <input type="submit" class="btn btn-success" value="Randevu Al" />
                                         </form>
                                     </th>
 

@@ -132,6 +132,7 @@ namespace ConsultancyFirm.UI.Controllers
                             Author author = new Author
                             {
                                 UserId = model.UserId,
+                                AuthorFullName=user.FirstName+user.LastName,
                                 IsDeleted = false
                             };
                             _authorService.Add(author);

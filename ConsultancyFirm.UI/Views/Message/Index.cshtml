@@ -1,0 +1,85 @@
+﻿@model MessageModel
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <partial name="_MemberCard" model="Model.User"/>
+    </div>
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-5">
+                <partial name="_MessageBox" />
+
+            </div>
+            <div class="col-md-6">
+                <br />
+                <form asp-action="MessageSend" method="post">
+                    <div class="form-group">
+                     
+                        <select class="form-control" asp-items="ViewBag.Author" asp-for="Author.AuthorId">
+                            <option value="0">Mesaj göndermek istediğiz danışmanı seçiniz</option>
+                        </select>
+                    </div>
+                    <br />
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" asp-for="Message.MessageTitle"  placeholder="Konu Başlığınız..." />
+                    </div>
+                    <br />
+                    <div class="form-group">
+
+                        <textarea class=" form-control" style="resize:none;" rows="4" maxlength="255"type="text" asp-for="Message.MessageContent" value="" placeholder="İçeriğiniz..." ></textarea>
+                    </div>
+                    <br />
+                    <div class="d-flex justify-content-center" >
+                        <button type="submit" class="btn btn-primary form-control">Gönder</button>
+                    </div>
+                </form>
+               
+
+            </div>
+           
+        </div>
+        <br />
+        <div class="row">
+            <div class="d-flex justify-content-center col-md-11">
+                <a  class="btn btn-primary btn-block mb-3 form-control">Gelen Mesajlar</a>
+            </div>
+            <br />
+            <div class="col-md-11">
+                <table class="table table-light">
+                    <thead>
+                        <tr>
+                            <th>Gönderen </th>
+                            <th>Mesaj Başlığı</th>
+                            <th>İçerik</th>
+                            <th>Gönderim Zamanı</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Messages != null)
+                        {
+                            @foreach (var message in Model.Messages)
+                            {
+                                <tr class="border">
+                                    <td>@message.MessageFrom</td>
+                                    <td>@message.MessageTitle</td>
+                                    <td>@message.MessageContent.Substring(0, 10) ...</td>
+                                    <td>@message.MessageSendDate.ToString("dd MMM yyyy")</td>
+                                </tr>
+
+                            }
+                        }
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>

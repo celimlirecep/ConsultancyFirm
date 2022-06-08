@@ -33,7 +33,7 @@ namespace ConsultancyFirm.UI.Controllers
         public async Task<IActionResult> Index(string username, MemberServiceModel model=null)
         {
             List<MemberService> memberServices = null;
-            if (model.Author!=null && model.Category!=null)
+            if (model.Author != null && model.Category != null)
             {
                 if (model.Author.AuthorId != 0 && model.Category.CategoryId == 0)
                 {
@@ -49,10 +49,10 @@ namespace ConsultancyFirm.UI.Controllers
                 }
                 else
                 {
-                    
+
                     memberServices = _memberservice_Service.Get(i => i.CategoryId == model.Category.CategoryId && i.AuthorId == model.Author.AuthorId && string.IsNullOrEmpty(i.UserId));
                 }
-              
+
             }
             else
             {
@@ -66,12 +66,13 @@ namespace ConsultancyFirm.UI.Controllers
             MemberServiceModel memberServiceModel = new MemberServiceModel()
             {
                 User = user,
+                Users = _userManager.Users.ToList(),
                 Categories = _categoryService.GetAll(),
                 Authors = _authorService.GetAll(),
                 MemberServices = memberServices
             };
             ViewBag.Category = new SelectList(_categoryService.GetAll(), "CategoryId", "CategoryName");
-            ViewBag.Author = new SelectList(_authorService.GetAll(), "AuthorId", "AuthorFullName");
+            ViewBag.Author =  new SelectList(_authorService.GetAll(), "AuthorId", "AuthorFullName");
             return View(memberServiceModel);
         }
 

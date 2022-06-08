@@ -328,3 +328,5 @@ C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Admin\UserCreate.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\AdminHeading\Index.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Shared\Components\LoginLayout\default.cshtml.g.cs
+C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Message\Index.cshtml.g.cs
+C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Message\_MessageBox.cshtml.g.cs

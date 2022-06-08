@@ -87,6 +87,8 @@ namespace ConsultancyFirm.UI
             services.AddScoped<IHomeSliderRepository, EFCoreHomeSliderRespository>();
             services.AddScoped<IMemberService_Service, MemberServiceManager>();
             services.AddScoped<IMemberServiceRepository, EFCoreMemberServiceRepository>();
+            services.AddScoped<IMessageService, MessageManager>();
+            services.AddScoped<IMessageRepository, EFCoreMessageRepository>();
 
             services.AddControllersWithViews();
         }
@@ -116,6 +118,11 @@ namespace ConsultancyFirm.UI
             {
                 endpoints.MapControllerRoute(
                 name: "appointment",
+                pattern: "mypage/message",
+                defaults: new { controller = "Message", action = "Index" }
+                );
+                endpoints.MapControllerRoute(
+                name: "appointment",
                 pattern: "mypage/history/{username?}",
                 defaults: new { controller = "MemberService", action = "MemberAppointment" }
                 );
@@ -134,7 +141,7 @@ namespace ConsultancyFirm.UI
                   );
                 endpoints.MapControllerRoute(
                       name: "loginpage",
-                      pattern: "memberpage/{username?}",
+                      pattern: "mypage/{username?}",
                       defaults: new { controller = "Account", action = "MemberPage" }
                   );
 
