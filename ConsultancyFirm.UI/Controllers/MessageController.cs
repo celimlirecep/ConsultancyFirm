@@ -25,15 +25,26 @@ namespace ConsultancyFirm.UI.Controllers
             _messageService = messageService;
         }
 
-        public async Task<IActionResult> Index()
+        //default gelen mailler IsReciveMail true olursa gönderilenler açılacak
+        public async Task<IActionResult> Index(bool IsReciveMail)
         {
             User user = await _userManager.GetUserAsync(User);
-            ViewBag.Author = new SelectList(_authorService.GetAll(), "AuthorId", "AuthorFullName");
+           
+           
+            if (await _userManager.IsInRoleAsync(user,"Advisor") || await _userManager.IsInRoleAsync(user, "Admin"))
+            {
+                ViewBag.ToMail = new SelectList(_userManager.Users, "Id", "UserFullName");
+            }
+            else
+            {
+                ViewBag.ToMail = new SelectList( await _userManager.GetUsersInRoleAsync("Advisor"), "Id", "UserFullName");
+            }
+           
             MessageModel messageModel = new MessageModel()
             {
                 User = user,
-                Authors = _authorService.GetAll(),
-                Messages = _messageService.Get(i=>i.MessageTo==user.Email),
+               
+                Messages = IsReciveMail? _messageService.Get(i => i.MessageFrom == user.Email) : _messageService.Get(i=>i.MessageTo==user.Email),
             };
             return View(messageModel);
         }
@@ -43,8 +54,9 @@ namespace ConsultancyFirm.UI.Controllers
             var userFrom =await _userManager.GetUserAsync(User);
 
             //tO MAİL
-            var author=_authorService.GetSingle(i => i.AuthorId == model.Author.AuthorId);
-            var userTo=await _userManager.FindByIdAsync(author.UserId);
+
+            var userTo = await _userManager.FindByIdAsync(model.User.Id);
+            
             Message message = new Message()
             {
                 MessageFrom = userFrom.Email,
@@ -57,5 +69,6 @@ namespace ConsultancyFirm.UI.Controllers
 
             return RedirectToAction("Index");
         }
+        
     }
 }

@@ -1,34 +1,66 @@
-﻿
-<div class="card">
-    <a href="/Message/NewMessage" class="btn btn-primary btn-block mb-3">Mesaj Kutunuz</a>
-    <div class="card-body p-0">
-        <ul class="nav nav-pills flex-column">
-            <li class="nav-item active">
-                <a href="/Contact/Index" class="nav-link">
-                    <i class="fas fa-mail-bulk"></i> İletişim
-                    <span class="badge bg-primary float-right">0</span>
-                </a>
-            </li>
-            <li class="nav-item active">
-                <a href="/Message/Inbox" class="nav-link">
-                    <i class="fas fa-inbox"></i> Gelen Mesajlar
-                    <span class="badge bg-primary float-right">12</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/Message/SendBox" class="nav-link">
-                    <i class="far fa-envelope"></i> Gönderilen Mesajlar
-                </a>
-            </li>
-           
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-trash-alt"></i> Çöp
-                </a>
-            </li>
+﻿@model MessageModel
 
-        </ul>
-        <br />
+<div class="col-md-5">
+    <div class="card">
+        <a href="/Message/NewMessage" class="btn btn-primary btn-block mb-3">Mesaj Kutunuz</a>
+        <div class="card-body p-0">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item active">
+                    <a href="/Contact/Index" class="nav-link">
+                        <i class="fas fa-mail-bulk"></i> İletişim
+                        <span class="badge bg-primary float-right">0</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="message" class="nav-link">
+                        <i class="fas fa-inbox"></i> Gelen Mesajlar
+                        <span class="badge bg-primary float-right">12</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="message/true" class="nav-link">
+                        <i class="far fa-envelope"></i> Gönderilen Mesajlar
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-trash-alt"></i> Çöp
+                    </a>
+                </li>
+
+            </ul>
+            <br />
+        </div>
+        <!-- /.card-body -->
     </div>
-    <!-- /.card-body -->
+
+
+</div>
+<div class="col-md-6">
+    <br />
+    <form asp-action="MessageSend" method="post">
+        <div class="form-group">
+
+            <select class="form-control" asp-items="ViewBag.ToMail" asp-for="User.Id">
+                <option value="0">Mesaj göndermek istediğiz kişiyi seçiniz</option>
+            </select>
+        </div>
+        <br />
+        <div class="form-group">
+
+            <input type="text" class="form-control" asp-for="Message.MessageTitle" placeholder="Konu Başlığınız..." />
+        </div>
+        <br />
+        <div class="form-group">
+
+            <textarea class=" form-control" style="resize:none;" rows="4" maxlength="255" type="text" asp-for="Message.MessageContent" value="" placeholder="İçeriğiniz..."></textarea>
+        </div>
+        <br />
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary form-control">Gönder</button>
+        </div>
+    </form>
+
+
 </div>

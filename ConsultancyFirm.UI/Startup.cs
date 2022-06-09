@@ -116,9 +116,10 @@ namespace ConsultancyFirm.UI
 
             app.UseEndpoints(endpoints =>
             {
+               
                 endpoints.MapControllerRoute(
                 name: "appointment",
-                pattern: "mypage/message",
+                pattern: "mypage/message/{IsReciveMail?}",
                 defaults: new { controller = "Message", action = "Index" }
                 );
                 endpoints.MapControllerRoute(

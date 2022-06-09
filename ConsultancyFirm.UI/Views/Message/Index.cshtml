@@ -10,38 +10,9 @@
     </div>
     <div class="col-md-8">
         <div class="row">
-            <div class="col-md-5">
-                <partial name="_MessageBox" />
+            <partial name="_MessageBox" />
+          
 
-            </div>
-            <div class="col-md-6">
-                <br />
-                <form asp-action="MessageSend" method="post">
-                    <div class="form-group">
-                     
-                        <select class="form-control" asp-items="ViewBag.Author" asp-for="Author.AuthorId">
-                            <option value="0">Mesaj göndermek istediğiz danışmanı seçiniz</option>
-                        </select>
-                    </div>
-                    <br />
-                    <div class="form-group">
-
-                        <input type="text" class="form-control" asp-for="Message.MessageTitle"  placeholder="Konu Başlığınız..." />
-                    </div>
-                    <br />
-                    <div class="form-group">
-
-                        <textarea class=" form-control" style="resize:none;" rows="4" maxlength="255"type="text" asp-for="Message.MessageContent" value="" placeholder="İçeriğiniz..." ></textarea>
-                    </div>
-                    <br />
-                    <div class="d-flex justify-content-center" >
-                        <button type="submit" class="btn btn-primary form-control">Gönder</button>
-                    </div>
-                </form>
-               
-
-            </div>
-           
         </div>
         <br />
         <div class="row">
