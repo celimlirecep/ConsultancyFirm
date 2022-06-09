@@ -26,7 +26,7 @@ namespace ConsultancyFirm.BL.Concreate
 
         public void Delete(Message entity)
         {
-            throw new NotImplementedException();
+            _messageRepository.Delete(entity);
         }
 
         public List<Message> Get(Expression<Func<Message, bool>> filter)
@@ -36,7 +36,7 @@ namespace ConsultancyFirm.BL.Concreate
 
         public List<Message> GetAll()
         {
-            throw new NotImplementedException();
+          return  _messageRepository.GetAll();
         }
 
         public Message GetById(int id)
@@ -46,7 +46,7 @@ namespace ConsultancyFirm.BL.Concreate
 
         public Message GetSingle(Expression<Func<Message, bool>> filter)
         {
-            throw new NotImplementedException();
+            return _messageRepository.GetSingle(filter);
         }
 
         public void Update(Message entity)

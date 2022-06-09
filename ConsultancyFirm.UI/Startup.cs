@@ -119,12 +119,12 @@ namespace ConsultancyFirm.UI
                
                 endpoints.MapControllerRoute(
                 name: "appointment",
-                pattern: "mypage/message/{IsReciveMail?}",
+                pattern: "mypage/message/{IsGetPage?}",
                 defaults: new { controller = "Message", action = "Index" }
                 );
                 endpoints.MapControllerRoute(
                 name: "appointment",
-                pattern: "mypage/history/{username?}",
+                pattern: "mypage/history",
                 defaults: new { controller = "MemberService", action = "MemberAppointment" }
                 );
 

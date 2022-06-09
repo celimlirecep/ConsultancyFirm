@@ -1,4 +1,5 @@
 ﻿using ConsultancyFirm.BL.Abstract;
+using ConsultancyFirm.Core;
 using ConsultancyFirm.EL;
 using ConsultancyFirm.UI.Identity;
 using ConsultancyFirm.UI.Models;
@@ -76,9 +77,9 @@ namespace ConsultancyFirm.UI.Controllers
             return View(memberServiceModel);
         }
 
-        public async Task<IActionResult> MemberAppointment(string username)
+        public async Task<IActionResult> MemberAppointment()
         {
-            User user = await _userManager.FindByNameAsync(username);
+            User user = await _userManager.GetUserAsync(User);
          
             MemberServiceModel memberServiceModel = new MemberServiceModel()
             {
@@ -89,6 +90,20 @@ namespace ConsultancyFirm.UI.Controllers
             };
      
             return View(memberServiceModel);
+        }
+      
+        public IActionResult DeleteAppointment(int MemberServiceId)
+        {
+            var memberService= _memberservice_Service.GetSingle(i => i.MemberServiceId == MemberServiceId);
+            if (memberService!=null)
+            {
+               
+                TempData["Message"] = JobManager.CreateMessage("Bilgi", "Silmek istediğiniz kayda ilişkin bir kayıt bulunamamıştır", "warning");
+                return RedirectToAction("MemberAppointment");
+            }
+            _memberservice_Service.Delete(memberService);
+
+            return RedirectToAction("MemberAppointment");
         }
 
 

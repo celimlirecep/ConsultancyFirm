@@ -6,18 +6,18 @@
 
 <div class="row">
     <div class="col-md-4">
-        <partial name="_MemberCard" model="Model.User"/>
+        @await Component.InvokeAsync("MemberCard")
     </div>
     <div class="col-md-8">
         <div class="row">
             <partial name="_MessageBox" />
-          
+
 
         </div>
         <br />
         <div class="row">
             <div class="d-flex justify-content-center col-md-11">
-                <a  class="btn btn-primary btn-block mb-3 form-control">Gelen Mesajlar</a>
+                <a class="btn btn-primary btn-block mb-3 form-control">Gelen Mesajlar</a>
             </div>
             <br />
             <div class="col-md-11">
@@ -28,22 +28,62 @@
                             <th>Mesaj Başlığı</th>
                             <th>İçerik</th>
                             <th>Gönderim Zamanı</th>
+                            <th>Detay</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        @if (Model.Messages != null)
+
+                        @if (Model.GetMessages != null && Model.IsGetPage==false)
                         {
-                            @foreach (var message in Model.Messages)
-                            {
-                                <tr class="border">
-                                    <td>@message.MessageFrom</td>
-                                    <td>@message.MessageTitle</td>
-                                    <td>@message.MessageContent.Substring(0, 10) ...</td>
-                                    <td>@message.MessageSendDate.ToString("dd MMM yyyy")</td>
-                                </tr>
+                          
+                                @foreach (var message in Model.GetMessages)
+                                {
+
+                                    <tr class="border">
+                                        <td>@message.MessageFrom</td>
+                                        <td>@message.MessageTitle</td>
+                                        <td>@message.MessageContent.Substring(0, 10) ...</td>
+                                        <td>@message.MessageSendDate.ToString("dd MMM yyyy")</td>
+                                        <td>
+                                            <form asp-controller="message" asp-action="Messagedetails" method="post">
+                                                <input type="hidden" name="messageId" value="@message.MessageId" />
+                                                <input type="submit" class="btn btn-primary" value="Detay" />
+                                            </form>
+                                        </td>
+                                    </tr>
+
+
+
+                                }
+
 
                             }
-                        }
+                           @if (Model.PushMessage != null && Model.IsGetPage == true)
+                            {
+                                @foreach (var message in Model.PushMessage)
+                                {
+
+                                    <tr class="border">
+                                        <td>@message.MessageFrom</td>
+                                        <td>@message.MessageTitle</td>
+                                        <td>@message.MessageContent.Substring(0, 10) ...</td>
+                                        <td>@message.MessageSendDate.ToString("dd MMM yyyy")</td>
+                                        <td>
+                                            <form asp-controller="message" asp-action="Messagedetails" method="post">
+                                                <input type="hidden" name="messageId" value="@message.MessageId" />
+                                                <input type="submit" class="btn btn-primary" value="Detay" />
+                                            </form>
+                                        </td>
+                                    </tr>
+
+
+
+                                }
+
+                            }
+
+                        
 
                     </tbody>
 
@@ -54,3 +94,5 @@
 
     </div>
 </div>
+
+

@@ -1,4 +1,5 @@
 ﻿using ConsultancyFirm.BL.Abstract;
+using ConsultancyFirm.Core;
 using ConsultancyFirm.EL;
 using ConsultancyFirm.UI.Identity;
 using ConsultancyFirm.UI.Models;
@@ -26,7 +27,7 @@ namespace ConsultancyFirm.UI.Controllers
         }
 
         //default gelen mailler IsReciveMail true olursa gönderilenler açılacak
-        public async Task<IActionResult> Index(bool IsReciveMail)
+        public async Task<IActionResult> Index(bool IsGetPage)
         {
             User user = await _userManager.GetUserAsync(User);
            
@@ -39,12 +40,14 @@ namespace ConsultancyFirm.UI.Controllers
             {
                 ViewBag.ToMail = new SelectList( await _userManager.GetUsersInRoleAsync("Advisor"), "Id", "UserFullName");
             }
-           
+
             MessageModel messageModel = new MessageModel()
             {
                 User = user,
-               
-                Messages = IsReciveMail? _messageService.Get(i => i.MessageFrom == user.Email) : _messageService.Get(i=>i.MessageTo==user.Email),
+                //ana sayfada ilk olarak gelen mesajlar olucak gönderilen tıklanmadığı sürece
+                GetMessages = _messageService.Get(i => i.MessageTo == user.Email),
+                PushMessage = _messageService.Get(i => i.MessageFrom == user.Email),
+                IsGetPage =IsGetPage
             };
             return View(messageModel);
         }
@@ -69,6 +72,32 @@ namespace ConsultancyFirm.UI.Controllers
 
             return RedirectToAction("Index");
         }
+        public async Task<IActionResult> Messagedetails(int messageId)
+        {
+            Message  message= _messageService.GetSingle(i => i.MessageId == messageId);
+            User fromMessage = await _userManager.FindByEmailAsync(message.MessageFrom);
+            User toMessage = await _userManager.FindByEmailAsync(message.MessageTo);
+            ViewBag.MessageSender = fromMessage.MemberImage;
+            ViewBag.MessageReceiver = toMessage.MemberImage;
+
+            TimeSpan fark = DateTime.Parse(DateTime.Now.ToShortTimeString()) - message.MessageSendDate;
+            ViewBag.ElepsedTime = fark;
+
+            return View(message);
+        }
+
+        public IActionResult DeleteMessage(int messageId)
+        {
+            var message=  _messageService.GetSingle(i=>i.MessageId==messageId);
+            if (message==null)
+            {
+                TempData["Message"] = JobManager.CreateMessage("Uyarı", "Silmek istediğiniz kayıt bulunamamıştır", "warning");
+            }
+            _messageService.Delete(message);
+            return RedirectToAction("Index");
+        }
         
+
+
     }
 }

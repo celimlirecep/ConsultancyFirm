@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <partial name="_MemberCard" data="@Model" />
+        @await Component.InvokeAsync("MemberCard")
     </div>
     <div class="col-md-6">
 
@@ -22,22 +22,7 @@
 
 
                 <hr />
-                <!--<div class="row rounded">
-                    <div class="col-lg-4 col-12">-->
-                        <!-- small box -->
-                        <!--<div class="small-box bg-danger">
-                            <div class="inner text-center">
-                                <h3>0</h3>
-
-                                <p class="text-white">Güncel Randevunuz</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-bag"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                </div>-->
+               
 
             </div>
         </section>

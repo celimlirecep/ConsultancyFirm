@@ -1,0 +1,71 @@
+﻿@model Message
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        @await Component.InvokeAsync("MemberCard")
+    </div>
+    <div class="col-md-8">
+        <div class="container">
+            <div class="card text-center w-100">
+                <div class="card-header">
+                    <div class=" row d-flex ">
+                        <div class="col-md-4">
+                            <div class="top">
+                                <div class="img-container">
+                                    <img src="@ViewBag.MessageSender" alt="image">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="top">
+                                <div class="img-container">
+                                    <img src="@ViewBag.MessageReceiver" alt="image">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <hr />
+                   
+                    <h1 class="text-dark"> @Model.MessageTitle</h1>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h5 class="card-title">Gönderen: @Model.MessageFrom</h5>
+                        </div>
+                        <div>
+                            <h5 class="card-title">Alıcı: @Model.MessageTo</h5>
+                        </div>
+                      
+                        
+                    </div>
+                    <hr />
+                    <br />
+              
+                    <p class="card-text " style="font-size:20px;">@Model.MessageContent</p>
+                    <hr />
+                    <br />
+                    <form action="DeleteMessage" method="post">
+                        <input type="hidden" name="messageId" value="@Model.MessageId" />
+                        <input type="submit" class="btn btn-danger" value="Sil" />
+                    </form>
+                    <a href="#" class="btn btn-primary">Geri Dön</a>
+                </div>
+                <div class="card-footer text-muted">
+                    @(((TimeSpan)ViewBag.ElepsedTime).Days) Gün  @(((TimeSpan)ViewBag.ElepsedTime).Hours) Saat  @(((TimeSpan)ViewBag.ElepsedTime).Minutes) Dakika Önce
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+

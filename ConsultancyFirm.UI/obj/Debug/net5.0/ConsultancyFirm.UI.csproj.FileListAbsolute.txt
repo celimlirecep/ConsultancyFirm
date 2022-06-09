@@ -303,7 +303,6 @@ C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\bin\Debug\
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\bin\Debug\net5.0\System.IO.Pipelines.dll
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\bin\Debug\net5.0\FluentValidation.dll
-C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Shared\_MemberCard.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\MemberService\Index.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\MemberService\MemberAppointment.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -330,3 +329,5 @@ C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Shared\Components\LoginLayout\default.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Message\Index.cshtml.g.cs
 C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Message\_MessageBox.cshtml.g.cs
+C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Message\Messagedetails.cshtml.g.cs
+C:\Users\recep\OneDrive\Masaüstü\ConsultancyFirm\ConsultancyFirm.UI\obj\Debug\net5.0\Razor\Views\Shared\Components\MemberCard\default.cshtml.g.cs

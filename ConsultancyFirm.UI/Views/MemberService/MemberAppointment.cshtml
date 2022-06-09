@@ -12,7 +12,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <partial name="_MemberCard" Model="@Model.User" />
+        @await Component.InvokeAsync("MemberCard")
     </div>
     <div class="col-md-7">
         <h1 class="display-4">Randevular</h1><br />
@@ -22,21 +22,26 @@
                     <td>#</td>
                     <td>Hizmet Alınan Danışman Bilgileri</td>
                     <td>Randevu Zamanı</td>
+                    <td>Randevu İptal Et</td>
 
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model.MemberServices)
                 {
-                <tr>
-                    <td>  @item.MemberServiceId</td>
+                    <tr>
+                        <td>  @item.MemberServiceId</td>
 
-                    @*<td>    @(((Author)Model.Authors.Find(i=>i.AuthorId==item.AuthorId)).AuthorFullName)</td>*@
-                    <td>      @item.AppointmentTime</td>
-                </tr>
+                        <td>    @(((Author)Model.Authors.Find(i=>i.AuthorId==item.AuthorId)).AuthorFullName)</td>
+                        <td>      @item.AppointmentTime</td>
+                        <td>
+                            <form asp-controller="MemberService" asp-action="DeleteAppointment" method="post">
+                                <input type="hidden" name="MemberServiceId" value="@item.MemberServiceId" />
+                                <input type="submit" class="btn btn-danger" value="Randevuyu İptal Et" />
+                            </form>
 
-
-
+                        </td>
+                    </tr>
 
                 }
 
