@@ -122,6 +122,8 @@ namespace ConsultancyFirm.UI
                 pattern: "mypage/message/{IsGetPage?}",
                 defaults: new { controller = "Message", action = "Index" }
                 );
+               
+             
                 endpoints.MapControllerRoute(
                 name: "appointment",
                 pattern: "mypage/history",

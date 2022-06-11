@@ -39,12 +39,12 @@ namespace ConsultancyFirm.BL.Concreate
 
         public Category GetById(int id)
         {
-            throw new NotImplementedException();
+            return _categoryRepository.GetById(id);
         }
 
         public Category GetSingle(Expression<Func<Category, bool>> filter)
         {
-            throw new NotImplementedException();
+            return _categoryRepository.GetSingle(filter);
         }
 
         public void Update(Category entity)

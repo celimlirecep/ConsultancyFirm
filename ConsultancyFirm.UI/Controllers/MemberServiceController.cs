@@ -50,7 +50,6 @@ namespace ConsultancyFirm.UI.Controllers
                 }
                 else
                 {
-
                     memberServices = _memberservice_Service.Get(i => i.CategoryId == model.Category.CategoryId && i.AuthorId == model.Author.AuthorId && string.IsNullOrEmpty(i.UserId));
                 }
 
@@ -91,22 +90,21 @@ namespace ConsultancyFirm.UI.Controllers
      
             return View(memberServiceModel);
         }
-      
         public IActionResult DeleteAppointment(int MemberServiceId)
         {
             var memberService= _memberservice_Service.GetSingle(i => i.MemberServiceId == MemberServiceId);
-            if (memberService!=null)
+            if (memberService==null)
             {
                
                 TempData["Message"] = JobManager.CreateMessage("Bilgi", "Silmek istediğiniz kayda ilişkin bir kayıt bulunamamıştır", "warning");
                 return RedirectToAction("MemberAppointment");
             }
-            _memberservice_Service.Delete(memberService);
+            memberService.UserId = string.Empty;
+            _memberservice_Service.Update(memberService);
+           
 
             return RedirectToAction("MemberAppointment");
         }
-
-
         [HttpPost]
         public IActionResult MemberAppointment(string userId,int memberServiceId,string userName)
         {

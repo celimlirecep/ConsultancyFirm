@@ -13,5 +13,6 @@ namespace ColsultancyFirm.DAL.Abstract
 
          List<Heading> GetHeadingWithAuthorWithCategory();
         List<Heading> GetHeadingByCategories(string categoryUrl);
+         void Add(Heading heading, int[] authorId);
     }
 }

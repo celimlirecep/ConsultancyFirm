@@ -14,6 +14,7 @@ namespace ConsultancyFirm.BL.Abstract
         List<Heading> GetHomePageHeadings();
         List<Heading> GetHeadingByCategories(string category);
         List<Heading> GetHeadingWithAuthorWithCategory();
+        void Add(Heading heading, int[] authorId);
 
 
     }

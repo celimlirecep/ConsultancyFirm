@@ -61,6 +61,21 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
             }
         }
 
-       
+        public void Add(Heading heading, int[] authorIds)
+        {
+            using (var context=new ConsultantFirmContext())
+            {
+                context.Headings.Add(heading);
+                context.SaveChanges();
+                heading.AuthorHeadings = authorIds
+                   .Select(authorId => new AuthorHeading
+                   {
+                       AuthorId = authorId,
+                       HeadingId = heading.HeadingId
+                   }).ToList();
+                context.SaveChanges();
+
+            }
+        }
     }
 }

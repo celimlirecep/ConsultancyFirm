@@ -66,7 +66,7 @@ namespace ConsultancyFirm.UI.Controllers
                 MessageTo = userTo.Email,
                 MessageTitle = model.Message.MessageTitle,
                 MessageContent = model.Message.MessageContent,
-                MessageSendDate = DateTime.Parse(DateTime.Now.ToShortDateString())
+                MessageSendDate = DateTime.Now
             };
             _messageService.Add(message);
 
@@ -80,7 +80,7 @@ namespace ConsultancyFirm.UI.Controllers
             ViewBag.MessageSender = fromMessage.MemberImage;
             ViewBag.MessageReceiver = toMessage.MemberImage;
 
-            TimeSpan fark = DateTime.Parse(DateTime.Now.ToShortTimeString()) - message.MessageSendDate;
+            TimeSpan fark = DateTime.Now - message.MessageSendDate;
             ViewBag.ElepsedTime = fark;
 
             return View(message);

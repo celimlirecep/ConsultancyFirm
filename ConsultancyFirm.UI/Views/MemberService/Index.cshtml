@@ -51,8 +51,9 @@
                         </td>
                         <td>
                             <div class="form-group">
-
-                                <input type="datetime-local" class="form-control" asp-for="MemberService.AppointmentTime" />
+                                <input type="date" name="bday" min="2014-05-11" max="2014-05-20">
+                                @*<input class="form-control" asp-for="@Model.Month" asp-format="{0:MM}" />*@
+                                @*  <input type="datetime-local" class="form-control" asp-for="MemberService.AppointmentTime" />*@
                             </div>
                         </td>
                     </tr>

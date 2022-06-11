@@ -26,7 +26,7 @@ namespace ConsultancyFirm.BL.Concreate
 
         public void Delete(MemberService entity)
         {
-            throw new NotImplementedException();
+            _memberServiceRepository.Delete(entity);
         }
 
         public List<MemberService> Get(Expression<Func<MemberService, bool>> filter)
@@ -46,7 +46,7 @@ namespace ConsultancyFirm.BL.Concreate
 
         public MemberService GetSingle(Expression<Func<MemberService, bool>> filter)
         {
-            throw new NotImplementedException();
+          return  _memberServiceRepository.GetSingle(filter);
         }
 
         public void Update(MemberService entity)

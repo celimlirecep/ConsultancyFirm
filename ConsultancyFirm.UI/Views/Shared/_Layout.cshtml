@@ -15,108 +15,118 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body >
-    <nav class="navbar navbar-expand-lg  headerStyle  " style="margin-bottom:0px !important;">
-        <div class="container-fluid row">
-            <a class="navbar-brand pisikoBar w-25"
-               asp-controller="Home"
-               asp-action="HomePage" style="font-size:30px !important;">PisikoBar</a>
-            <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse"
-                 id="navbarNavDropdown">
-                <ul class="navbar-nav w-75 d-flex justify-content-around">
-                    <li class="nav-item">
-                        <a class="nav-link active baslikyazi" href="#">
-                            Hakkımızda
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active baslikyazi" href="/admin/AdminPage">
-                            Geçici admin sayfası
-                        </a>
-                    </li>
+    <nav class="container-fluid navbar navbar-expand-lg  headerStyle  " style="margin-bottom:0px !important;">
+        <div class="container-fluid ">
+            @*<div class="row">*@
+            <div class="d-flex justify-content-between w-100">
+                <div class="p-2">
+                    <a class="navbar-brand pisikoBar "
+                       asp-controller="Home"
+                       asp-action="HomePage" style="font-size:30px !important;">PisikoBar</a>
+                    <button class="navbar-toggler"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavDropdown"
+                            aria-controls="navbarNavDropdown"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse d-flex justify-content-end"
+                     id="navbarNavDropdown" >
+                    
+                        <ul class="navbar-nav  d-flex justify-content-around">
+                            <li class="nav-item ">
+                                <a class="nav-link active baslikyazi" href="#">
+                                    Hakkımızda
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active baslikyazi" href="/admin/AdminPage">
+                                    Geçici admin sayfası
+                                </a>
+                            </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link baslikyazi"
-                           asp-controller="Authors"
-                           asp-action="List">
-                            Pisikologlar
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link baslikyazi" href="#">Blog</a>
-                    </li>
+                            <li class="nav-item">
+                                <a class="nav-link baslikyazi"
+                                   asp-controller="Authors"
+                                   asp-action="List">
+                                    Pisikologlar
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link baslikyazi" href="#">Blog</a>
+                            </li>
 
 
-                    <li class="nav-item dropdown baslikyazi">
-                        <a class="nav-link dropdown-toggle text-white baslikyazi"
-                           href="#"
-                           id="navbarDropdownMenuLink"
-                           role="button"
-                           data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Hizmetlerimiz
-                        </a>
-                        <ul class="dropdown-menu baslikyazi"
-                            aria-labelledby="navbarDropdownMenuLink">
-                            <li>
-                                <a class="dropdown-item"
-                                   href="/healtylife/saglikli-yasam-fitness">
-                                    Sağlıklı Yaşam
+                            <li class="nav-item dropdown baslikyazi mr-4">
+                                <a class="nav-link dropdown-toggle text-white baslikyazi"
+                                   href="#"
+                                   id="navbarDropdownMenuLink"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Hizmetlerimiz
                                 </a>
+                                <ul class="dropdown-menu baslikyazi"
+                                    aria-labelledby="navbarDropdownMenuLink">
+                                    <li>
+                                        <a class="dropdown-item"
+                                           href="/healtylife/saglikli-yasam-fitness">
+                                            Sağlıklı Yaşam
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Diyet</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Astroloji
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Yaşam Koçu
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Cinsel Sağlık
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Finans</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Sipirütel Enerji
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item"
+                                           href="#">
+                                            Pisikoloji
+                                        </a>
+                                    </li>
+
+                                </ul>
                             </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Diyet</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    Astroloji
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    Yaşam Koçu
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    Cinsel Sağlık
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Finans</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    Sipirütel Enerji
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item"
-                                   href="#">
-                                    Pisikoloji
-                                </a>
+
+                            <li class="nav-item">
+
+                                @await Component.InvokeAsync("LoginLayout")
+
                             </li>
 
                         </ul>
-                    </li>
-                    <li class="nav-item">
 
-                       @await Component.InvokeAsync("LoginLayout")
+                   
+                </div>
 
-                    </li>
-
-                </ul>
             </div>
-
-        </div>
+        </div>            
+     
     </nav>
     @if (TempData["Message"] != null)
     {
@@ -126,6 +136,7 @@
                 <div class="alert alert-@message.AlertType">
                     <div>@message.Title</div>
                     <div>@message.Message</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </div>
         </div>

@@ -19,7 +19,12 @@ namespace ConsultancyFirm.BL.Concreate
         }
         public void Add(Heading entity)
         {
-            throw new NotImplementedException();
+            _headingrepository.Add(entity);
+        }
+
+        public void Add(Heading heading, int[] authorId)
+        {
+            _headingrepository.Add(heading, authorId);
         }
 
         public void Delete(Heading entity)
@@ -41,7 +46,7 @@ namespace ConsultancyFirm.BL.Concreate
 
         public Heading GetById(int id)
         {
-            throw new NotImplementedException();
+            return _headingrepository.GetById(id);
         }
 
      
@@ -68,7 +73,7 @@ namespace ConsultancyFirm.BL.Concreate
 
         public void Update(Heading entity)
         {
-            throw new NotImplementedException();
+            _headingrepository.Update(entity);
         }
     }
 }

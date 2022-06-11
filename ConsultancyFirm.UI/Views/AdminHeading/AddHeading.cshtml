@@ -1,0 +1,68 @@
+﻿@model AddHeadingModel
+@{
+    ViewData["Title"] = "Heading Create Page";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    <form asp-controller="AdminHeading" asp-action="AddHeading" method="post" enctype="multipart/form-data">
+        <br />
+        <div class="form-group">
+            <div class="w-25">
+
+                <label for="inputTag" class="label d-flex justify-content-between" style="cursor:pointer">
+                    Başlık için fotoğraf Seçiniz
+
+                    <i class="fa fa-2x fa-camera"></i>
+                    <input id="inputTag" type="file" name="File" style="display:none" required />
+                    <br />
+                    <span id="imageName"></span>
+                    <span asp-validation-for="Heading.HeadingImageUrl"></span>
+                </label>
+
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="w-25">
+                <label class="label">Başlık Adı Giriniz</label>
+                <input class="form-control" type="text" asp-for="Heading.HeadingName" required />
+                <span asp-validation-for="Heading.HeadingName"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="w-100">
+                <label class="label">Başlık İçeriğini giriniz</label>
+                <textarea class=" form-control" style="resize:none;" rows="8" maxlength="255" asp-for="Heading.HeadingContent" required></textarea>
+                <span asp-validation-for="Heading.HeadingContent"></span>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-md-6">
+
+                <label class="label">Hangi Categoride Yayınlamak istediğinizi Seçiniz</label>
+                <select class="form-control" asp-for="Heading.CategoryId" asp-items="@ViewBag.Category" required></select>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <label class="label">Yardımcı yazar varsa Seçiniz</label>
+                <select class="form-control" name="authorId" asp-items="@ViewBag.Author">
+                    <option value="0">Yazarlar</option>
+                </select>
+
+            </div>
+
+        </div>
+        <br />
+        <div class="form-group">
+            
+            <input type="submit" class="btn btn-primary" value="Başlığı Kaydet" />
+        </div>
+    </form>
+
+</div>
