@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace ConsultancyFirm.BL.Abstract
 {
-    public interface IMemberService_Service :IGenericService<MemberService>
+    public interface IMemberService_Service : IGenericService<MemberService>
     {
-       
+        List<MemberService> GetMemberServicesBySelectedAppointmentInfo(int authorId, int  categoryId, DateTime dateTime);
+        List<MemberService> GetThisDaysMemberServices();
     }
 }

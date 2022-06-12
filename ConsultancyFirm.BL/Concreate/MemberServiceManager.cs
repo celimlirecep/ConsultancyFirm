@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ConsultancyFirm.BL.Concreate
 {
-    public class MemberServiceManager :  IMemberService_Service
+    public class MemberServiceManager : IMemberService_Service
     {
         IMemberServiceRepository _memberServiceRepository;
 
@@ -44,10 +44,23 @@ namespace ConsultancyFirm.BL.Concreate
             return _memberServiceRepository.GetById(id);
         }
 
+        //Henüz tarihe göre filtreleme yapılmadı
+        public List<MemberService> GetMemberServicesBySelectedAppointmentInfo(int authorId, int categoryId, DateTime dateTime)
+        {
+          return  _memberServiceRepository.GetMemberServicesBySelectedAppointmentInfo(authorId, categoryId, dateTime);
+        }
+
         public MemberService GetSingle(Expression<Func<MemberService, bool>> filter)
         {
-          return  _memberServiceRepository.GetSingle(filter);
+            return _memberServiceRepository.GetSingle(filter);
         }
+
+        public List<MemberService> GetThisDaysMemberServices()
+        {
+            return _memberServiceRepository.GetThisDaysMemberServices();
+        }
+
+        
 
         public void Update(MemberService entity)
         {

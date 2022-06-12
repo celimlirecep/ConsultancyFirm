@@ -9,5 +9,7 @@ namespace ColsultancyFirm.DAL.Abstract
 {
     public interface IMemberServiceRepository : IBaseRepository<MemberService>
     {
+        public List<MemberService> GetMemberServicesBySelectedAppointmentInfo(int authorId, int categoryId, DateTime dateTime);
+        List<MemberService> GetThisDaysMemberServices();
     }
 }

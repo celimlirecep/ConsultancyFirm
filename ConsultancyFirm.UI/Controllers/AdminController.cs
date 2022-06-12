@@ -95,8 +95,6 @@ namespace ConsultancyFirm.UI.Controllers
 
             foreach (var user in userList)
             {
-
-
                 userRoleList.Add(new UserRolesModel()
                 {
                     UserRoles = await _userManager.GetRolesAsync(user) as List<string>,
@@ -108,7 +106,6 @@ namespace ConsultancyFirm.UI.Controllers
                 Rolls = roleList,
                 Users = userList,
                 UserRolesList = userRoleList
-
             };
 
             return View(model);

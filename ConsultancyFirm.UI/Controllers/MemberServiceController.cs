@@ -31,49 +31,23 @@ namespace ConsultancyFirm.UI.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index(string username, MemberServiceModel model=null)
+        //Randevu alım sayfası
+        public IActionResult Index()
         {
-            List<MemberService> memberServices = null;
-            if (model.Author != null && model.Category != null)
-            {
-                if (model.Author.AuthorId != 0 && model.Category.CategoryId == 0)
-                {
 
-                    memberServices = _memberservice_Service.Get(i => i.AuthorId == model.Author.AuthorId && string.IsNullOrEmpty(i.UserId));
-
-                }
-                else if (model.Category.CategoryId != 0 && model.Author.AuthorId == 0)
-                {
-
-                    memberServices = _memberservice_Service.Get(i => i.CategoryId == model.Category.CategoryId && string.IsNullOrEmpty(i.UserId));
-
-                }
-                else
-                {
-                    memberServices = _memberservice_Service.Get(i => i.CategoryId == model.Category.CategoryId && i.AuthorId == model.Author.AuthorId && string.IsNullOrEmpty(i.UserId));
-                }
-
-            }
-            else
-            {
-                memberServices = _memberservice_Service.Get(i => string.IsNullOrEmpty(i.UserId) == true);
-            }
-
-
-
-            User user = await _userManager.FindByNameAsync(username);
-
-            MemberServiceModel memberServiceModel = new MemberServiceModel()
-            {
-                User = user,
-                Users = _userManager.Users.ToList(),
-                Categories = _categoryService.GetAll(),
-                Authors = _authorService.GetAll(),
-                MemberServices = memberServices
-            };
+           
             ViewBag.Category = new SelectList(_categoryService.GetAll(), "CategoryId", "CategoryName");
             ViewBag.Author =  new SelectList(_authorService.GetAll(), "AuthorId", "AuthorFullName");
-            return View(memberServiceModel);
+            return View(_memberservice_Service.GetThisDaysMemberServices());
+        }
+        [HttpPost]
+        public IActionResult Index(MemberServiceFilterModel model)
+        {
+            List<MemberService> memberServices = _memberservice_Service.GetMemberServicesBySelectedAppointmentInfo(model.authorId, model.categoryId, model.appointmentDate);
+            ViewBag.Category = new SelectList(_categoryService.GetAll(), "CategoryId", "CategoryName");
+            ViewBag.Author = new SelectList(_authorService.GetAll(), "AuthorId", "AuthorFullName");
+
+            return View(memberServices);
         }
 
         public async Task<IActionResult> MemberAppointment()
@@ -82,7 +56,7 @@ namespace ConsultancyFirm.UI.Controllers
          
             MemberServiceModel memberServiceModel = new MemberServiceModel()
             {
-                User=user,
+              
                MemberServices = _memberservice_Service.Get(i => i.UserId == user.Id),
                 Authors = _authorService.GetAll(),
 
@@ -90,6 +64,8 @@ namespace ConsultancyFirm.UI.Controllers
      
             return View(memberServiceModel);
         }
+
+        //Alınan hizmetler Sayfası
         public IActionResult DeleteAppointment(int MemberServiceId)
         {
             var memberService= _memberservice_Service.GetSingle(i => i.MemberServiceId == MemberServiceId);
@@ -106,7 +82,7 @@ namespace ConsultancyFirm.UI.Controllers
             return RedirectToAction("MemberAppointment");
         }
         [HttpPost]
-        public IActionResult MemberAppointment(string userId,int memberServiceId,string userName)
+        public IActionResult MemberAppointment(string userId,int memberServiceId)
         {
             if (string.IsNullOrEmpty(userId)||memberServiceId<1)
             {
@@ -114,14 +90,11 @@ namespace ConsultancyFirm.UI.Controllers
             }
            MemberService memberService=  _memberservice_Service.GetById(memberServiceId);
             memberService.UserId = userId;
-            memberService.CategoryId = memberService.CategoryId;
-            memberService.AuthorId = memberService.AuthorId;
-            memberService.AppointmentTime = memberService.AppointmentTime;
             _memberservice_Service.Update(memberService);
 
 
 
-            return Redirect($"/mypage/appointment/{userName}");
+            return Redirect($"/mypage/appointment");
         }
     }
     

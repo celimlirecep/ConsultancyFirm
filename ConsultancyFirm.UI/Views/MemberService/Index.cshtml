@@ -1,4 +1,4 @@
-﻿@model MemberServiceModel
+﻿@model List<MemberService>
 
 @{
     ViewData["Title"] = "Authors Page";
@@ -32,7 +32,7 @@
                         <td>
                             <div class="form-group">
                                
-                                <select  class="form-control" asp-for="Category.CategoryId" asp-items="@ViewBag.Category">
+                                <select  class="form-control" name="categoryId" asp-items="@ViewBag.Category">
                                     <option value="0">Hizmet Birimini Seçiniz</option>
                                 </select>
 
@@ -43,7 +43,7 @@
                         <td>
                             <div class="form-group">
 
-                                <select class="form-control" asp-for="Author.AuthorId" asp-items="@ViewBag.Author">
+                                <select class="form-control" name="authorId" asp-items="@ViewBag.Author">
                                     <option value="0">Danışman Seçiniz</option>
                                 </select>
                                
@@ -51,9 +51,7 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input type="date" name="bday" min="2014-05-11" max="2014-05-20">
-                                @*<input class="form-control" asp-for="@Model.Month" asp-format="{0:MM}" />*@
-                                @*  <input type="datetime-local" class="form-control" asp-for="MemberService.AppointmentTime" />*@
+                                <input type="date" class="form-control" name="appointmentDate" >
                             </div>
                         </td>
                     </tr>
@@ -80,19 +78,17 @@
                 <tbody>
                    
                     
-                        @if (Model.MemberServices.Count > 0)
+                        @if (Model!=null)
                         {
-                            @foreach (var item in Model.MemberServices)
+                            @foreach (var item in Model)
                             {
                                 <tr>
-                                    <th>@(((Category)(Model.Categories.Find(x=>x.CategoryId==item.CategoryId))).CategoryName)</th>
-                                    <th>@(((Author)(Model.Authors.Find(x=>x.AuthorId==item.AuthorId))).AuthorFullName)</th>
+                                    <th>@item.Category.CategoryName</th>
+                                    <th>@item.Author.AuthorFullName</th>
                                     <th>@item.AppointmentTime.ToString("dd MMM yyyy")</th>
                                     <th>
                                         <form asp-action="MemberAppointment" method="post">
                                             <input type="hidden" name="memberServiceId" value="@item.MemberServiceId" />
-                                            <input type="hidden" name="userId" value="@Model.User.Id" />
-                                            <input type="hidden" name="userName" value="@Model.User.UserName" />
                                             <input type="submit" class="btn btn-success" value="Randevu Al" />
                                         </form>
                                     </th>
@@ -107,7 +103,7 @@
                             <tr>
                                 <td colspan="4" class="text-warning">
                                     <div>
-                                        <h3>Aradığınız kritere uygun randevu bulunamadı!</h3>
+                                        <h3>Lütfen randevu bulmak için seçeneklerden en az 1 tanesini seçiniz!</h3>
 
                                     </div>
                                     <div>

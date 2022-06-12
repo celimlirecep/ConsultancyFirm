@@ -38,6 +38,7 @@ namespace ConsultancyFirm.UI.Controllers
                 return RedirectToAction("login", model);
             }
          
+            //Resmin olmaması durumunda default resim yüklemesi yapılmıştır
             string image = file != null ? JobManager.UploadImage(file, "users") : "/images/users/default.png";
             
             User user = new User()
@@ -116,9 +117,10 @@ namespace ConsultancyFirm.UI.Controllers
             }
 
             var result = await _signInManager.PasswordSignInAsync(user, model.LoginPassword, true, false);
+            //Giriş başarılıysa
             if (result.Succeeded)
             {
-                return RedirectToAction("MemberPage",new { username = user.UserName });
+                return RedirectToAction("MemberPage");
             }
             ModelState.AddModelError("", "Kullanıcı adı ya da parola hatalı!");
             return RedirectToAction("login");
@@ -196,10 +198,9 @@ namespace ConsultancyFirm.UI.Controllers
 
         }
 
-        public async Task<IActionResult> MemberPage(string username)
+        public async Task<IActionResult> MemberPage()
         {
-            ViewBag.Username = username;
-            var user = await _userManager.FindByNameAsync(username);
+            var user = await _userManager.GetUserAsync(User);
             return View(user);
         }
 
