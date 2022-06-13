@@ -9,8 +9,16 @@ using System.Threading.Tasks;
 
 namespace ColsultancyFirm.DAL.Concreate.EFCore
 {
-    public class EFCoreCategoryRepository : EFCoreBaseRepository<Category, ConsultantFirmContext>, ICategoryRepository
+    public class EFCoreCategoryRepository : EFCoreBaseRepository<Category>, ICategoryRepository
     {
-     
+        public EFCoreCategoryRepository(ConsultantFirmContext context) : base(context)
+        {
+
+        }
+        private ConsultantFirmContext ConsultantFirmContext
+        {
+            get { return _context as ConsultantFirmContext; }
+        }
+
     }
 }

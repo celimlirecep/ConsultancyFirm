@@ -9,71 +9,48 @@ using System.Threading.Tasks;
 
 namespace ColsultancyFirm.DAL.Concreate.EFCore
 {
-    public class EFCoreBaseRepository<TEntity, TContext> : IBaseRepository<TEntity> where TEntity:class where TContext:DbContext,new()
+    public class EFCoreBaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity:class 
     {
-
+        protected readonly DbContext _context;
+        public EFCoreBaseRepository(DbContext context)
+        {
+            _context = context;
+        }
 
         public void Add(TEntity entity)
         {
-            using (var context=new ConsultantFirmContext())
-            {
-                context.Entry(entity).State = EntityState.Added;
-                context.SaveChanges();
-            }
+            _context.Entry(entity).State = EntityState.Added;
+            
         }
 
         public void Delete(TEntity entity)
         {
-            using (var context = new ConsultantFirmContext())
-            {
-                context.Entry(entity).State = EntityState.Deleted;
-                context.SaveChanges();
-            }
-
+            _context.Entry(entity).State = EntityState.Deleted;
         }
 
         public List<TEntity> Get(Expression<Func<TEntity, bool>> filter)
         {
-            using (var context=new ConsultantFirmContext())
-            {
-                return context.Set<TEntity>().Where(filter).ToList();
-            }
+                return _context.Set<TEntity>().Where(filter).ToList();
         }
 
         public List<TEntity> GetAll()
         {
-            using (var context=new ConsultantFirmContext())
-            {
-                return context.Set<TEntity>().ToList();
-            }
+                return _context.Set<TEntity>().ToList();
         }
 
         public TEntity GetById(int id)
         {
-
-            using (var context = new ConsultantFirmContext())
-            {
-                return context.Set<TEntity>().Find(id);
-            }
+                return _context.Set<TEntity>().Find(id);
         }
 
         public TEntity GetSingle(Expression<Func<TEntity, bool>> filter)
         {
-            using (var context=new ConsultantFirmContext())
-            {
-                return context.Set<TEntity>().FirstOrDefault(filter);
-            }
+                return _context.Set<TEntity>().FirstOrDefault(filter);
         }
-
-     
 
         public void Update(TEntity entity)
         {
-            using (var context = new ConsultantFirmContext())
-            {
-                context.Entry(entity).State = EntityState.Modified;
-                context.SaveChanges();
-            }
+            _context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

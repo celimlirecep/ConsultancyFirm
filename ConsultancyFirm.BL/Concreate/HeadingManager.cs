@@ -12,19 +12,21 @@ namespace ConsultancyFirm.BL.Concreate
 {
     public class HeadingManager : IHeadingService
     {
-        private IHeadingRepository _headingrepository;
-        public HeadingManager(IHeadingRepository headingRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public HeadingManager(IUnitOfWork unitOfWork)
         {
-            _headingrepository = headingRepository;
+            _unitOfWork = unitOfWork;
         }
         public void Add(Heading entity)
         {
-            _headingrepository.Add(entity);
+            _unitOfWork.Headings.Add(entity);
+            _unitOfWork.save();
         }
 
         public void Add(Heading heading, int[] authorId)
         {
-            _headingrepository.Add(heading, authorId);
+            _unitOfWork.Headings.Add(heading, authorId);
+            _unitOfWork.save();
         }
 
         public void Delete(Heading entity)
@@ -39,31 +41,31 @@ namespace ConsultancyFirm.BL.Concreate
 
         public List<Heading> GetAll()
         {
-           return _headingrepository.GetAll();
+           return _unitOfWork.Headings.GetAll();
         }
 
         
 
         public Heading GetById(int id)
         {
-            return _headingrepository.GetById(id);
+            return _unitOfWork.Headings.GetById(id);
         }
 
      
 
         public List<Heading> GetHeadingByCategories(string category)
         {
-          return  _headingrepository.GetHeadingByCategories(category);
+          return  _unitOfWork.Headings.GetHeadingByCategories(category);
         }
 
         public List<Heading> GetHeadingWithAuthorWithCategory()
         {
-            return _headingrepository.GetHeadingWithAuthorWithCategory();
+            return _unitOfWork.Headings.GetHeadingWithAuthorWithCategory();
         }
 
         public List<Heading> GetHomePageHeadings()
         {
-            return _headingrepository.GetHomePageHeadings();
+            return _unitOfWork.Headings.GetHomePageHeadings();
         }
 
         public Heading GetSingle(Expression<Func<Heading, bool>> filter)
@@ -73,7 +75,8 @@ namespace ConsultancyFirm.BL.Concreate
 
         public void Update(Heading entity)
         {
-            _headingrepository.Update(entity);
+            _unitOfWork.Headings.Update(entity);
+            _unitOfWork.save();
         }
     }
 }

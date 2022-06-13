@@ -12,11 +12,10 @@ namespace ConsultancyFirm.BL.Concreate
 {
     public class MemberServiceManager : IMemberService_Service
     {
-        IMemberServiceRepository _memberServiceRepository;
-
-        public MemberServiceManager(IMemberServiceRepository memberServiceRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public MemberServiceManager(IUnitOfWork unitOfWork)
         {
-            _memberServiceRepository = memberServiceRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public void Add(MemberService entity)
@@ -26,45 +25,52 @@ namespace ConsultancyFirm.BL.Concreate
 
         public void Delete(MemberService entity)
         {
-            _memberServiceRepository.Delete(entity);
+            _unitOfWork.MemberServices.Delete(entity);
+            _unitOfWork.save();
         }
 
         public List<MemberService> Get(Expression<Func<MemberService, bool>> filter)
         {
-            return _memberServiceRepository.Get(filter);
+            return _unitOfWork.MemberServices.Get(filter);
         }
 
         public List<MemberService> GetAll()
         {
-            return _memberServiceRepository.GetAll();
+            return _unitOfWork.MemberServices.GetAll();
         }
 
         public MemberService GetById(int id)
         {
-            return _memberServiceRepository.GetById(id);
+            return _unitOfWork.MemberServices.GetById(id);
         }
 
         //Henüz tarihe göre filtreleme yapılmadı
         public List<MemberService> GetMemberServicesBySelectedAppointmentInfo(int authorId, int categoryId, DateTime dateTime)
         {
-          return  _memberServiceRepository.GetMemberServicesBySelectedAppointmentInfo(authorId, categoryId, dateTime);
+          return _unitOfWork.MemberServices.GetMemberServicesBySelectedAppointmentInfo(authorId, categoryId, dateTime);
+        }
+
+        public List<MemberService> GetMemberServicesWithAuthorsAndCategoriesByUser(string userId)
+        {
+          return  _unitOfWork.MemberServices.GetMemberServicesWithAuthorsAndCategoriesByUser(userId);
         }
 
         public MemberService GetSingle(Expression<Func<MemberService, bool>> filter)
         {
-            return _memberServiceRepository.GetSingle(filter);
+            return _unitOfWork.MemberServices.GetSingle(filter);
         }
 
         public List<MemberService> GetThisDaysMemberServices()
         {
-            return _memberServiceRepository.GetThisDaysMemberServices();
+            return _unitOfWork.MemberServices.GetThisDaysMemberServices();
         }
 
         
 
         public void Update(MemberService entity)
         {
-            _memberServiceRepository.Update(entity);
+            _unitOfWork.MemberServices.Update(entity);
+            _unitOfWork.save();
         }
     }
 }

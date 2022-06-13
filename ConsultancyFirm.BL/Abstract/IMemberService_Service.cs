@@ -12,5 +12,6 @@ namespace ConsultancyFirm.BL.Abstract
     {
         List<MemberService> GetMemberServicesBySelectedAppointmentInfo(int authorId, int  categoryId, DateTime dateTime);
         List<MemberService> GetThisDaysMemberServices();
+        List<MemberService> GetMemberServicesWithAuthorsAndCategoriesByUser(string userId);
     }
 }

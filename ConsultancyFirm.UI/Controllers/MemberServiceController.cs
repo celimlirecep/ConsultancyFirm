@@ -52,17 +52,9 @@ namespace ConsultancyFirm.UI.Controllers
 
         public async Task<IActionResult> MemberAppointment()
         {
-            User user = await _userManager.GetUserAsync(User);
-         
-            MemberServiceModel memberServiceModel = new MemberServiceModel()
-            {
-              
-               MemberServices = _memberservice_Service.Get(i => i.UserId == user.Id),
-                Authors = _authorService.GetAll(),
-
-            };
-     
-            return View(memberServiceModel);
+            string  userId= _userManager.GetUserId(User);
+            List<MemberService> memberServices = _memberservice_Service.GetMemberServicesWithAuthorsAndCategoriesByUser(userId);
+            return View(memberServices);
         }
 
         //Alınan hizmetler Sayfası

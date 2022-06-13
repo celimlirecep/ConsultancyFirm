@@ -12,10 +12,10 @@ namespace ConsultancyFirm.BL.Concreate
 {
     public class CategoryManager : ICategoryService
     {
-        private ICategoryRepository _categoryRepository;
-        public CategoryManager(ICategoryRepository categoryRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryManager(IUnitOfWork unitOfWork)
         {
-            _categoryRepository = categoryRepository;
+            _unitOfWork = unitOfWork;
         }
         public void Add(Category entity)
         {
@@ -34,17 +34,17 @@ namespace ConsultancyFirm.BL.Concreate
 
         public List<Category> GetAll()
         {
-          return  _categoryRepository.GetAll();
+          return _unitOfWork.Categories.GetAll();
         }
 
         public Category GetById(int id)
         {
-            return _categoryRepository.GetById(id);
+            return _unitOfWork.Categories.GetById(id);
         }
 
         public Category GetSingle(Expression<Func<Category, bool>> filter)
         {
-            return _categoryRepository.GetSingle(filter);
+            return _unitOfWork.Categories.GetSingle(filter);
         }
 
         public void Update(Category entity)

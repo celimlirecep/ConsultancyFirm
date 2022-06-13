@@ -33,7 +33,10 @@ namespace ConsultancyFirm.UI
         public void ConfigureServices(IServiceCollection services)
         {
             //Ýdentity için Database iþlemi
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlite("Data Source=ConsultancyFirmDB"));
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlite(Configuration.GetConnectionString("SQLiteConnection")));
+            services.AddDbContext<ConsultantFirmContext>(options => options.UseSqlite(Configuration.GetConnectionString("SQLiteConnection")));
+           
+
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
             //Paralo vs için gereklilikler
             services.Configure<IdentityOptions>(options =>
@@ -77,28 +80,25 @@ namespace ConsultancyFirm.UI
                 Configuration["EmailSender:Password"]
                 ));
 
-            services.AddScoped<IAuthorService, AuthorManager>();
             services.AddScoped<IHeadingService, HeadingManager>();
+            services.AddScoped<IAuthorService, AuthorManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
-            services.AddScoped<IHeadingRepository, EFCoreHeadingRepository>();
-            services.AddScoped<IAuthorRepository, EFCoreAuthorRepository>();
-            services.AddScoped<ICategoryRepository, EFCoreCategoryRepository>();
             services.AddScoped<IHomeSliderService, HomeSliderManager>();
-            services.AddScoped<IHomeSliderRepository, EFCoreHomeSliderRespository>();
             services.AddScoped<IMemberService_Service, MemberServiceManager>();
-            services.AddScoped<IMemberServiceRepository, EFCoreMemberServiceRepository>();
             services.AddScoped<IMessageService, MessageManager>();
-            services.AddScoped<IMessageRepository, EFCoreMessageRepository>();
 
+
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,UserManager<User> userManager,RoleManager<IdentityRole> roleManager)
         {
             if (env.IsDevelopment())
             {
-                SeedDB.Seed();
+               
                 app.UseDeveloperExceptionPage();
             }
             else

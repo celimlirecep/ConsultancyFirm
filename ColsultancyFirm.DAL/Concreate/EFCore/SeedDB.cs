@@ -12,20 +12,20 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
     {
         public static void Seed()
         {
-            var context = new ConsultantFirmContext();
-            if (context.Database.GetPendingMigrations().Count()==0)
-            {
-                if (context.Headings.Count()==0)
-                {
-                    context.Headings.AddRange(Headings);
-                }
-                if (context.Categories.Count()==0)
-                {
-                    context.Categories.AddRange(Categories);
-                }
+            //var context = new ConsultantFirmContext();
+            //if (context.Database.GetPendingMigrations().Count()==0)
+            //{
+            //    if (context.Headings.Count()==0)
+            //    {
+            //        context.Headings.AddRange(Headings);
+            //    }
+            //    if (context.Categories.Count()==0)
+            //    {
+            //        context.Categories.AddRange(Categories);
+            //    }
              
-                context.SaveChanges();
-            }
+            //    context.SaveChanges();
+            //}
         }
 
 

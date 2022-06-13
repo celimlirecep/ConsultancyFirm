@@ -1,6 +1,6 @@
 ﻿
 
-@model MemberServiceModel
+@model List<MemberService>
 
 @{
     ViewData["Title"] = "Authors Page";
@@ -22,26 +22,28 @@
                     <td>#</td>
                     <td>Hizmet Alınan Danışman Bilgileri</td>
                     <td>Randevu Zamanı</td>
+                    <td>Randevu kategorisi</td>
                     <td>Randevu İptal Et</td>
 
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.MemberServices)
+                @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>  @item.MemberServiceId</td>
+                <tr>
+                    <td>  @item.MemberServiceId</td>
 
-                        <td>    @(((Author)Model.Authors.Find(i=>i.AuthorId==item.AuthorId)).AuthorFullName)</td>
-                        <td>      @item.AppointmentTime</td>
-                        <td>
-                            <form asp-controller="MemberService" asp-action="DeleteAppointment" method="post">
-                                <input type="hidden" name="MemberServiceId" value="@item.MemberServiceId" />
-                                <input type="submit" class="btn btn-danger" value="Randevuyu İptal Et" />
-                            </form>
+                    <td>    @item.Author.AuthorFullName</td>
+                    <td>    @item.Category.CategoryName</td>
+                    <td>      @item.AppointmentTime</td>
+                    <td>
+                        <form asp-controller="MemberService" asp-action="DeleteAppointment" method="post">
+                            <input type="hidden" name="MemberServiceId" value="@item.MemberServiceId" />
+                            <input type="submit" class="btn btn-danger" value="Randevuyu İptal Et" />
+                        </form>
 
-                        </td>
-                    </tr>
+                    </td>
+                </tr>
 
                 }
 

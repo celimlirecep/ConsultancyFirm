@@ -8,7 +8,15 @@ using System.Threading.Tasks;
 
 namespace ColsultancyFirm.DAL.Concreate.EFCore
 {
-    public class EFCoreMessageRepository : EFCoreBaseRepository<Message, ConsultantFirmContext>, IMessageRepository
+    public class EFCoreMessageRepository : EFCoreBaseRepository<Message>, IMessageRepository
     {
+        public EFCoreMessageRepository(ConsultantFirmContext context) : base(context)
+        {
+
+        }
+        private ConsultantFirmContext ConsultantFirmContext
+        {
+            get { return _context as ConsultantFirmContext; }
+        }
     }
 }

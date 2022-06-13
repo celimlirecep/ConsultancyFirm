@@ -11,16 +11,15 @@ namespace ConsultancyFirm.BL.Concreate
 {
     public class HomeSliderManager : IHomeSliderService
     {
-        private IHomeSliderRepository  _homeSliderRepository;
-
-        public HomeSliderManager(IHomeSliderRepository homeSliderRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public HomeSliderManager(IUnitOfWork unitOfWork)
         {
-            _homeSliderRepository = homeSliderRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public List<HomeSlider> GetAllVisible()
         {
-            return _homeSliderRepository.Get(x => x.IsVisible == true);
+            return _unitOfWork.HomeSliders.Get(x => x.IsVisible == true);
         }
     }
 }

@@ -9,16 +9,20 @@ using System.Threading.Tasks;
 
 namespace ColsultancyFirm.DAL.Concreate.EFCore
 {
-    public class EFCoreMemberServiceRepository : EFCoreBaseRepository<MemberService, ConsultantFirmContext>, IMemberServiceRepository
+    public class EFCoreMemberServiceRepository : EFCoreBaseRepository<MemberService>, IMemberServiceRepository
     {
+        public EFCoreMemberServiceRepository(ConsultantFirmContext context) : base(context)
+        {
+
+        }
+        private ConsultantFirmContext ConsultantFirmContext
+        {
+            get { return _context as ConsultantFirmContext; }
+        }
         public List<MemberService> GetMemberServicesBySelectedAppointmentInfo(int authorId, int categoryId, DateTime dateTime)
         {
-            using (var context = new ConsultantFirmContext())
-            {
-
-                var memberServicesList =  context.MemberServices
+                var memberServicesList = ConsultantFirmContext.MemberServices
                     .AsQueryable();
-
                 //sadece yazar filtrelendiğinde
                 if (authorId != 0 && categoryId == 0)
                 {
@@ -40,29 +44,30 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
                         .Where(i => i.CategoryId == categoryId && i.AuthorId == authorId && string.IsNullOrEmpty(i.UserId))
                         .AsQueryable();
                 }
-              
-
                 memberServicesList = memberServicesList
                       .Include(i => i.Category)
                     .Include(i => i.Author);
 
                 return memberServicesList.ToList();
+        }
 
-
-            }
-
+        public List<MemberService> GetMemberServicesWithAuthorsAndCategoriesByUser(string userId)
+        {
+            return ConsultantFirmContext.MemberServices
+                 .Where(i => i.UserId == userId)
+                 .Include(i => i.Author)
+                 .Include(i => i.Category)
+                 .ToList();
         }
 
         //çalışmalar tamamlandıktan sonra sadece bugünün randevuları gözükücek
         public List<MemberService> GetThisDaysMemberServices()
         {
-            using (var context=new ConsultantFirmContext())
-            {
-                return context.MemberServices
+                return ConsultantFirmContext.MemberServices
                     .Include(i => i.Category)
                     .Include(i => i.Author)
                     .Take(6).ToList();
-            }
+            
         }
     }
 }

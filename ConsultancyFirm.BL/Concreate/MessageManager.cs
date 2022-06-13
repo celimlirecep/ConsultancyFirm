@@ -12,31 +12,32 @@ namespace ConsultancyFirm.BL.Concreate
 {
     public class MessageManager : IMessageService
     {
-        private IMessageRepository _messageRepository;
-
-        public MessageManager(IMessageRepository messageRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public MessageManager(IUnitOfWork unitOfWork)
         {
-            _messageRepository = messageRepository;
+            _unitOfWork = unitOfWork;
         }
 
         public void Add(Message entity)
         {
-            _messageRepository.Add(entity);
+            _unitOfWork.Messages.Add(entity);
+            _unitOfWork.save();
         }
 
         public void Delete(Message entity)
         {
-            _messageRepository.Delete(entity);
+            _unitOfWork.Messages.Delete(entity);
+            _unitOfWork.save();
         }
 
         public List<Message> Get(Expression<Func<Message, bool>> filter)
         {
-            return _messageRepository.Get(filter);
+            return _unitOfWork.Messages.Get(filter);
         }
 
         public List<Message> GetAll()
         {
-          return  _messageRepository.GetAll();
+          return _unitOfWork.Messages.GetAll();
         }
 
         public Message GetById(int id)
@@ -46,7 +47,7 @@ namespace ConsultancyFirm.BL.Concreate
 
         public Message GetSingle(Expression<Func<Message, bool>> filter)
         {
-            return _messageRepository.GetSingle(filter);
+            return _unitOfWork.Messages.GetSingle(filter);
         }
 
         public void Update(Message entity)

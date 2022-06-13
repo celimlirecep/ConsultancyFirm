@@ -9,28 +9,33 @@ using System.Threading.Tasks;
 
 namespace ColsultancyFirm.DAL.Concreate.EFCore
 {
-    public class EFCoreHeadingRepository : EFCoreBaseRepository<Heading, ConsultantFirmContext>, IHeadingRepository
+    public class EFCoreHeadingRepository : EFCoreBaseRepository<Heading>, IHeadingRepository
     {
-        
+        public EFCoreHeadingRepository(ConsultantFirmContext context) : base(context)
+        {
+
+        }
+        private ConsultantFirmContext ConsultantFirmContext
+        {
+            get { return _context as ConsultantFirmContext; }
+        }
 
 
         public List<Heading> GetHomePageHeadings()
         {
-            using (var context=new ConsultantFirmContext())
-            {
-             return   context.Headings
+            
+             return ConsultantFirmContext.Headings
                     .Where(i => i.IsHome && i.IsApproved)
                     .Include(c => c.Category)
                     .Include(x=>x.AuthorHeadings)
                     .ThenInclude(x=>x.Author)
                     .ToList();
-            }
+            
         }
         public List<Heading> GetHeadingByCategories(string category)
         {
-            using (var context = new ConsultantFirmContext())
-            {
-                var headings = context.Headings
+            
+                var headings = ConsultantFirmContext.Headings
                     .Where(i => i.IsApproved)
                     .AsQueryable();
                 if (!string.IsNullOrEmpty(category))
@@ -46,36 +51,34 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
 
 
                 return headings.ToList();
-            }
+            
         }
 
         public List<Heading> GetHeadingWithAuthorWithCategory()
         {
-            using (var context =new ConsultantFirmContext())
-            {
-                return context.Headings
+            
+                return ConsultantFirmContext.Headings
                     .Include(i => i.AuthorHeadings)
                     .ThenInclude(i => i.Author)
                     .Include(i=>i.Category)
                     .ToList();
-            }
+            
         }
 
         public void Add(Heading heading, int[] authorIds)
         {
-            using (var context=new ConsultantFirmContext())
-            {
-                context.Headings.Add(heading);
-                context.SaveChanges();
+
+            ConsultantFirmContext.Headings.Add(heading);
+            ConsultantFirmContext.SaveChanges();
                 heading.AuthorHeadings = authorIds
                    .Select(authorId => new AuthorHeading
                    {
                        AuthorId = authorId,
                        HeadingId = heading.HeadingId
                    }).ToList();
-                context.SaveChanges();
+           
 
-            }
+            
         }
     }
 }

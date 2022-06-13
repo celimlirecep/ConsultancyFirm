@@ -12,14 +12,16 @@ namespace ConsultancyFirm.BL.Concreate
 {
     public class AuthorManager : IAuthorService
     {
-        private IAuthorRepository _authorRepository;
-        public AuthorManager(IAuthorRepository authorRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public AuthorManager(IUnitOfWork unitOfWork)
         {
-            _authorRepository = authorRepository;
+            _unitOfWork = unitOfWork;
         }
+
         public void Add(Author entity)
         {
-            _authorRepository.Add(entity);
+            _unitOfWork.Authors.Add(entity);
+            _unitOfWork.save();
         }
 
         public void Delete(Author entity)
@@ -34,27 +36,28 @@ namespace ConsultancyFirm.BL.Concreate
 
         public List<Author> GetAll()
         {
-            return _authorRepository.GetAll();
+            return _unitOfWork.Authors.GetAll();
         }
 
         public Author GetById(int id)
         {
-            return _authorRepository.GetSingle(x=>x.AuthorId==id);
+            return _unitOfWork.Authors.GetSingle(x=>x.AuthorId==id);
         }
 
         public List<Author> GetAuthorsWithPages(int page, int pageSize)
         {
-            return _authorRepository.GetAuthorsWithPages(page, pageSize);
+            return _unitOfWork.Authors.GetAuthorsWithPages(page, pageSize);
         }
 
         public Author GetSingle(Expression<Func<Author, bool>> filter)
         {
-            return _authorRepository.GetSingle(filter);
+            return _unitOfWork.Authors.GetSingle(filter);
         }
 
         public void Update(Author entity)
         {
-            _authorRepository.Update(entity);
+            _unitOfWork.Authors.Update(entity);
+            _unitOfWork.save();
         }
     }
 }
