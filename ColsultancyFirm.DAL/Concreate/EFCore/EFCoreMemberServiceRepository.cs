@@ -44,9 +44,9 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
                         .Where(i => i.CategoryId == categoryId && i.AuthorId == authorId && string.IsNullOrEmpty(i.UserId))
                         .AsQueryable();
                 }
-                memberServicesList = memberServicesList
-                      .Include(i => i.Category)
-                    .Include(i => i.Author);
+            memberServicesList = memberServicesList
+                  .Include(i => i.Category)
+                .Include(i => i.Author);
 
                 return memberServicesList.ToList();
         }
@@ -63,10 +63,19 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
         //çalışmalar tamamlandıktan sonra sadece bugünün randevuları gözükücek
         public List<MemberService> GetThisDaysMemberServices()
         {
-                return ConsultantFirmContext.MemberServices
-                    .Include(i => i.Category)
-                    .Include(i => i.Author)
-                    .Take(6).ToList();
+            var memberServiceList= ConsultantFirmContext.MemberServices
+                .Include(i => i.Category)
+                .Include(i => i.Author)
+                .Where(i => string.IsNullOrEmpty(i.UserId))
+                .AsQueryable();
+            int count = memberServiceList.Count();
+            if (count>6)
+            {
+               memberServiceList=memberServiceList
+                    .Take(6);
+            }
+            return memberServiceList.ToList();
+                    
             
         }
     }

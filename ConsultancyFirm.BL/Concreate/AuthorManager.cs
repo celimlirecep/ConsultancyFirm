@@ -31,7 +31,7 @@ namespace ConsultancyFirm.BL.Concreate
 
         public List<Author> Get(Expression<Func<Author, bool>> filter)
         {
-            throw new NotImplementedException();
+           return _unitOfWork.Authors.Get(filter);
         }
 
         public List<Author> GetAll()

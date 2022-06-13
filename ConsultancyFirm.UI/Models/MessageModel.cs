@@ -13,8 +13,10 @@ namespace ConsultancyFirm.UI.Models
 
         public List<Author> Authors { get; set; }
         public Author Author { get; set; }
-        public List<Message> GetMessages { get; set; }
-        public List<Message> PushMessage { get; set; }
+        public List<Message> Messages { get; set; }
+        public int GetMessageCount { get; set; }
+        public int SendMessageCount { get; set; }
+
         public Message Message { get; set; }
         public bool IsGetPage { get; set; }
 

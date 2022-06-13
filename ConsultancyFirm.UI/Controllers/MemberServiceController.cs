@@ -50,7 +50,7 @@ namespace ConsultancyFirm.UI.Controllers
             return View(memberServices);
         }
 
-        public async Task<IActionResult> MemberAppointment()
+        public IActionResult MemberAppointment()
         {
             string  userId= _userManager.GetUserId(User);
             List<MemberService> memberServices = _memberservice_Service.GetMemberServicesWithAuthorsAndCategoriesByUser(userId);
@@ -74,14 +74,15 @@ namespace ConsultancyFirm.UI.Controllers
             return RedirectToAction("MemberAppointment");
         }
         [HttpPost]
-        public IActionResult MemberAppointment(string userId,int memberServiceId)
+        public IActionResult MemberAppointment(int memberServiceId)
         {
-            if (string.IsNullOrEmpty(userId)||memberServiceId<1)
-            {
-                return View();
-            }
+            
            MemberService memberService=  _memberservice_Service.GetById(memberServiceId);
-            memberService.UserId = userId;
+            if (memberService==null)
+            {
+                return RedirectToAction("MemberAppointment");
+            }
+            memberService.UserId = _userManager.GetUserId(User);
             _memberservice_Service.Update(memberService);
 
 

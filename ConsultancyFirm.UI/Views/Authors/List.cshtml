@@ -8,17 +8,17 @@
     <div class="col-md-6">
         <div class="row">
             @* ************************DANIŞMAN RESİMLERİ KISMI  *@
-            @foreach (var author in Model.Authors)
+            @foreach (var author in Model.AuthorInfos)
             {
                 <div class="col-md-6">
                     <a href="/authors?id=@author.AuthorId&page=@Model.PageInfo.CurrentPage">
                         <div class="cards-list">
 
                             <div class="carda ">
-                                @*<div class="card_image"> <img src="~/images/defaultAuthor/@author.AuthorImages" /> </div>
+                                <div class="card_image"> <img src="@author.Image" /> </div>
                                 <div class="card_title title-white">
-                                    <p style="background-color:black !important;">@author.AuthorFullName</p>
-                                </div>*@
+                                    <p style="background-color:black !important;">@author.FullName</p>
+                                </div>
                             </div>
 
                         </div>
@@ -41,9 +41,9 @@
         </div>
         @if (Model.SelectedAuthor != null)
         {
-            @*<h3>@Model.SelectedAuthor.AuthorFullName</h3>
-            <h5>Mail Adresi: @Model.SelectedAuthor.AuthorMail</h5>
-            <h5>Telefon Numarası: @Model.SelectedAuthor.AuthorPhone</h5>*@
+            <h3>@Model.SelectedAuthor.FullName</h3>
+            <h5>Mail Adresi: @Model.SelectedAuthor.Email</h5>
+            <h5>Yazar Hakkında: @Model.SelectedAuthor.About</h5>
             <h5>YAZARIN YAZDIĞI YAZILAR EKLENİCEK</h5>
         }
         else

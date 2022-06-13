@@ -8,10 +8,22 @@ namespace ConsultancyFirm.UI.Models
 {
     public class AuthorListViewModel
     {
-        public List<Author> Authors { get; set; }
+        public List<AuthorInfo> AuthorInfos { get; set; }
         public PageInfo PageInfo { get; set; }
-        public Author SelectedAuthor { get; set; }
+        public AuthorInfo SelectedAuthor { get; set; }
 
+
+
+
+
+    }
+    public class AuthorInfo{
+        public int AuthorId { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string About { get; set; }
+        public string Image { get; set; }
+        public int HeadingsCount { get; set; }
 
     }
 

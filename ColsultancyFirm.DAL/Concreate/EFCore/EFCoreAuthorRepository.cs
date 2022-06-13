@@ -1,5 +1,6 @@
 ﻿using ColsultancyFirm.DAL.Abstract;
 using ConsultancyFirm.EL;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace ColsultancyFirm.DAL.Concreate.EFCore
         {
             
                return ConsultantFirmContext.Authors
+                .Include(i=>i.AuthorHeadings)
                     .Skip((page - 1) * pageSize).Take(pageSize).ToList();
             
         }

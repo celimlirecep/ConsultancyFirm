@@ -10,21 +10,21 @@
     </div>
     <div class="col-md-8">
         <div class="row">
-            <partial name="_MessageBox" />
+            <partial name="_MessageBox" model="@Model" />
 
 
         </div>
         <br />
         <div class="row">
             <div class="d-flex justify-content-center col-md-11">
-                <a class="btn btn-primary btn-block mb-3 form-control">Gelen Mesajlar</a>
+                <a class="btn btn-primary btn-block mb-3 form-control">@(Model.IsGetPage? "Gönderilen Mesajlar" : "Gelen Mesajlar")</a>
             </div>
             <br />
             <div class="col-md-11">
                 <table class="table table-light">
                     <thead>
                         <tr>
-                            <th>Gönderen </th>
+                            <th>@(Model.IsGetPage?"Gönderilen Mail Adresi" : "Gönderen Mail Adresi") </th>
                             <th>Mesaj Başlığı</th>
                             <th>İçerik</th>
                             <th>Gönderim Zamanı</th>
@@ -34,14 +34,14 @@
                     </thead>
                     <tbody>
 
-                        @if (Model.GetMessages != null && Model.IsGetPage==false)
+                        @if (Model.Messages != null )
                         {
                           
-                                @foreach (var message in Model.GetMessages)
+                                @foreach (var message in Model.Messages)
                                 {
 
                                     <tr class="border">
-                                        <td>@message.MessageFrom</td>
+                                        <td>@(Model.IsGetPage? message.MessageTo : message.MessageFrom)</td>
                                         <td>@message.MessageTitle</td>
                                         <td>@message.MessageContent.Substring(0, 10) ...</td>
                                         <td>@message.MessageSendDate.ToString("dd MMM yyyy")</td>
@@ -59,30 +59,7 @@
 
 
                             }
-                           @if (Model.PushMessage != null && Model.IsGetPage == true)
-                            {
-                                @foreach (var message in Model.PushMessage)
-                                {
-
-                                    <tr class="border">
-                                        <td>@message.MessageFrom</td>
-                                        <td>@message.MessageTitle</td>
-                                        <td>@message.MessageContent.Substring(0, 10) ...</td>
-                                        <td>@message.MessageSendDate.ToString("dd MMM yyyy")</td>
-                                        <td>
-                                            <form asp-controller="message" asp-action="Messagedetails" method="post">
-                                                <input type="hidden" name="messageId" value="@message.MessageId" />
-                                                <input type="submit" class="btn btn-primary" value="Detay" />
-                                            </form>
-                                        </td>
-                                    </tr>
-
-
-
-                                }
-
-                            }
-
+                         
                         
 
                     </tbody>

@@ -123,16 +123,21 @@ namespace ConsultancyFirm.UI.Controllers
                     //Advisorlara özgü yeni özellikle içeren tablo için
                     if (model.RoleName=="Advisor")
                     {
-                        Author IsAuthor = _authorService.GetSingle(i => i.UserId == user.Id);
-                        if (IsAuthor==null)
+                        Author selectedUser = _authorService.GetSingle(i => i.UserId == user.Id);
+                        if (selectedUser == null)
                         {
                             Author author = new Author
                             {
                                 UserId = model.UserId,
-                                AuthorFullName=user.FirstName+user.LastName,
-                                IsDeleted = false
+                                AuthorFullName=user.FirstName+" "+user.LastName,
+                          
                             };
                             _authorService.Add(author);
+                        }
+                        else
+                        {
+                            selectedUser.IsDeleted = false;
+                            _authorService.Update(selectedUser);
                         }
                       
                     }

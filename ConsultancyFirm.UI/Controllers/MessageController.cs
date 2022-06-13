@@ -26,7 +26,8 @@ namespace ConsultancyFirm.UI.Controllers
             _messageService = messageService;
         }
 
-        //default gelen mailler IsReciveMail true olursa gönderilenler açılacak
+        //default hali: gelen mailler açık
+        //Eğer IsReciveMail true olursa gönderilenler açılacak
         public async Task<IActionResult> Index(bool IsGetPage)
         {
             User user = await _userManager.GetUserAsync(User);
@@ -34,38 +35,41 @@ namespace ConsultancyFirm.UI.Controllers
            
             if (await _userManager.IsInRoleAsync(user,"Advisor") || await _userManager.IsInRoleAsync(user, "Admin"))
             {
-                ViewBag.ToMail = new SelectList(_userManager.Users, "Id", "UserFullName");
+                ViewBag.ToMail = new SelectList(_userManager.Users, "Email", "UserFullName");
             }
             else
             {
-                ViewBag.ToMail = new SelectList( await _userManager.GetUsersInRoleAsync("Advisor"), "Id", "UserFullName");
+                var advisors = _authorService.Get(i => i.IsDeleted == false).ToList();
+                ViewBag.ToMail = new SelectList(advisors , "AuthorId", "AuthorFullName");
             }
 
-            MessageModel messageModel = new MessageModel()
-            {
-                User = user,
-                //ana sayfada ilk olarak gelen mesajlar olucak gönderilen tıklanmadığı sürece
-                GetMessages = _messageService.Get(i => i.MessageTo == user.Email),
-                PushMessage = _messageService.Get(i => i.MessageFrom == user.Email),
-                IsGetPage =IsGetPage
-            };
-            return View(messageModel);
+            MessageModel model = new MessageModel();
+            var sendMessage = _messageService.Get(i => i.MessageTo == user.Email);
+            var getMessage  = _messageService.Get(i => i.MessageFrom == user.Email);
+            model.Messages = IsGetPage ? getMessage : sendMessage;
+            model.GetMessageCount = getMessage.Count();
+            model.SendMessageCount = sendMessage.Count();
+            model.IsGetPage = IsGetPage;
+
+
+
+            return View(model);
         }
-        public async Task<IActionResult> MessageSend(MessageModel model)
+        public async Task<IActionResult> MessageSend(Message model)
         {
             //From Mail
-            var userFrom =await _userManager.GetUserAsync(User);
+            var user =await _userManager.GetUserAsync(User);
 
             //tO MAİL
 
-            var userTo = await _userManager.FindByIdAsync(model.User.Id);
+            var userTo = await _userManager.FindByEmailAsync(model.MessageTo);
             
             Message message = new Message()
             {
-                MessageFrom = userFrom.Email,
+                MessageFrom = user.Email,
                 MessageTo = userTo.Email,
-                MessageTitle = model.Message.MessageTitle,
-                MessageContent = model.Message.MessageContent,
+                MessageTitle = model.MessageTitle,
+                MessageContent = model.MessageContent,
                 MessageSendDate = DateTime.Now
             };
             _messageService.Add(message);
